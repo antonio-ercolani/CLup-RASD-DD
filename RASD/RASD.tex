@@ -3,7 +3,11 @@
 \usepackage{graphicx}
 \usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2cm]{geometry}
 \usepackage{subcaption}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{makecell}
 
+\setlength{\tabcolsep}{13pt}
+\renewcommand{\arraystretch}{2.3}
 
 \title{ RASD \\
 	\begin{large} 
@@ -25,7 +29,7 @@
 	\newpage
 	\pagenumbering{arabic}	
 
-	
+
 	\tableofcontents
 	
 	\newpage
@@ -34,10 +38,62 @@
 	\section{Introduction}
 	
 	\subsection{Purpose}
-	
-	\subsection{Scope}
-	
-	 
 
+	\subsection{Scope}
+		\subsubsection{World phenomena}
+
+			\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{WP1} & The customer arrives to the store \\ \hline
+				\textbf{WP2} & The customer shops in the store \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{WP3} & The customer waits outside the store \\ \hline
+			\end{tabular}
+		\subsubsection{Shared phenomena}
+			\begin{itemize}
+				\item Controlled by the \textbf{machine}\newline\newline
+					\begin{tabular}{|c|l|}
+						\hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP1} & The customer is notified that his turn is coming \\ \hline
+						\textbf{SP2} & The store generates and sends a ticket to the user (?) \\ \hline
+					\end{tabular}
+					
+				\item Controlled by the \textbf{world}\newline\newline
+					\begin{tabular}{|c|l|}
+						\hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP3} & The customer enters the store scanning his QR code \\ \hline
+						\textbf{SP4} & The customer reserves a place in the queue of a given store using the application \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP5} & \makecell[l]{The customer reserves a place in the queue of a given store using the ticket totem \\outside the store}\\ \hline
+						\textbf{SP6} & The customer books a visit to the store \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP7} & The customer leaves the store \\ \hline
+						\textbf{SP8} & The store receives a request to join its queue \\ \hline
+					\end{tabular}
+					
+			\end{itemize}
+		
+		\subsubsection{Goals}
+		
+		\begin{tabular}{|c|l|}
+						\hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{G1} & \makecell[l]{At any time the number of people in the store must not be higher than the store limit or \\ the limit is passed but the customers are expected to be in different areas of the store} \\ \hline
+						\textbf{G2} & The physical queue of people outside the store is reduced \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{G3} & Allow users to "line up" for a store from home \\ \hline
+						\textbf{G4} & Allow users to wait for their turn at home and receive an alert when their turn is coming \\ \hline		
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{G5} & Allow users to book a visit to a store \\ \hline
+						\textbf{G6} & Balance the number of people between different store or timeframes with suggestions \\ \hline		
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{G7} & Allow the store to monitor entries \\ \hline
+						\textbf{G8} & Handle the order of entries between the queue and the booked visits \\ \hline	
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{G9} & Collects information in order to build statistics and infer mean datas \\ \hline					
+					\end{tabular}
 
 \end{document}
