@@ -48,7 +48,7 @@
 	
 		\begin{paragraph}
 			\newline
-				The scope of the software is to give the users the possibility to line up to enter and shop into a grocery store.\\
+				The scope of the software is to give the users the possibility to line up to enter and shop into a grocery stores.\\
 				The stores that have registered to this service generate and distribute tickets to line people correctly, letting them do the shopping only if the QR-code scanned on their ticket is valid.\\
 				CLup offers different kind of functionalities and features:\\
 	
@@ -56,8 +56,8 @@
 			\item \textbf{Basic:}
 				The user can line up in different ways: through a physical ticket taken outside the store, or through the application, that is implemented in a way such that people of every age can use. \\
 				If there are already too many people queuing outside the shop, the software doesn’t allow to distribute new physical tickets. \\
-				The software can integrate the information derived  from the two sources, virtual and physical bookings, so that overcrowding is avoided in the neighborhood of the store and thanks to the QR ticket validations store managers can monitor entrances. \\
-				When the user leaves the store must show his ticket to the QR-reader again, so that the system can know it and let the queue proceed, with another customer enter the shop.\\
+				The software can integrate the information derived  from the two sources, virtual and physical bookings, so that overcrowding is avoided in the neighborhood of the store and thanks to the QR ticket validations, store managers can monitor entrances. \\
+				When the user leaves the store he must show his ticket to the QR-reader again, so that the system can know it and let the queue proceed, with another customer enter the shop.\\
 
 			\item \textbf{Feature 1:}
 				Users that line up from home concede the system to see where they are, using the GPS position of their device to identify their zone. In this way only nearby grocery stores are shown to the user.\\
@@ -85,17 +85,17 @@
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{WP3} & The customer waits outside the store \\ \hline
 			\end{tabular}
+			
 		\subsubsection{Shared phenomena}
-			\begin{itemize}
-				\item Controlled by the \textbf{machine}\newline\newline
+		
+			Controlled by the \textbf{machine}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP1} & The customer is notified that his turn is coming \\ \hline
 						\textbf{SP2} & The store generates and sends a ticket to the user (?) \\ \hline
-					\end{tabular}
-					
-				\item Controlled by the \textbf{world}\newline\newline
+					\end{tabular} \newline\newline\newline
+			Controlled by the \textbf{world}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
@@ -109,7 +109,6 @@
 						\textbf{SP8} & The store receives a request to join its queue \\ \hline
 					\end{tabular}
 					
-			\end{itemize}
 		
 		\subsubsection{Goals}
 		
@@ -164,4 +163,37 @@
 	\paragraph{Chapter 4} tries to describe the main aspects of the software system we have seen so far with an alloy model.
 	
 	\paragraph{Chapters 5 and 6} contain, respectively, an outline of the effort spent in the project by each team mates and the document references.
+	
+	\section{Overall description}
+	
+		\subsection{Product perspective}
+		The CLup system is designed as a complitely new software application. The user side of the software is intended to be used as a mobile application while the store managers are going to interface with the software through a web interface. \newline
+		In order to estimate the time needed for the user to reach the store, the application needs to interface with the smartphone's localization system and needs the user to indicate the type of transportation that he is going to use. \newline
+		The system will handle client that are not using the application with tickets provided by a ticket totem located outside the store. This machine will act as an interface to the software application. \newline
+		Customers using CLup are going to be notified when their turn is coming in order to approach the store while those with a ticket outside the store will monitor a screen extern to the shop in order to know when it's their turn to enter. \newline
+		In order to access the store, every customer is required to scan their QR code (either from the application or from the physical ticket) when entering and exiting the store: in both cases the system will activate an automatic door. \newline
+		On the other side of the system, store managers are going to be able to monitor and manage the queue of their store as well as programmed visits. \newline
+		The below class diagram models the application domain in order to give an overlook on the enviroment where the application is going to work.
+		
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[scale=0.5]{UML_class_diagram.png}
+			\caption{Class diagram}
+			\label{fig:class_diagram}
+		\end{figure}
+
+	
+	\section{Specific requirements}
+	\section{Formal analysis using Alloy}
+	\section{Effort spent}
+	\textbf{\large Riccardo Nannini:} \\ \newline
+		\begin{tabular}{|l|c|}
+			\hline
+			Discussion on the first section &  \textbf{2h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			World and Shared Phenomena \& Goals & \textbf{3h} \\ \hline
+			Product perspective \& class diagram & \textbf{3h} \\ \hline
+		\end{tabular}
+	
+	\section{References}				
 	\end{document}
