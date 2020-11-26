@@ -181,7 +181,50 @@
 			\caption{Class diagram}
 			\label{fig:class_diagram}
 		\end{figure}
+		
+	
+		\subsection{StateCharts}
+		In this section we want to show the evolution over time of the states of the application and the behavior of the user interacting with the app and the environment.
+The state diagrams below better explain the progress of the system.
 
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[scale=0.5]{user.png}
+			\caption{State Diagram}
+			\label{figure 1:  User}
+		\end{figure}
+		
+		In the first state diagram (figure 1) it’s shown how the user interacts with the environment and the system when he needs to do shopping. He interacts with the system lining up to a store in a virtual way using the mobile or web application, or queuing physically at the store he wants to visit.
+What’s more, to enter the store, he needs to show the QR-code, and then he has to do the same when he exits, so that the queue can proceed. 
+
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[width=\linewidth]{physicalqueue.png}
+			\caption{State Diagram}
+			\label{figure 2:  Physical Queue}
+		\end{figure}
+		
+		In this second state diagram (figure 2) it’s better explained the physical line up of the user, that directly gets a ticket nearby the store.
+		
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[width=\linewidth]{virtualqueue.png}
+			\caption{State Diagram}
+			\label{figure 3:  Virtual Queue}
+		\end{figure}
+		
+		Here (figure 3) are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before he gains the possibility to line up to the store.
+		
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[width=\linewidth]{software.png}
+			\caption{State Diagram}
+			\label{figure 4:  Software}
+		\end{figure}
+		
+		This fourth state chart (figure 4) shows how the system behaves when a user lines up, storing his preferences to allow to suggest the products that the user might enjoy during the next sessions, but also to update the schedule to permit to book visits into the selected store. It’s important to say that here’s explained how the system behaves with respect to a single user, but it has to concurrently work for all the users connected. 
+The possibility to update the schedule is also left when the system idles, so that it can deal with eventual withdraws of the users or because some tickets are taken physically at the store and the software needs to be updated about them. In addition, it’s also shown that the system needs to notify the user to approach the store when his turn is about to come.
+		
 	
 	\section{Specific requirements}
 	\section{Formal analysis using Alloy}
