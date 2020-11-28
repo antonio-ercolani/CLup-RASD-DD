@@ -165,6 +165,7 @@
 	
 	\paragraph{Chapters 5 and 6} contain, respectively, an outline of the effort spent in the project by each team mates and the document references.
 	
+	\newpage
 	\section{Overall description}
 	
 		\subsection{Product perspective}
@@ -183,7 +184,7 @@
 			\label{fig:class_diagram}
 		\end{figure}
 		
-	\textbf{}\\ \newpage
+	\textbf{}\\
 		\subsection{StateCharts}
 		
 		\textbf{}\\ \newline
@@ -237,6 +238,61 @@ What’s more, to enter the store, he needs to show the QR-code, and then he has
 		
 		This fourth state chart (Figure \ref{fig:state_diagram4}) shows how the system behaves when a user lines up, storing his preferences to allow to suggest the products that the user might enjoy during the next sessions, but also to update the schedule to permit to book visits into the selected store. It’s important to say that here’s explained how the system behaves with respect to a single user, but it has to concurrently work for all the users connected. 
 The possibility to update the schedule is also left when the system idles, so that it can deal with eventual withdraws of the users or because some tickets are taken physically at the store and the software needs to be updated about them. In addition, it’s also shown that the system needs to notify the user to approach the store when his turn is about to come.\\
+
+
+
+
+\newpage
+
+\subsection{Product functions}
+
+In this section are analyzed the main functionalities that the CLup software system must ensure. Goals and requirements are many and they are all connected with each other, therefore, below you will find the description of two "macro-functionalities" that try to group most of them. Said that, in order to go deeply in every system capability, the reader should supplement this section with the next chapter - "Specific requirements".
+\bigskip
+\\
+\begin{large}
+	\textbf{Queue management}
+\end{large}
+\smallskip
+\\
+The core function. As the name suggest, the system is able to manage the stores entering queue, that are becoming longer and "dangerous" in the time of coronavirus. This is done with a combination of two sub-functionalities: 
+
+\begin{itemize}
+	\renewcommand{\labelitemi}{$-$}
+	\item \textbf{Line up from home} - allow users to reserve their place in the queue without having to reach the store, they just need to access the application and choose a grocery. To this simple user action corresponds an important data elaboration made by the system, to ensure another important functionality: \textbf{alert the costumer when his turn comes}. In fact the system must take into account different factors to alert the user in the right moment:
+	\begin{itemize}
+		\renewcommand{\labelitemi}{$-$}
+		\item The distance between the user home and the selected store;
+		\item How much time take people before the user in the queue to enter the store.
+	\end{itemize} 
+	Once the system has collected all the information, it can compute the right amount of time needed by the costumer to reach the store in the right moment he have to enter in.
+	\item \textbf{Line up physically} - the system must give the possibility to line up physically. Therefore, when costumers reserve their place directly at the store the system must collect also this data. Obviously, for them there is no need to compute any kind of time to enter in the store because they wait for their turn right outside.
+\end{itemize}	
+\begin{large}
+	\textbf{Booking visits}
+\end{large}
+\smallskip
+\\
+The second macro-functionality is the possibility of \textbf{booking a visit} to a registered store. On the costumers side, this functionality could be similar to the previous one but the main difference lies on the side of the stores. In fact the information that the costumers provide to the system during the booking is essential to the next presented feature.
+\begin{itemize}
+	\renewcommand{\labelitemi}{$-$}
+	\item \textbf{Increase the capacity of the stores} - the system should allow more people in the stores than the standard number. This is made possible by asking to the costumer who book a visit the categories of items he's intended to buy, therefore the system can infer which sectors of the store he's going to occupy. These information are exploited by the system to maximize the capacity of the stores, respecting the social distancing imposed by the coronavirus emergency rules.
+\end{itemize}
+The second feature of the list is also directly linked to the "booking".
+\begin{itemize}
+	\renewcommand{\labelitemi}{$-$}
+	\item \textbf{Balance out the number of people in the store} - the system should be able to balance out the number of people in the different registered stores. This is done by suggesting people alternative time slots or different stores when they are booking a visit.
+\end{itemize}
+
+\subsection{User characteristics}
+The CLup software system involves category of users:
+\begin{itemize}
+	\renewcommand{\labelitemi}{$-$}
+	\item \textbf{Costumers} - are client of the registered stores that want to take advantage of the CLup features. They are interested in the possibility of "line up" from home and in "booking visits", that encourage them to continue go shopping, despite the problem caused by the emergency.
+	
+	\item \textbf{"Stores"} - these users are represented by the stores that want to take advantage of the CLup services. They have to follow a registration procedure to be added to the available stores of the system. 
+	\\Besides exploit the "remote lining up" function that mainly face social distancing, they are interested in other features such as "increase the capacity of the stores" and "balance out the number of people in the store". In fact exploiting them they could are able to keep profits high, despite the coronavirus emergency. 		
+\end{itemize}
+
 
 		
 		
