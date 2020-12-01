@@ -185,7 +185,7 @@
 		\end{figure}
 		
 	\textbf{}\\
-		\subsection{StateCharts}
+		\subsection{State Diagrams}
 		
 		\textbf{}\\ \newline
 		In this section we want to show the evolution over time of the states of the application and the behavior of the user interacting with the app and the environment. 
@@ -195,7 +195,7 @@ The state diagrams below better explain the progress of the system.\\
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{user.png}
+			\includegraphics[scale=0.5]{User_statediagram.png}
 			\caption{User State Diagram}
 			\label{fig:state_diagram1}
 		\end{figure}
@@ -208,25 +208,25 @@ What’s more, to enter the store, he needs to show the QR-code, and then he has
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\linewidth]{physicalqueue.png}
+			\includegraphics[width=\linewidth]{PhysicalLineUp_statediagram.png}
 			\caption{Physical Line Up State Diagram}
 			\label{fig:state_diagram2}
 		\end{figure}
 		
 		
-		In this second state diagram (Figure \ref{fig:state_diagram2})  it’s better explained the physical line up of the user, that directly gets a ticket nearby the store.\\
+		In this second state diagram (Figure \ref{fig:state_diagram2}) it’s better explained the physical line up of the user, that waits and directly gets a ticket from the totem nearby the store. The user then waits for his turn to enter and do the shopping.\\
 		
 		\textbf{}\\ \newline
 		\textbf{}\\ \newline
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\linewidth]{virtualqueue.png}
+			\includegraphics[width=\linewidth]{VirtualLineUp_statediagram.png}
 			\caption{Virtual Line Up State Diagram}
 			\label{fig:state_diagram3}
 		\end{figure}
 		
-		Here (Figure \ref{fig:state_diagram3})  are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before he gains the possibility to line up to the store. \\
+		Here (Figure \ref{fig:state_diagram3})  are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before he gains the possibility to line up to the store. When a the store has been selected, the user can see the available products that he can buy and has to choose which one of them he wants to buy, so that the system can collect his preferences. Then the user is asked to indicate his permanence into the store, in order to better manage the queue and the next available spots in the timeline. In conclusion, the user can decide if he wants to book a visit at a specific time or if he wants to immediately line up to enter the store as soon as possible. \\
 		
 
 \newpage
@@ -283,6 +283,34 @@ The CLup software system involves category of users:
 
 	
 	\section{Specific requirements}
+		 
+		\subsection{Software System Attributes - Non-Functional Requirements}
+			\subsubsection{Reliability and Availability}
+			
+			The  system should be up at least for the 99,9\% of the time, so the average time between it goes down and then it is recovered (MTTR) should not be higher than 9 hours per year. This also implies that the system should always guarantee that the needed services and functions are satisfied.\\
+This high availability of the system needs to be provided because it is related to an emergency situation, and the users should always be able to decide to go shopping when they need (also because in this way they are likely to be distributed during the day). If this condition is not satisfied, there’s the high risk that when the service will be recovered,  all the people would go at the same time to the stores, and the overcrowding problem won’t be avoided anymore.\\
+Because we want to ensure this high grade of availability, a system of redundant servers can be considered. However, we can also take into account to have a prepared team that can recover the system as fast as possible when it’s needed, while the users have been notified both when the system is down and when its services are restored and work properly.\\
+
+			\subsubsection{Security}
+			
+			Passwords of the users and of the managers in the stores need to be protected, so before storing them they need to be correctly encrypted. A similar treatment has to be made also for the preferences pointed out by the users and stored by the system when they are lining up. What’s more,  for what concerns the managers, a periodical update of their password can guarantee a higher protection of the data collected and used by the store. Of course, the system should be protected against intrusion from agent that are not authorized to access it. \\
+			
+			\subsubsection{Maintainability}
+			
+			As previously said, the system must be flexible and easy to maintain. For this reason a proper use of design pattern has to be made, as well as a good level of abstraction, so that if the code needs to be extended with new features, everything could be made without any kind of deep code changes. Code must also be well commented and tests on main features of the system should always be working.\\
+			
+			\subsubsection{Portability}
+
+			The software must run on different platforms, being compatible with the different devices that can be used: for example, managers at the store and users at home could use computers, so the services of the system need to be made usable on Windows OS, Linux OS and MacOS; because of the mobile application, it must be supported a version for Android, iOS and HarmonyOS.\\
+			
+			\subsubsection{Scalability}
+
+			Everyone will use Clup because of emergency reasons, so the scalability of the system is one of the most important issues to deal with. An high reaction time needs to be reached, so as a consequence it must be set a proper number of processors, devices and memory.\\
+
+
+
+
+		
 	\section{Formal analysis using Alloy}
 	
 	\newpage
