@@ -6,6 +6,8 @@
 \usepackage{subcaption}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{enumitem}
 
 \setlength{\tabcolsep}{13pt}
 \renewcommand{\arraystretch}{2.3}
@@ -141,6 +143,7 @@
 		\hline
 		\rowcolor[HTML]{DCDCDC} 
 		\textbf{QR CODE} & \makecell[l]{A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information} \\ \hline
+		\textbf{ASAP} & \makecell[l]{An \textit{As Soon As Possible} preference indicates that the customer wants to line up\\immediately, without booking a visit at a specific time to enter the store} \\ \hline
 		\textbf{UML} & \makecell[l]{The \textit{Unified Modeling Language} is a modeling language used to describe the design \\of a software system} \\ \hline
 	\end{tabular}
 	
@@ -283,6 +286,169 @@ The CLup software system involves category of users:
 
 	
 	\section{Specific requirements}
+	
+	
+		\subsection{Use Cases}
+		
+			\begin{paragraph}
+			\newline
+			\begin{enumerate}
+			
+			\item{\textbf{Book a Visit}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Book a Visit} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The system is showing the available actions of the selected store\\ and the user selects the “Book a Visit” option} \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user indicates what kind of products he’s going to buy
+						\item The user says how much time he will spend shopping
+						\item The system stores the user’s preferences
+						\item The system displays the user a timetable with the available slots to enter \\the store, taking into account the avg time the user wants to spend inside the store and \\the products he wants to buy
+						\item The user selects one of the available time-slots
+						\item The system rearranges the queue inserting the user in it, reducing the \\available spots in the timetable
+						\item The system generates the virtual ticket with the QR code for the user\\
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The system makes the ticket visible to the user} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+				
+				
+			\item{\textbf{Delete Visit}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Delete Visit} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
+				\textbf{Entry Conditions} & 
+						\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user has booked a visit
+						\item The user is still queuing
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user selects the delete visit option
+						\item The system displays the user the list of booked visits
+						\item The user selects the visits he wants to delete
+						\item The system deletes the scheduled visit and all the related data, updating the queue of the store
+						\item The user saves his operation
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The user has successfully deleted his scheduled visit and the system has correctly updated the line to let the queue of the store proceed.} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+			
+			\item{\textbf{Physical Queuing}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Physical Queuing} \\ \hline
+				\textbf{Actor} & \makecell[l]{User, Manager (for the Exception)} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user is arrived at the store} \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user makes a ticket request at the totem outside the store
+						\item The system updates the queue, inserting another customer in the first available timetable slot
+						\item The user takes his ticket with the QR code
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The user has the ticket to enter the store and can wait without standing near other people} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{If the totem is broken then the store manager will directly handle the physical requests to line up, letting the users enter the store only when the limit of people is not exceeded} \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+				
+			\item{\textbf{Customer enters/exits the store}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Customer enters/exits the store} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user is queuing from home} \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user gets a notification to approach the store
+						\item The user arrives at the store
+						\item The user validates his ticket at the entrance through the QR reader because his turn has come
+						\item The system updates the queue
+						\item The user is doing shopping
+						\item The user validates his ticket at the exit of the store through the QR reader
+						\item The system updates the queue (AND SENDS A FINAL NOTIFICATION TO THE USER?????)
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The system has correctly updated the queue of the store and is ready to allow a new user join the store.} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{If the customer arrives at the store and his ticket is not valid anymore to enter the store (the validity of his QR code has expired) he will have to reschedule from the beginning his visit to the store} \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+				
+			\item{\textbf{Build Statistics / Preferences}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Build Statistics / Preferences} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has booked a visit at least 10 times and the system has stored his preferences} \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The user selects the products he wants to buy and indicates his permanence in the store
+						\item The system collects the data, elaborates them and builds statistics
+						\item The results are shown to the user 
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The user can see what are his favourite products and the average time he usually spends inside the stores} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+
+			
+			\end{enumerate}
+			
+			\end{paragraph}
+			
+		\newpage
 		 
 		\subsection{Software System Attributes - Non-Functional Requirements}
 			\subsubsection{Reliability and Availability}
