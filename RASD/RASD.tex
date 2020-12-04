@@ -121,18 +121,15 @@
 						\textbf{G1} & \makecell[l]{At any time the number of people in the store must not be higher than the store limit or \\ the limit is passed but the customers are expected to be in different areas of the store} \\ \hline
 						\textbf{G2} & The physical queue of people outside the store is reduced \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G3} & Allow users to "line up" for a store from home \\ \hline
-						\textbf{G4} & Allow users to wait for their turn at home and receive an alert when their turn is coming \\ \hline		
+						\textbf{G3} & Allow users to "line up" for a store from home \\ \hline	 
+						\textbf{G4} & Allow users to book a visit to a store \\ \hline
+						\rowcolor[HTML]{DCDCDC}
+						\textbf{G5} & Balance the number of people between different store or timeframes with suggestions \\ \hline		
+						\textbf{G6} & Allow the store to monitor entries \\ \hline	
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G5} & Allow users to book a visit to a store \\ \hline
-						\textbf{G6} & Balance the number of people between different store or timeframes with suggestions \\ \hline		
-						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G7} & Allow the store to monitor entries \\ \hline
-						\textbf{G8} & Handle the order of entries between the queue and the booked visits \\ \hline	
-						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G9} & Collects information in order to build statistics and infer mean datas \\ \hline					
+						\textbf{G7} & Collects information in order to build statistics and infer mean datas \\ \hline					
 					\end{tabular}
-
+\newline\newline
 
 	\subsection{Definitions, Acronyms, Abbreviations}
 	
@@ -144,6 +141,7 @@
 		\rowcolor[HTML]{DCDCDC} 
 		\textbf{QR CODE} & \makecell[l]{A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information} \\ \hline
 		\textbf{ASAP} & \makecell[l]{An \textit{As Soon As Possible} preference indicates that the customer wants to line up\\immediately, without booking a visit at a specific time to enter the store} \\ \hline
+		\rowcolor[HTML]{DCDCDC} 
 		\textbf{UML} & \makecell[l]{The \textit{Unified Modeling Language} is a modeling language used to describe the design \\of a software system} \\ \hline
 	\end{tabular}
 	
@@ -287,7 +285,26 @@ The CLup software system involves category of users:
 	
 	\section{Specific requirements}
 	
-	
+		\subsection{External Interface Requirements}
+			\subsubsection{User Interfaces}
+			TODO UI TELEFONO + UI TICKET TOTEM
+			\subsubsection{Hardware Interfaces}
+			The system requires different external hardware components in order to work. \newline
+			An \textbf{automatic door} needs to be present both in the entrance and the exit of the store. It's necessary in order to effectively regulate and monitor the flow of customers: the doors won't unlock unless the client specific QR Code is scannerized and accepted. \newline
+			A \textbf{QR Code scanner} is required in correspondence of the automatic doors for the reason given above. \newline
+			At least one \textbf{ticket totem} is needed in order to hand out tickets for customers not using the app. \newline
+			In the end, one or more \textbf{monitors} are needed outside the store to let customers know when their turn has come. \newline \newline
+			In addition to this, the  two type of actors require different hardware component in order to interact with the system. \newline
+			Users need a smartphone with a localization system (tipically GPS), while store managers can access and monitor the system via computer.
+			\subsubsection{Software Interfaces}
+			The system needs an external software component to handle QR code generation and recognition. \newline (Altro da mettere qui? Non mi viene in mente niente)
+			\subsubsection{Communications Interfaces}
+			The various actors connect to CLup using an internet connection. \newline
+			Hardware components such as automatic doors, ticket totem and QR code scanner interface with the system via IP based protocols.
+		\subsection{Scenarios}
+		
+		TODO
+		
 		\subsection{Use Cases}
 		
 			\begin{paragraph}
@@ -296,10 +313,9 @@ The CLup software system involves category of users:
 			
 			\item{\textbf{Book a Visit}}
 				\medskip
-				\\
+				\\ \\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Book a Visit} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The system is showing the available actions of the selected store\\ and the user selects the “Book a Visit” option} \\ \hline
@@ -338,7 +354,7 @@ The CLup software system involves category of users:
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
 						\item The user has booked a visit
-						\item The user is still queuing
+						\item The user is still queuing \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
@@ -350,13 +366,13 @@ The CLup software system involves category of users:
 						\item The system displays the user the list of booked visits
 						\item The user selects the visits he wants to delete
 						\item The system deletes the scheduled visit and all the related data, updating the queue of the store
-						\item The user saves his operation
+						\item The user saves his operation \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					The user has successfully deleted his scheduled visit and the system has correctly updated the line to let the queue of the store proceed.
+					The user has successfully deleted his scheduled visit and the system has correctly updated the line to let the queue of the store proceed. \\
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
 				\end{tabular}
@@ -379,17 +395,17 @@ The CLup software system involves category of users:
 						\begin{enumerate}
 						\item The user makes a ticket request at the totem outside the store
 						\item The system updates the queue, inserting another customer in the first available timetable slot
-						\item The user takes his ticket with the QR code
+						\item The user takes his ticket with the QR code \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					The user has the ticket to enter the store and can wait without standing near other people
+					The user has the ticket to enter the store and can wait without standing near other people \\
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & 
 					\begin{minipage}[t]{10cm}
-					If the totem is broken then the store manager will directly handle the physical requests to line up, letting the users enter the store only when the limit of people is not exceeded
+					If the totem is broken then the store manager will directly handle the physical requests to line up, letting the users enter the store only when the limit of people is not exceeded \\
 					\end{minipage}  \\ \hline
 				\end{tabular}
 				\newline
@@ -415,17 +431,17 @@ The CLup software system involves category of users:
 						\item The system updates the queue
 						\item The user is doing shopping
 						\item The user validates his ticket at the exit of the store through the QR reader
-						\item The system updates the queue (AND SENDS A FINAL NOTIFICATION TO THE USER?????)
+						\item The system updates the queue (AND SENDS A FINAL NOTIFICATION TO THE USER?????) \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					The system has correctly updated the queue of the store and is ready to allow a new user join the store
+					The system has correctly updated the queue of the store and is ready to allow a new user join the store \\
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & 
 					\begin{minipage}[t]{10cm}
-					If the customer arrives at the store and his ticket is not valid anymore to enter the store (the validity of his QR code has expired) he will have to reschedule from the beginning his visit to the store
+					If the customer arrives at the store and his ticket is not valid anymore to enter the store (the validity of his QR code has expired) he will have to reschedule from the beginning his visit to the store \\
 					\end{minipage}  \\ \hline
 				\end{tabular}
 				\newline
@@ -447,13 +463,13 @@ The CLup software system involves category of users:
 						\begin{enumerate}
 						\item The user selects the products he wants to buy and indicates his permanence in the store
 						\item The system collects the data, elaborates them and builds statistics
-						\item The results are shown to the user 
+						\item The results are shown to the user \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					 The user can see what are his favourite products and the average time he usually spends inside the stores
+					 The user can see what are his favourite products and the average time he usually spends inside the stores \\
 					 \end{minipage}  \\ \hline
 				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
 				\end{tabular}
@@ -461,12 +477,146 @@ The CLup software system involves category of users:
 				\newline
 				\newline
 
+			\item{\textbf{Allow more people in the store}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Allow more people in the store} \\ \hline
+				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The system notifies that, given the preferences of the users, it\\ is possible to allow more people in the store } \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item In the main page the Store manager clicks on the “Temporary Increase Store Capacity” button entering a dedicated page
+						\item The Store manager selects the amount of additional customer he wants to allow in the store
+						\item The Store managers clicks the “Confirm” button
+						\item The system acknowledges the event and displays a confirmation message \\
+					
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & 
+					\begin{minipage}[t]{10cm}
+					The system allows the additional selected number of customers in the store \\
+					\end{minipage}  \\ \hline
+				\textbf{Exceptions} & 
+					\begin{minipage}[t]{10cm}
+					The system detected that there are no longer the conditions to allow more people in the store safely and does not let the Store manager confirm, showing an explanatory message and bringing the interface back to the main page \\
+					\end{minipage}  \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline			
+
+			
+			\item{\textbf{Monitor the queue}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Monitor the queue} \\ \hline
+				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The Store manager clicks on the “Queue status” button in the main page
+						\item The system retrieves the information and renders a dedicated page
+						\item The Store manager interface is redirected to the dedicated page \\
+					
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & 
+					\begin{minipage}[t]{10cm}
+					The Store Manager is able to see the actual queue status on his device \\
+					\end{minipage}  \\ \hline
+				\textbf{Exceptions} & 
+					\begin{minipage}[t]{10cm}
+					none \\
+					\end{minipage}  \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline
+				
+			\item{\textbf{Check booked store visits}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Check booked store visits} \\ \hline
+				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The Store manager clicks on the “Booked visit” button in the main page entering a dedicated page
+						\item The Store manager choses the time span he wants to visualize
+						\item The system retrieves the information relative to the desidered time span and updates the page with the informations \\
+					
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & 
+					\begin{minipage}[t]{10cm}
+					The Store Manager sees the information about the booked visits in the desidered time frame \\
+					\end{minipage}  \\ \hline
+				\textbf{Exceptions} & 
+					\begin{minipage}[t]{10cm}
+					none \\
+					\end{minipage}  \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline								
+			
+			
+			\item{\textbf{Monitor store crowd}}
+				\medskip
+				\\
+				\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Name} & \makecell[l]{Monitor store crowd} \\ \hline
+				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
+				\textbf{Events Flow} & 
+					\begin{minipage}[t]{10cm}
+						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						\item The Store manager clicks on the “Internal Status” button in the main page
+						\item The system retrieves the information and renders a dedicated page
+						\item The Store manager interface is redirected to the dedicated page \\
+					
+						\end{enumerate}
+						\end{minipage}
+					\\ \hline
+				\textbf{Exit Conditions} & 
+					\begin{minipage}[t]{10cm}
+					The Store Manager can see the current state of customers inside the store \\
+					\end{minipage}  \\ \hline
+				\textbf{Exceptions} & 
+					\begin{minipage}[t]{10cm}
+					none \\
+					\end{minipage}  \\ \hline
+				\end{tabular}
+				\newline
+				\newline
+				\newline				
 			
 			\end{enumerate}
 			
 			\end{paragraph}
 			
-		\newpage
+
 		 
 		\subsection{Software System Attributes - Non-Functional Requirements}
 			\subsubsection{Reliability and Availability}
@@ -508,20 +658,23 @@ Because we want to ensure this high grade of availability, a system of redundant
 			\rowcolor[HTML]{DCDCDC} 
 			Scope & \textbf{3h} \\ \hline
 			State Diagrams & \textbf{3h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
 			Discussion on Requirements and Use Cases & \textbf{3h} \\ \hline
 		\end{tabular}
 		
-	\textbf{} \newline
-	\textbf{} \newline
+		
 
 	
-	\textbf{\large Riccardo Nannini:} \\ \newline
+	\textbf{\large \\ \\ Riccardo Nannini:} \\ \newline
 		\begin{tabular}{|l|c|}
 			\hline
 			Discussion on the first section &  \textbf{2h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			World and Shared Phenomena \& Goals & \textbf{3h} \\ \hline
 			Product perspective \& class diagram & \textbf{3h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			Discussion on Requirements and Use Cases & \textbf{3h} \\ \hline
+			Use Cases \& 3.1 section & \textbf{3h} \\ \hline
 		\end{tabular}
 	
 	\section{References}				
