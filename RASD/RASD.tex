@@ -250,6 +250,7 @@ The core function. As the name suggest, the system is able to manage the stores 
 	\begin{itemize}
 		\renewcommand{\labelitemi}{$-$}
 		\item The distance between the user home and the selected store;
+		\item The means of transport by which the costumer intend to reach the store,
 		\item How much time take people before the user in the queue to enter the store.
 	\end{itemize} 
 	Once the system has collected all the information, it can compute the right amount of time needed by the costumer to reach the store in the right moment he have to enter in.
@@ -270,6 +271,15 @@ The second feature of the list is also directly linked to the "booking".
 	\renewcommand{\labelitemi}{$-$}
 	\item \textbf{Balance out the number of people in the store} - the system should be able to balance out the number of people in the different registered stores. This is done by suggesting people alternative time slots or different stores when they are booking a visit.
 \end{itemize}
+\bigskip
+\begin{large}
+	\textbf{General store management}
+\end{large}
+\smallskip
+\\
+The last functionality allows store managers to visualize all the collected information about the store. For example, store managers can check how many customers are queuing outside the store, how many of them are doing shopping in a given moment and the booked visits of the following days.  
+
+\newpage
 
 \subsection{User characteristics}
 The CLup software system involves category of users:
@@ -305,11 +315,199 @@ The CLup software system involves category of users:
 		
 		TODO
 		
+		\newpage
+		
 		\subsection{Use Cases}
 		
 			\begin{paragraph}
 			\newline
 			\begin{enumerate}
+				
+			\item{\textbf{Costumer sign up}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Costumer sign up} \\ \hline
+				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
+				\textbf{Entry Conditions} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer has already opened the application that sent him to the “sign in/up” screen
+						\item The customer has not a CLup own account \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer clicks the “Create new account” button
+						\item The costumer fills the registration form 
+						\item The costumer checks the filled form fields and confirms them
+						\item The system checks if the provided data are correct and creates the account, storing the user data \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The costumer account is successfully created.} \\ \hline
+				\textbf{Exceptions} & 
+				\begin{minipage}[t]{10cm}
+					The system can detect problems in the submitted registration form (fields filled a in wrong way or even left empty). If it happen, the system notifies it to the user and offer the possibly to re-fill it \\
+				\end{minipage}  \\ \hline
+			\end{tabular}
+			\newpage
+			
+			
+			
+			
+			\item{\textbf{Store registration}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Store registration} \\ \hline
+				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
+				\textbf{Entry Conditions} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The store manager has already opened the application that sent him to the “sign in/up” screen
+						\item The store is not registered yet \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The store manager clicks the “Store registration” button starting the registration procedure 
+						\item The manager fills the registration form with the store information and submits it to the system 
+						\item The system checks if the mandatory fields are correctly filled 
+						\item The system continues the store registration procedure checking:
+							\setlist[enumerate]{label={\alph*.}}
+							\begin{enumerate}
+								\item The validity of the information provided by the manager	
+								\item If the store is able to satisfy all the CLup hardware requirements
+							\end{enumerate}
+						\item The  system completes the store registration storing the collected data \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & 
+				\makecell[l]{The store is successfully registrated} \\ \hline
+				\textbf{Exceptions} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The system can detect problems in the filled registration form (fields filled a in wrong way or even left empy) and offer the possibly to re-fill it
+						\item The system could discover that the information provided by the system manager are not valid. In this case the registration procedure must be restarted. 
+						\item The store could not be able to satisfy the hardware requirements, therefore the system doesn’t allow that store to register in the CLup system
+						\\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+			\end{tabular}
+		
+		
+		
+			\newpage
+			\item{\textbf{Costumer sign in}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Costumer sign in} \\ \hline
+				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
+				\textbf{Entry Conditions} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer has already opened the application that sent him to the “sign in/up” screen
+						\item The customers has a CLup own account \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer fills the sign in form with his access credentials
+						\item The costumer checks the filled fields and clicks the “sign in” button 
+						\item The system checks the filled form fields
+						\item The system redirects the user to the “available stores” screen\\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & 
+				\makecell[l]{The costumer is logged-in successfully} \\ \hline
+				\textbf{Exceptions} & 
+					\begin{minipage}[t]{10cm}
+					The system can detect problems in the filled sing-in form (fields filled a in wrong way, fields left empty or the provided credentials don't belong to any user). If it happen, the system notifies it to the user and offer the possibly to re-fill it \\
+				\end{minipage}  \\ \hline
+			\end{tabular}
+			\newpage
+			
+			
+			\item{\textbf{Costumer line-up}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Costumer line-up} \\ \hline
+				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and he's in the “available stores”\\ screen} \\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer selects a store from the displayed ones
+						\item The system shows to the costumer the available actions of the store 
+						\item The costumer clicks on the “Line-up” button starting the line-up procedure
+						\item The costumer inserts the means by which he will go to the store
+						\item The system retrieves the costumer GPS position
+						\item The system confirm the operation to the user and inserts him in the queue 
+						\item The system compute the time needed to the user to reach the selected store\\		
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & 
+				\begin{minipage}[t]{10cm}
+					The costumer is correctly inserted in the store queue and he will be alerted when he has to leave home to reach the store \\
+				\end{minipage} \\ \hline
+				\textbf{Exit Conditions} & 
+				\begin{minipage}[t]{10cm}
+					The system could not be able to retrieve the GPS position of the costumer, therefore the alert mechanism will be disabled \\
+				\end{minipage}  \\ \hline
+			\end{tabular}
+			\bigskip
+			\newline
+			
+			\item{\textbf{Booking check}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Booking check} \\ \hline
+				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and is in the home page} \\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The costumer clicks the “show bookings” button
+						\item The system redirect the user to a new screen where are displayed his bookings\\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The costumer bookings are showed correctly} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
+			\end{tabular}
+			\newline
+			\newline
+			\newline
+						
+				
 			
 			\item{\textbf{Book a Visit}}
 				\medskip
@@ -340,7 +538,7 @@ The CLup software system involves category of users:
 				\newline
 				\newline
 				
-				
+			\newpage
 			\item{\textbf{Delete Visit}}
 				\medskip
 				\\
@@ -615,6 +813,25 @@ The CLup software system involves category of users:
 			\end{enumerate}
 			
 			\end{paragraph}
+		
+		\newpage
+		
+		\subsection{Performance Requirements}
+		
+		The system will face a large amount of data. Considering a single store with 50 costumers every hour no problem, but the CLup software must support thousands of registered store and all of them have hundreds of clients every day. Handle this quantity of information brings a meaningful complexity that could cause slowdowns and other problems, therefore, performance should not be underestimated. The system must ensure quick response to every user request, despite the thousands of simultaneous interactions. 
+		Then, reliability must be another key feature of the system, therefore there must be less failures as possible.
+		
+		\subsection{Design Constraints}
+		
+		\subsubsection{Standard compliance}
+		//TODO
+		
+		\subsubsection{Hardware limitations}
+		Every costumer, in order to take full advantage of every system functionality, must be able to face the hardware requirement presented in the \textit{Hardware interfaces} subsection. In fact, the lack of any of them will disable some CLup feature for the user. \\
+		For example, if the costumer device isn't equipped with a GPS, the system won't be able to retrieve his position and compute the store reaching time. Therefore, the alert mechanism will be disabled for this user.
+		
+		\subsubsection{Other constraints}
+		//TODO SE CE NE SONO
 			
 
 		 
@@ -650,6 +867,25 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\newpage
 	
 	\section{Effort spent}
+	
+	\medskip
+	\textbf{\large Antonio Ercolani:} \\ \newline
+	\begin{tabular}{|l|c|}
+		\hline
+		Discussion on the first section &  \textbf{2h} \\ \hline
+		\rowcolor[HTML]{DCDCDC} 
+		Purpose and Document Structure & \textbf{1,5h} \\ \hline
+		Product Functions and User Characteristics & \textbf{3h} \\ \hline
+		\rowcolor[HTML]{DCDCDC}
+		Discussion on Requirements and Use Cases & \textbf{3h} \\ \hline
+		Use cases & \textbf{3h} \\ \hline
+		\rowcolor[HTML]{DCDCDC}
+		Performance requirements and Design Constraints & \textbf{1h} \\ \hline
+	\end{tabular}
+	
+	
+	\textbf{} \newline
+	\textbf{} \newline
 
 	\textbf{\large Vittorio Fabris:} \\ \newline
 		\begin{tabular}{|l|c|}
