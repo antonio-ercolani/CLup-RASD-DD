@@ -524,10 +524,10 @@ The CLup software system involves category of users:
 						\item The user indicates what kind of products he’s going to buy
 						\item The user says how much time he will spend shopping
 						\item The system stores the user’s preferences
-						\item The system displays the user a timetable with the available slots to enter \\the store, taking into account the avg time the user wants to spend inside the store and \\the products he wants to buy
+						\item The system displays the user a timetable with the available slots to enter the store, taking into account the avg time the user wants to spend inside the store and the products he wants to buy
 						\item The user selects one of the available time-slots
-						\item The system rearranges the queue inserting the user in it, reducing the \\available spots in the timetable
-						\item The system generates the virtual ticket with the QR code for the user\\
+						\item The system rearranges the queue inserting the user in it, reducing the available spots in the timetable
+						\item The system generates the virtual ticket with the QR code for the user
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
@@ -564,7 +564,6 @@ The CLup software system involves category of users:
 						\item The system displays the user the list of booked visits
 						\item The user selects the visits he wants to delete
 						\item The system deletes the scheduled visit and all the related data, updating the queue of the store
-						\item The user saves his operation \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
@@ -618,24 +617,23 @@ The CLup software system involves category of users:
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Customer enters/exits the store} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
-				\textbf{Entry Conditions} & \makecell[l]{The user is queuing from home} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user is queuing from home and then \\ gets a notification to approach the store} \\ \hline
 				\textbf{Events Flow} & 
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
-						\item The user gets a notification to approach the store
 						\item The user arrives at the store
 						\item The user validates his ticket at the entrance through the QR reader because his turn has come
 						\item The system updates the queue
 						\item The user is doing shopping
 						\item The user validates his ticket at the exit of the store through the QR reader
-						\item The system updates the queue (AND SENDS A FINAL NOTIFICATION TO THE USER?????) \\
+						\item The system updates the queue
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					The system has correctly updated the queue of the store and is ready to allow a new user join the store \\
+					The system has correctly updated the queue of the store and is ready to allow a new user join the store
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & 
 					\begin{minipage}[t]{10cm}
@@ -654,14 +652,14 @@ The CLup software system involves category of users:
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Build Statistics / Preferences} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
-				\textbf{Entry Conditions} & \makecell[l]{The user has booked a visit at least 10 times and the system has stored his preferences} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has booked a visit at least 10 times and the system\\ has stored his preferences} \\ \hline
 				\textbf{Events Flow} & 
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
 						\item The user selects the products he wants to buy and indicates his permanence in the store
 						\item The system collects the data, elaborates them and builds statistics
-						\item The results are shown to the user \\
+						\item The results are shown to the user 
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
@@ -815,6 +813,55 @@ The CLup software system involves category of users:
 			\end{paragraph}
 		
 		\newpage
+			
+			\subsubsection{Sequence Diagrams}
+			
+				\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+						\begin{enumerate}
+						
+						\item Book a Visit
+							\begin{figure}[H]
+								\centering
+								\includegraphics[scale=1.1]{BookAVisit.png}
+								\caption{}
+								\label{fig:bookavisit_sequencediagram}
+							\end{figure}
+							\newpage
+						
+						\item Delete Visit
+							\begin{figure}[H]
+								\centering
+								\includegraphics[scale=0.6]{DeleteVisit.png}
+								\caption{}
+								\label{fig:deletevisit_sequencediagram}
+							\end{figure}
+							
+						\item Physical Lining Up
+							\begin{figure}[H]
+								\centering
+								\includegraphics[width=\linewidth]{PhysicalTicket.png}
+								\caption{}
+								\label{fig:physicalticket_sequencediagram}
+							\end{figure}
+						
+						\item User Enters / Exits the Store
+							\begin{figure}[H]
+								\centering
+								\includegraphics[scale=1.1]{enterexit.png}
+								\caption{}
+								\label{fig:enterexit_sequencediagram}
+							\end{figure}
+							\newpage
+							
+						\item Build Statistics / Preferences
+							\begin{figure}[H]
+								\centering
+								\includegraphics[width=\linewidth]{buildStats.png}
+								\caption{}
+								\label{fig:buildstats_sequencediagram}
+							\end{figure}
+						
+						\end{enumerate}
 		
 		\subsection{Performance Requirements}
 		
@@ -914,4 +961,4 @@ Because we want to ensure this high grade of availability, a system of redundant
 		\end{tabular}
 	
 	\section{References}				
-	\end{document}
+\end{document}
