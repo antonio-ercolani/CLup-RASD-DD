@@ -292,6 +292,50 @@ The CLup software system involves category of users:
 \end{itemize}
 
 
+\subsection{Assumptions, dependencies and constraints}
+	\subsubsection{Domain Assumptions}
+
+		\begin{tabular}{|c|l|}
+				\hline			
+				\textbf{D1} & 
+					\begin{minipage}[t]{13cm}
+						Every store has a QRcode scanner at its entrance and exit
+					\end{minipage}
+				\\ \hline				
+				\textbf{D2} & 
+					\begin{minipage}[t]{13cm}
+						Every generated QR code is unique
+							\end{minipage}
+				\\ \hline				
+				\textbf{D3} & 
+					\begin{minipage}[t]{13cm}
+						There’s only one QR code generated for every booking and lining up
+					\end{minipage}
+				\\ \hline				
+				\textbf{D4} & 
+					\begin{minipage}[t]{13cm}
+						The user that lines up from home has an internet connection that works properly
+					\end{minipage}
+				\\ \hline				
+				\textbf{D5} & 
+					\begin{minipage}[t]{13cm}
+						The user that lines up online has a smartphone or a computer
+					\end{minipage}
+				\\ \hline				
+				\textbf{D6} & 
+					\begin{minipage}[t]{13cm}
+						The GPS provides the exact location of the user
+					\end{minipage}
+				\\ \hline	
+				\textbf{D7} & 
+					\begin{minipage}[t]{13cm}
+						The user is honest when he indicates how many time he’s going to spend inside the store and what kind of products he wants to buy
+					\end{minipage}
+				\\ \hline	
+			\end{tabular}
+			\newpage
+
+
 	
 	\section{Specific requirements}
 	
@@ -316,6 +360,144 @@ The CLup software system involves category of users:
 		TODO
 		
 		\newpage
+		
+		\subsection{Functional Requirements}
+			
+			\subsubsection{List of Requirements}
+				\begin{tabular}{|c|l|}
+				\hline
+				\textbf{R1} & 
+					\begin{minipage}[t]{13cm}
+						The user has to be logged in the application to be able to virtually line-up
+					\end{minipage}
+				\\ \hline
+				\textbf{R2} & 					
+					\begin{minipage}[t]{13cm}
+						The user and manager applications are clear, intuitive and simple to use
+					\end{minipage}
+				\\ \hline
+				\textbf{R3.a} &
+					\begin{minipage}[t]{13cm}
+						When costumers book a visit to the store they have to provide the approximate duration of the visit 
+					\end{minipage}
+				\\ \hline				
+				\textbf{R3.b} & 
+					\begin{minipage}[t]{13cm}
+						When costumers book a visit to the store they can provide a list of items they're going to buy
+					\end{minipage}
+				\\ \hline				
+				\textbf{R3.c} & 
+					\begin{minipage}[t]{13cm}
+						When costumers book a visit to the store they have to provide mean of transport to reach the store
+					\end{minipage}
+				\\ \hline				
+				\textbf{R4} & 
+					\begin{minipage}[t]{13cm}
+						The system provides the user a set of alternative available slots to book his visit
+					\end{minipage}
+				\\ \hline				
+				\textbf{R5} &
+					\begin{minipage}[t]{13cm}
+						The system calculates the availability of a store to let people enter in it in a specific moment 
+					\end{minipage}
+				\\ \hline				
+				\textbf{R6} & 
+					\begin{minipage}[t]{13cm}
+						The application can suggest alternative stores to visit in the neighborhood
+					\end{minipage}
+				\\ \hline				
+				\textbf{R7} & 
+					\begin{minipage}[t]{13cm}
+						The system generates tickets with QR codes for the entrance/exit of a store							\end{minipage}
+				\\ \hline				
+				\textbf{R8} & 
+					\begin{minipage}[t]{13cm}
+						The system alerts online costumers their turn has arrived with sufficient advance, taking into account the time they need to get the shop from the place where they currently are
+					\end{minipage}
+				\\ \hline				
+				\textbf{R9} & 
+					\begin{minipage}[t]{13cm}
+						The system is able to send notifications to the logged user
+					\end{minipage}
+				\\ \hline				
+				\textbf{R10} & \
+					\begin{minipage}[t]{13cm}
+						The system can provide the user a list of his favorite products when booking online a visit
+					\end{minipage}
+				\\ \hline				
+				\textbf{R11} & 
+					\begin{minipage}[t]{13cm}
+						The system can infer the time of a visit of a user based on his stats and the products he has selected
+					\end{minipage}
+				\\ \hline				
+				\textbf{R12} & 
+					\begin{minipage}[t]{13cm}
+						The system updates the queue of the store when a user enters or exits by making his QR code be read by the QR scanners
+					\end{minipage}
+				\\ \hline				
+				\textbf{R13} & 
+					\begin{minipage}[t]{13cm}
+						The system is able to reschedule the queue in order to optimize it if a customer doesn’t show up, allowing the users that want to go shopping as soon as possible to gain some time. Other users that booked a visit at a specific time won’t see their booking vary
+					\end{minipage}
+				\\ \hline				
+				\textbf{R14} & 
+					\begin{minipage}[t]{13cm}
+						The system waits for 5  minutes more to see if the late user arrives to the store, then invalidates his ticket and lets the queue go on
+					\end{minipage}
+				\\ \hline				
+				\textbf{R15} & 
+					\begin{minipage}[t]{13cm}
+						The system detects the position of the logged user
+					\end{minipage}
+				\\ \hline				
+				\textbf{R16} & 
+					\begin{minipage}[t]{13cm}
+						The system allows to delete a scheduled visit and booking
+					\end{minipage}
+				\\ \hline				
+				\textbf{R17} & 
+					\begin{minipage}[t]{13cm}
+						The system shows to the logged user all the registered stores in a neighborhood of 5km range
+					\end{minipage}
+				\\ \hline				
+				\textbf{R18} & \
+					\begin{minipage}[t]{13cm}
+						The system integrates online bookings and physical disbursed tickets by totems to manage the queue of a store
+					\end{minipage}
+				\\ \hline	
+				\end{tabular}
+			\newpage
+			
+			\begin{tabular}{|c|l|}
+				\hline			
+				\textbf{R19} & 
+					\begin{minipage}[t]{13cm}
+						The Application shows to the user how many people (TIME) is remaining to approach/enter the store
+					\end{minipage}
+				\\ \hline				
+				\textbf{R20} & 
+					\begin{minipage}[t]{13cm}
+						The system collects/stores product preferences, visits duration of the users							\end{minipage}
+				\\ \hline				
+				\textbf{R21} & 
+					\begin{minipage}[t]{13cm}
+						The store can’t distribute more than 20 physical tickets from its totems
+					\end{minipage}
+				\\ \hline				
+				\textbf{R22} & 
+					\begin{minipage}[t]{13cm}
+						The system can let the manager allow to enter more people in the store
+					\end{minipage}
+				\\ \hline				
+				\textbf{R23} & 
+					\begin{minipage}[t]{13cm}
+						The system lets the manager know the areas of the store where customers are mostly likely going to collect products, also based on their stored preferences
+					\end{minipage}
+				\\ \hline				
+				
+			\end{tabular}
+			\newpage
+
 		
 		\subsection{Use Cases}
 		
