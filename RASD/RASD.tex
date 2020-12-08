@@ -341,7 +341,23 @@ The CLup software system involves category of users:
 	
 		\subsection{External Interface Requirements}
 			\subsubsection{User Interfaces}
-			TODO UI TELEFONO + UI TICKET TOTEM
+			In this section we present two mockup samples to give a general idea of the user interface. If the reader is interested in going deeply in the design of the UI, he will find several detailed mockups in the Design Document.
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{BookingVisitsMockup.png}
+				\caption{Booking visits screen}
+				\label{fig:BookingVisitsMockup}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{ManagerHomeMockup.png}
+				\caption{Store manager home screen}
+				\label{fig:ManagerHomeMockup}
+			\end{figure}
+		
+		
 			\subsubsection{Hardware Interfaces}
 			The system requires different external hardware components in order to work. \newline
 			An \textbf{automatic door} needs to be present both in the entrance and the exit of the store. It's necessary in order to effectively regulate and monitor the flow of customers: the doors won't unlock unless the client specific QR Code is scannerized and accepted. \newline
@@ -533,6 +549,14 @@ The CLup software system involves category of users:
 
 		\subsubsection{Use Cases}
 		
+			\subsubsection{Use case diagram}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=1.1]{usecasediagram.png}
+				\caption{}
+				\label{fig:usecasediagram}
+			\end{figure}
+					
 			\begin{paragraph}
 			\newline
 			\begin{enumerate}
@@ -1033,6 +1057,42 @@ The CLup software system involves category of users:
 			
 				\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
+							
+							\item Costumer sign in
+						\begin{figure}[H]
+							\centering
+							\includegraphics[scale=1.1]{login.png}
+							\caption{}
+							\label{fig:sign-in_sequencediagramm}
+						\end{figure}
+						\newpage
+						
+						\item Costumer sign up
+						\begin{figure}[H]
+							\centering
+							\includegraphics[scale=1.1]{signup.png}
+							\caption{}
+							\label{fig:signup_sequencediagramm}
+						\end{figure}
+						\newpage
+						
+						\item Store registration
+						\begin{figure}[H]
+							\centering
+							\includegraphics[scale=1.1]{signUpstore.png}
+							\caption{}
+							\label{fig:storeRegistration_sequencediagramm}
+						\end{figure}
+						\newpage
+						
+						\item Line up
+						\begin{figure}[H]
+							\centering
+							\includegraphics[scale=1.1]{lineup.png}
+							\caption{}
+							\label{fig:lineup_sequencediagramm}
+						\end{figure}
+						\newpage	
 						
 						\item Book a Visit
 							\begin{figure}[H]
@@ -1151,6 +1211,10 @@ Because we want to ensure this high grade of availability, a system of redundant
 		Use cases & \textbf{3h} \\ \hline
 		\rowcolor[HTML]{DCDCDC}
 		Performance requirements and Design Constraints & \textbf{1h} \\ \hline
+		UI mockups & \textbf{0,5h} \\ \hline
+		\rowcolor[HTML]{DCDCDC}
+		Use case diagram & \textbf{0,5h} \\ \hline
+		Sequence diagrams & \textbf{1h} \\ \hline
 	\end{tabular}
 	
 	
