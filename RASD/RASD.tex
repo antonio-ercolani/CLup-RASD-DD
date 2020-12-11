@@ -25,9 +25,7 @@
 	\pagenumbering{gobble}
 	
 	\maketitle
-	\begin{paragraph}
-		\newline
-	\end{paragraph}
+	
 
 	\newpage
 	\pagenumbering{arabic}	
@@ -511,32 +509,121 @@ The CLup software system involves category of users:
 				\\ \hline				
 				
 			\end{tabular}
-			\newline
-			\newline
-			\newline
+		
+			
+		\subsubsection{Mapping}
+			
+			\begin{tabular}{|c|c|c|}
+				\hline
+				\textbf{GOALS}
+					& 
+					\begin{minipage}[t]{3cm}
+						DOMAIN \\ASSUMPTIONS\\
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						REQUIREMENTS \\
+					\end{minipage}
+				\\ \hline				
+				\textbf{G1} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D1, D4 \\
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R5, R7, R12, R13, R14, R18, R21, R22, R23 \\
+					\end{minipage} 	
+				\\ \hline			
+				\textbf{G2} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D3 \\
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R3.a, R3.b, R3.c, R4, R5, R6, R8, R12, R13, R14, R18, R21, R22 \\
+					\end{minipage}
+
+				\\ \hline				
+				\textbf{G3} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D1?, D2, D3					
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						 R1, R2, R5, R7, R8, R9, R12, R13, R14, R15, R16, R17, R18, R19 \\
+					\end{minipage}
+				\\ \hline				
+				\textbf{G4} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D1?, D2, D3
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R1, R2, R3.a, R3.b, R3.c, R4, R5, R6, R7, R9, R10, R11, R13, R14, R15, R16, R17, R18, R20 \\
+					\end{minipage}
+				\\ \hline				
+				\textbf{G5} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D3
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R4, R5, R6, R15, R17, R22 \\
+					\end{minipage}
+				\\ \hline				
+				\textbf{G6} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D1, D4\\
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R7, R12, R18, R21?, R23 \\
+					\end{minipage}
+				\\ \hline
+				\textbf{G7} 
+					& 
+					\begin{minipage}[t]{3cm}
+						D3 \\
+					\end{minipage} 
+					&
+					\begin{minipage}[t]{9cm}
+						R3.a, R3.b, R3.c, R10, R11, R20, R23  \\
+					\end{minipage}
+				\\ \hline				
+				
+			\end{tabular}
+			\newpage
+			
+
 	
-	\subsubsection{Scenarios}
+		\subsubsection{Scenarios}
 	
 			\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
-						\begin{enumerate}
+					\begin{enumerate}
 						
-						\item \textbf{User lines up from home}: \newline
+					\item \textbf{User lines up from home}: \newline
 								Antonio is a young engineering student. As known, engineering requires a lot of effort and dedication in order to keep the pace of the various courses. He does not want to waste time in the queues outside groceries shop that became common in the pandemic times. Luckly he knows the CLup service and decides to line up for his favorite store from home. \newline He inserts the type of transportation he is going to use in order to reach the store and joins the virtual queue while he can keep studying safely at home. Once his turn is about to come, he receives a notification from the application right on his smartphone and leaves the house \newline
 						
-						\item \textbf{Customer physically lines up}: \newline
+					\item \textbf{Customer physically lines up}: \newline
 						Maria is an old lady living alone in his apartment in Milan. She does not own a smartphone nor has plan to buy one in the future: she is okay with her old style house phone. \newline Maria goes weekly to the grocery shop: she directs herself to the ticket machine, retrieves a ticket and safely waits outside the store that his turn is called on the monitor. Once it is arrived, she simply scans her ticket's QR code and access the store. \newline
 						
 						
-						\item \textbf{User books a visit}: \newline
+					\item \textbf{User books a visit}: \newline
 						Elena is a very busy mother of two. She has very limited time frames where she can shop in a grocery store and not miss other appointments in her schedule. \newline
 		Since Elena got to know CLup she loved the service of booking a future visit to a store. She just selects her store and favourite time slot, inserts a few data like estimated shopping time etc. and the magic is done. No more time spent outside the shop and appointment delayed.\newline
 		Once the selected day of the visit is arrived, she will receive a notification indicating that she should start to approach the store. \newline
 		
 		
-						\item \textbf{User arrives late}: \newline
+					\item \textbf{User arrives late}: \newline
 						Riccardo, an enthusiastic user of CLup, received a notification from the system inviting him to reach the store where he previously lined up with the software. \newline
 		However, a car accident blocked the road and he finds himself complitely stuck in the traffic. He will eventually reach the store with a big delay and find out that his ticket is expired. \newline He then decides to take another ticket from the ticket machine and wait for his turn. \newline
-						\item \textbf{Store manager admints more people in the store}: \newline
+					\item \textbf{Store manager admints more people in the store}: \newline
 						Vittorio, the store manager of a grocery store that adopted CLup, is monitoring the situation of the store through the software interface. \newline
 		He receives a notification from the sytem indicating that, given the calculation of the software, there are the right conditions to admit more people and momentarily exceed the store limit. \newline
 		He consults his guide lines and decides to go on with the operation: he inserts the required data and confirms his choice. \newline
@@ -547,7 +634,7 @@ The CLup software system involves category of users:
 
 
 
-		\subsubsection{Use Cases}
+		\subsection{Use Cases}
 		
 			\subsubsection{Use case diagram}
 			\begin{figure}[H]
@@ -1256,5 +1343,6 @@ Because we want to ensure this high grade of availability, a system of redundant
 			Scenarios and sequence diagram & \textbf{2,5h} \\ \hline
 		\end{tabular}
 	
-	\section{References}				
+	\section{References}	
+				
 \end{document}
