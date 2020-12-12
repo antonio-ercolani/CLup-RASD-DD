@@ -267,7 +267,7 @@ The second macro-functionality is the possibility of \textbf{booking a visit} to
 The second feature of the list is also directly linked to the "booking".
 \begin{itemize}
 	\renewcommand{\labelitemi}{$-$}
-	\item \textbf{Balance out the number of people in the store} - the system should be able to balance out the number of people in the different registered stores. This is done by suggesting people alternative time slots or different stores when they are booking a visit.
+	\item \textbf{Suggest alternative booking time-slots} - the system should be able to suggest to the costumer, during the booking procedure, different time-slots or even different stores. These suggestions are computed in order to balance out the number of people among the registered CLup stores.
 \end{itemize}
 \bigskip
 \begin{large}
@@ -298,42 +298,30 @@ The CLup software system involves category of users:
 				\textbf{D1} & 
 					\begin{minipage}[t]{13cm}
 						Every store has a QRcode scanner at its entrance and exit
-					\end{minipage}
-				\\ \hline				
+					\end{minipage}				
+					\\ \hline												
 				\textbf{D2} & 
-					\begin{minipage}[t]{13cm}
-						Every generated QR code is unique
-							\end{minipage}
-				\\ \hline				
-				\textbf{D3} & 
-					\begin{minipage}[t]{13cm}
-						There’s only one QR code generated for every booking and lining up
-					\end{minipage}
-				\\ \hline				
-				\textbf{D4} & 
-					\begin{minipage}[t]{13cm}
-						The user that lines up from home has an internet connection that works properly
-					\end{minipage}
-				\\ \hline				
-				\textbf{D5} & 
-					\begin{minipage}[t]{13cm}
-						The user that lines up online has a smartphone or a computer
-					\end{minipage}
-				\\ \hline				
-				\textbf{D6} & 
 					\begin{minipage}[t]{13cm}
 						The GPS provides the exact location of the user
 					\end{minipage}
 				\\ \hline	
-				\textbf{D7} & 
+				\textbf{D3} & 
 					\begin{minipage}[t]{13cm}
-						The user is honest when he indicates how many time he’s going to spend inside the store and what kind of products he wants to buy
+						The user is honest when he indicates:
+						\begin{itemize}	\renewcommand{\labelitemi}{$-$}
+						 	\item How many time he’s going to spend inside the store 
+						 	\item What kind of products he's intended to buy
+						 	\item The means of transport he'll use to reach the store\\
+						 \end{itemize}
+					\end{minipage}
+				\\ \hline	
+				\textbf{D4} & 
+					\begin{minipage}[t]{13cm}
+						It is not possible for a costumer to enter or exit without scanning the QRcode
 					\end{minipage}
 				\\ \hline	
 			\end{tabular}
 			\newpage
-
-
 	
 	\section{Specific requirements}
 	
@@ -619,6 +607,10 @@ The CLup software system involves category of users:
 		Since Elena got to know CLup she loved the service of booking a future visit to a store. She just selects her store and favourite time slot, inserts a few data like estimated shopping time etc. and the magic is done. No more time spent outside the shop and appointment delayed.\newline
 		Once the selected day of the visit is arrived, she will receive a notification indicating that she should start to approach the store. \newline
 		
+					\item \textbf{User books a visit with CLup suggestions}: \newline
+					Giorgio is a retired old man, with a lot of free time. He knew the CLup application thanks to his grandchildren and now he uses it frequently. When Giorgio books his store visits he usually take into account the CLup suggested slots being aware that these suggestions are made to avoid crowding inside and outside the stores. 
+					\newline In this way the CLup system gives to Giorgio the possibility to exploit his free time to play a role in the battle against coronavirus.
+		
 		
 					\item \textbf{User arrives late}: \newline
 						Riccardo, an enthusiastic user of CLup, received a notification from the system inviting him to reach the store where he previously lined up with the software. \newline
@@ -654,6 +646,7 @@ The CLup software system involves category of users:
 			\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Costumer sign up} \\ \hline
+				\textbf{Goals} & \makecell[l]{G3 G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
 				\textbf{Entry Conditions} & 
 				\begin{minipage}[t]{10cm}
@@ -692,6 +685,7 @@ The CLup software system involves category of users:
 			\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Store registration} \\ \hline
+				\textbf{Goals} & \makecell[l]{G5 G6 G7} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
 				\textbf{Entry Conditions} & 
 				\begin{minipage}[t]{10cm}
@@ -743,6 +737,7 @@ The CLup software system involves category of users:
 			\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Costumer sign in} \\ \hline
+				\textbf{Goals} & \makecell[l]{G3 G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
 				\textbf{Entry Conditions} & 
 				\begin{minipage}[t]{10cm}
@@ -780,6 +775,7 @@ The CLup software system involves category of users:
 			\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Costumer line-up} \\ \hline
+				\textbf{Goals} & \makecell[l]{G2 G3} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and he's in the “available stores”\\ screen} \\ \hline
 				\textbf{Events Flow} & 
@@ -814,6 +810,7 @@ The CLup software system involves category of users:
 			\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Booking check} \\ \hline
+				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and is in the home page} \\ \hline
 				\textbf{Events Flow} & 
@@ -840,6 +837,7 @@ The CLup software system involves category of users:
 				\begin{tabular}{|c|l|}
 				\hline
 				\textbf{Name} & \makecell[l]{Book a Visit} \\ \hline
+				\textbf{Goals} & \makecell[l]{G2 G4 G7} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The system is showing the available actions of the selected store\\ and the user selects the “Book a Visit” option} \\ \hline
 				\textbf{Events Flow} & 
@@ -862,6 +860,38 @@ The CLup software system involves category of users:
 				\newline
 				\newline
 				\newline
+			
+			\item{\textbf{Book a Visit with suggestions}}
+			\medskip
+			\\ \\
+			\begin{tabular}{|c|l|}
+				\hline
+				\textbf{Name} & \makecell[l]{Book a Visit with suggestions} \\ \hline
+				\textbf{Goals} & \makecell[l]{G2 G4 G5 G7} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The system is showing the available actions of the selected store\\ and the user selects the “Book a Visit” option} \\ \hline
+				\textbf{Events Flow} & 
+				\begin{minipage}[t]{10cm}
+					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+					\begin{enumerate}
+						\item The user indicates what kind of products he’s going to buy
+						\item The user says how much time he will spend shopping
+						\item The system stores the user’s preferences
+						\item The system computes the time-slots suggestions
+						\item The system displays the user a timetable with the suggested time-slots, even from different stores
+						\item The user selects one of the suggested time-slots
+						\item The system rearranges the queue inserting the user in it, reducing the available spots in the timetable
+						\item The system generates the virtual ticket with the QR code for the user \\
+					\end{enumerate}
+				\end{minipage}
+				\\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The system makes the ticket visible to the user} \\ \hline
+				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
+			\end{tabular}
+			\newline
+			\newline
+			\newline
+			
 				
 			\newpage
 			\item{\textbf{Delete Visit}}
@@ -871,6 +901,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Delete Visit} \\ \hline
+				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & 
 						\begin{minipage}[t]{10cm}
@@ -910,6 +941,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Physical Queuing} \\ \hline
+				\textbf{Goals} & \makecell[l]{TODO NESSUN MAPPING} \\ \hline
 				\textbf{Actor} & \makecell[l]{User, Manager (for the Exception)} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user is arrived at the store} \\ \hline
 				\textbf{Events Flow} & 
@@ -942,6 +974,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Customer enters/exits the store} \\ \hline
+				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user is queuing from home and then \\ gets a notification to approach the store} \\ \hline
 				\textbf{Events Flow} & 
@@ -977,6 +1010,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Build Statistics / Preferences} \\ \hline
+				\textbf{Goals} & \makecell[l]{G5 G7} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user has booked a visit at least 10 times and the system\\ has stored his preferences} \\ \hline
 				\textbf{Events Flow} & 
@@ -1006,6 +1040,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Allow more people in the store} \\ \hline
+				\textbf{Goals} & \makecell[l]{G1 G2 G5 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The system notifies that, given the preferences of the users, it\\ is possible to allow more people in the store } \\ \hline
 				\textbf{Events Flow} & 
@@ -1041,6 +1076,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Monitor the queue} \\ \hline
+				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
 				\textbf{Events Flow} & 
@@ -1074,6 +1110,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Check booked store visits} \\ \hline
+				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
 				\textbf{Events Flow} & 
@@ -1108,6 +1145,7 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Monitor store crowd} \\ \hline
+				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The Store manager is logged in } \\ \hline
 				\textbf{Events Flow} & 
@@ -1187,6 +1225,15 @@ The CLup software system involves category of users:
 								\includegraphics[scale=1.1]{BookAVisit.png}
 								\caption{}
 								\label{fig:bookavisit_sequencediagram}
+							\end{figure}
+							\newpage
+							
+						\item Book a Visit with suggestions
+							\begin{figure}[H]
+								\centering
+								\includegraphics[scale=1]{bookWithSuggestions.png}
+								\caption{}
+								\label{fig:bookavisitsugg_sequencediagram}
 							\end{figure}
 							\newpage
 						
