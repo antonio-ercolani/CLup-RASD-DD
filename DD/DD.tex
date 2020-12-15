@@ -110,7 +110,31 @@
 			\paragraph{Chapters 5} aims to give to the developers the guidelines of the implementation, integration and test phases, from both an high-level and a low-level point of view.
 		
 			\paragraph{Chapters 6 and 7} contains respectively tables about the effort spent by each group member in writing this document and the document references.
+			\newpage
+			
 		
+		\section{Architectural Design}
+			
+			\subsection{Overview}
+				\begin{paragraph}
+					\newline
+					Three logic layers define the architecture of the application. This division has been made so that eventual needed updates that are related to only one of the parts does not affect the other two, leaving them independent from this point of view. The application has to be made in the Client-Server behavior, where the clients can join from different devices and work on the system through some hardware and software components that will be better explained into details in the next sections of the document. The three discussed layers are:\\
+					\begin{itemize}
+						\item Presentation Level (P) : it’s the higher level of the application and deals directly with the users. It shows to the users the actions they can do in a specific moment and so it has to display them the info in a well-ordered and understandable way. All the features and functions need to be made properly available when needed\\
+						\item Business Logic or Application Layer (A) :  it’s the intermediate level the application and so it handles the data between the other two layers, checking and elaborating them so that the logic and the functionalities of the application are preserved and handled in the right way.\\
+						\item Data Access Layer (D) : It’s the level that assures to keep data independent to the logic of the application. It handles the info with respect to the databases of the system, managing them when requested by the layer on its top.\\ \newline
+					\end{itemize}
+					
+					
+					Ideally, the sequence of the process begins with the request of the user to do a specific action when he wants to apply for a displayed available functionality, and to do this he will set the activation of a specific method that will trigger the application logic to manage it.
+When the user concludes his procedure to being inserted in the queue of a store, sends a request to the server that handles the received data: if the lining-up has been made from home then the virtual ticket (its data) will be sent to the user, otherwise If the request of the ticket has been made from the totem at the store, the data sent back from the server will contain a valid or not valid ticket (the logic takes care of how many physical tickets have already been released and stops  sending valid tickets if the threshold has been reached yet).\\
+					\newline
+What’s more, for what concerns the users, every time they select and submit their preferences (mean of transport, favorite products, …) they will send data to the server, which makes them stored in the databases and allows the user to proceed through the next steps of the lining up procedure. Stored data will be useful when the user requests to see his statistics: they will be elaborated and sent back to the user, that would see them displayed on the screen of his device.\\
+					\newline
+The system has to deal with store managers too, and so the server will periodically update the available data of the manager, that would monitor the situation of the store in real time: this will allow the manager to send the request to allow more people enter the store, handled by the application logic and whose results are displayed back to the manager.
+
+				
+				\end {paragraph}
 			
 			
 		\section{Effort spent}
@@ -120,6 +144,18 @@
 			\begin{tabular}{|l|c|}
 				\hline
 				Purpose and Document Structure &  \textbf{1h} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				 & \textbf{} \\ \hline
+				
+			\end{tabular}
+			\newline
+			\newline
+			
+			\medskip
+			\textbf{\large Vittorio Fabris:} \\ \newline
+			\begin{tabular}{|l|c|}
+				\hline
+				Scope and organization of chapter 1&  \textbf{1h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				 & \textbf{} \\ \hline
 				
