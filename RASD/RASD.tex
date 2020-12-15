@@ -949,6 +949,7 @@ The CLup software system involves category of users:
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
 						\item The user makes a ticket request at the totem outside the store
+						\item The system checks the availability of the physical spots to queue outside the store
 						\item The system updates the queue, inserting another customer in the first available timetable slot
 						\item The user takes his ticket with the QR code \\
 						\end{enumerate}
@@ -960,7 +961,7 @@ The CLup software system involves category of users:
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & 
 					\begin{minipage}[t]{10cm}
-					If the totem is broken then the store manager will directly handle the physical requests to line up, letting the users enter the store only when the limit of people is not exceeded \\
+					If there are no available spots in the physical queue, then the costumer will get a not valid ticket. He will need to try to join the queue later or try to line-up through the app. \\
 					\end{minipage}  \\ \hline
 				\end{tabular}
 				\newline
