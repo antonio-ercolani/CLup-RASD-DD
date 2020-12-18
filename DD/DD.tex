@@ -135,8 +135,105 @@ The system has to deal with store managers too, and so the server will periodica
 
 				
 				\end {paragraph}
+				
+	\newpage			
+				
+	\section{User Interface Design}
+	This chapter aims to give a general idea of the user interface, both of the costumer mobile application and the store manager webapp. 
+	This is done by means of mockups and UX diagrams.
+		
+		\subsection{Mockups}
+		In the design process of the user interface the main guideline was the Requirement R2 (\textit{The user and manager applications are clear, intuitive and simple to use} - RASD). Therefore, the screen contains only the necessary components and the interaction with them is limited to a few of intuitive form and buttons.
+		\\The presented mockups cover almost the totality of the screens you will find on the completed user interface. They show only the components needed to address the CLup goals, buttons such as "return to the previous screens" are not usually taken into account.
+		
+			\subsubsection{Mobile Application Mockups}
+			\bigskip \bigskip \bigskip \bigskip
+			\begin{figure}[h!] 
+				\centering
+				\subfloat[Sign-in screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/signIn}}
+				\qquad\qquad
+				\subfloat[Sign-up screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/signUp}}
+				\qquad\qquad
+				\subfloat[Store selection/booking check screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/selectStore}} 
+			\end{figure}
+		
+			\newpage
+			\begin{figure}[h!]\ContinuedFloat
+				\centering
+				\subfloat[Booking check screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/bookingCheck}}
+				\qquad\qquad
+				\subfloat[Store available actions screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/storeAvailableActions}}
+				\qquad\qquad
+				\subfloat[Queue status screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/queueStatus}} 
+				
+				\bigskip \bigskip \bigskip
+				
+				\subfloat[Book a visit screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/bookVisit}}
+				\qquad\qquad
+				\subfloat[Time-slot selection screen]
+				{\includegraphics[width=.25\textwidth]{Mockups/timeSlotSelection}}
+				\qquad\qquad
+				\subfloat[CLup notification]
+				{\includegraphics[width=.25\textwidth]{Mockups/notification}} 
+			\end{figure}
+		
+			\newpage
+			\subsubsection{WebApp Mockups}
+			\bigskip
+		
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{Mockups/webAppHome}
+				\caption{Home screen}
+				\label{fig:homeScreen}
+			\end{figure}
+			\bigskip
 			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{Mockups/storeStatistics}
+				\caption{Store statistics screen}
+				\label{fig:Storestatisticsscreen}
+			\end{figure}
+		
 			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{Mockups/storeBookings}
+				\caption{Store bookings screen}
+				\label{fig:ManagerHomeMockup}
+			\end{figure}
+		
+		\newpage
+		\subsection{UX diagrams}
+		The chapter ends with two UX diagrams. They show the general flow of the screens giving more details on the user experience. "General" because some link between screens where omitted, like the "return" from a screen to the previous.
+		
+		\begin{figure}[H]
+			\includegraphics[scale=0.7]{UX diagrams/legend}
+			\label{fig:MobileAppUXdiagram}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.38]{UX diagrams/mobileApp}
+			\caption{Mobile App UX diagram}
+			\label{fig:MobileAppUXdiagram}
+		\end{figure}
+		\bigskip \bigskip \bigskip \bigskip
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.38]{UX diagrams/webAppHome}
+			\caption{WebApp UX diagram}
+			\label{fig:MobileAppUXdiagram}
+		\end{figure}
+			
+		\newpage
 		\section{Effort spent}
 			
 			\medskip
@@ -145,7 +242,7 @@ The system has to deal with store managers too, and so the server will periodica
 				\hline
 				Purpose and Document Structure &  \textbf{1h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
-				 & \textbf{} \\ \hline
+				User Interface Design & \textbf{7h} \\ \hline
 				
 			\end{tabular}
 			\newline
