@@ -49,34 +49,25 @@
 
 	\subsection{Scope}
 	
-		\begin{paragraph}
+		
+				
+				The scope of the \textit{CLup} software is to give the users the possibility to queue for the into a grocery store.
+The stores that have registered to this service generate and distribute tickets to line people correctly, letting them do the shopping only if the QR-code scanned on their ticket is valid.\\
+The software offers different kind of functionalities and features. The main ones are the possibility to line up, book a visit according to the personal commitments and the availability to see suggestions to book a visit in a store that at a certain time during the day would be the best, so that the most overcrowded ones are avoided.\\
 			\newline
-				The scope of the software is to give the users the possibility to line up to enter and shop into a grocery stores.\\
-				The stores that have registered to this service generate and distribute tickets to line people correctly, letting them do the shopping only if the QR-code scanned on their ticket is valid.\\
-				CLup offers different kind of functionalities and features:\\
-	
-			\begin{itemize}
-			\item \textbf{Basic:}
-				The user can line up in different ways: through a physical ticket taken outside the store, or through the application, that is implemented in a way such that people of every age can use. \\
-				If there are already too many people queuing outside the shop, the software doesn’t allow to distribute new physical tickets. \\
-				The software can integrate the information derived  from the two sources, virtual and physical bookings, so that overcrowding is avoided in the neighborhood of the store and thanks to the QR ticket validations, store managers can monitor entrances. \\
-				When the user leaves the store he must show his ticket to the QR-reader again, so that the system can know it and let the queue proceed, with another customer enter the shop.\\
+The user can line up in different ways: through a physical ticket taken outside the store, or through the application, that is implemented in a way such that people of every age can use. 
+If there are already too many people queuing outside the shop, the software doesn’t allow to distribute new physical tickets. \\
+The software can integrate the information derived from the two sources, virtual and physical bookings, so that overcrowding is avoided in the neighborhood of the store and thanks to the QR ticket validations store managers can monitor entrances and exits. When the user leaves the store, he must show his ticket to the QR-reader again, so that the system can know it and let the queue proceed: another customer will then enter the shop.\\
+			\newline
+On the other hand, users that line up from home concede the system to see where they are, using the GPS position of their device to identify their zone. In this way only nearby grocery stores are shown to the user.\\
+What’s more, these categories of users can book a visit at a specific time, if there is a free spot in the schedule organized by the system, otherwise other arrival times or grocery stores are proposed to the user. The customer to be can also chose to let the application show him some suggestions, providing some hints about the choice of the time and the possible alternative stores that have a higher availability of “free safe space” to do shopping.\\
+The system, knowing the position of the user, his distance from the store and the vehicle that he has chosen to use to reach it, will provide him a notification that in a certain moment he should leave to arrive on time at the grocery store. If the user arrives late, the system can reschedule a booking for him, always considering avoiding overcrowding and the time preferences of the customer, inserting him into the line again.\\
+What’s more, because the system needs to balance in the best way possible the number of people inside the store, the user that books online his visit is also asked which kind of products he’s going to buy. In this way, the system can manage people along the store’s aisles, reducing the possible interaction and proximity of customers, distributing their access into the shop in different times if it is necessary. Store managers can increase the amount of people shopping inside the grocery store according to the fact that people are sufficiently distant one with respect to the other and the store is approved to do so by the law, without exceeding the customer’s threshold declared when the store has enrolled in the system.\\
+The grocery store also saves the information about the preferences of customers about the products they buy and their habits. In fact, the user lets the system know what he intends to buy and how he reaches the store. The user of the application can see his preferences and statistics too. For example, the store could use these preferences in order to manage a plan for the refill of its shelves and always be ready to satisfy the needs of its customers, avoiding the risk of not having some products to sell, but ordering them from their providers in advance.\\
 
-			\item \textbf{Feature 1:}
-				Users that line up from home concede the system to see where they are, using the GPS position of their device to identify their zone. In this way only nearby grocery stores are shown to the user.\\
-				What’s more, these category of users can book a visit at a specific time, if there is a free spot in the schedule organized by the system, otherwise other arrival times or grocery stores are proposed to the user.\\
-				The system, knowing the position of the user, his distance from the store and the vehicle that he has chosen to use to reach it, will provide him a notification that in a certain moment he should leave to arrive on time at the grocery store. If the user arrives late, the system can reschedule a booking for him, always considering to avoid overcrowding and the time preferences of the customer, inserting him into the line again.\\
-
-			\item  \textbf{Feature 2:}
-				Because the system needs to balance in the best way possible the number of people inside the store, the user that books online his visit is also asked which kind of products he’s going to buy. In this way the system can manage people along the store’s aisles, reducing the possible interaction and proximity of customers, distributing their access into the shop in different times if it is necessary.  \\
-
-			\item  \textbf{Feature 3:}
-				When the grocery store registers to the service, it can decide if he wants to save the information about the preferences of customers about the products they buy. In fact, as explained in the previous feature, the user lets the system know what he intends to buy. The grocery store could use these preferences in order to manage a plan for the refill of its shelves and always be ready to satisfy the needs of  its customers, avoiding the risk of not having some products to sell, but ordering them from their providers in advance.
-
-			\end{itemize}
 			
 	
-		\end{paragraph}
+		
 	
 		\subsubsection{World phenomena}
 
@@ -101,7 +92,10 @@
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP1} & 
-						The customer is notified that his turn is coming \\ \hline
+						\begin{minipage}[t]{13.2cm}
+							The customer is notified that his turn is coming \\  
+						\end{minipage} 
+						\\ \hline
 						\textbf{SP2} & The system generates and sends a ticket to the user \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP3} & 
@@ -111,7 +105,11 @@
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP4} & The customer enters the store scanning his QR code \\ \hline
+						\textbf{SP4} &
+						\begin{minipage}[t]{13.2cm}
+							The customer enters the store scanning his QR code\\  
+						\end{minipage} 
+						\\ \hline 
 						\textbf{SP5} & The customer reserves a place in the queue of a given store using the application \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP6} & \makecell[l]{The customer reserves a place in the queue of a given store using the ticket totem \\outside the store}\\ \hline
@@ -127,7 +125,11 @@
 		\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G1} & \makecell[l]{At any time the number of people in the store must not be higher than the store limit or \\ the limit is passed but the customers are expected to be in different areas of the store} \\ \hline
+						\textbf{G1} & 
+						\begin{minipage}[t]{13.5cm}
+							At any time the number of people in the store must not be higher than the store limit or \\ the limit is passed but the customers are expected to be in different areas of the store  \\
+						\end{minipage} 
+						\\ \hline
 						\textbf{G2} & The physical queue of people outside the store is reduced \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{G3} & Allow users to "line up" for a store from home \\ \hline	 
@@ -149,17 +151,28 @@
 	\begin{tabular}{|c|l|}
 		\hline
 		\rowcolor[HTML]{DCDCDC} 
-		\textbf{QR CODE} & \makecell[l]{A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information} \\ \hline
-		\textbf{ASAP} & \makecell[l]{An \textit{As Soon As Possible} preference indicates that the customer wants to line up\\immediately, without booking a visit at a specific time to enter the store} \\ \hline
+		\textbf{QR CODE} & 
+		\begin{minipage}[t]{12.1cm}
+			A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information  \\
+		\end{minipage} 
+		\\ \hline
+		\textbf{ASAP} &
+		\begin{minipage}[t]{12.1cm}
+			An \textit{As Soon As Possible} preference indicates that the customer wants to line up\\immediately, without booking a visit at a specific time to enter the store  \\
+		\end{minipage} 
+		\\ \hline
 		\rowcolor[HTML]{DCDCDC} 
-		\textbf{UML} & \makecell[l]{The \textit{Unified Modeling Language} is a modeling language used to describe the design \\of a software system} \\ \hline
+		\textbf{UML} &
+		\begin{minipage}[t]{12.1cm}
+			The \textit{Unified Modeling Language} is a modeling language used to describe the design of a software system  \\
+		\end{minipage} 
+		\\ \hline
 	\end{tabular}
 	
 	
 	
-	
-	
 	\subsection{Revision history}	
+	
 	\subsection{Reference Documents}
 	
 	\subsection{Document Structure}
@@ -210,7 +223,7 @@ The state diagrams below better explain the progress of the system.
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{User_statediagram.png}
+			\includegraphics[scale=0.8]{User_statediagram.png}
 			\caption{User State Diagram}
 			\label{fig:state_diagram1}
 		\end{figure}
@@ -315,12 +328,12 @@ The CLup software system involves category of users:
 		\begin{tabular}{|c|l|}
 				\hline													
 				\textbf{D1} & 
-					\begin{minipage}[t]{13cm}
+					\begin{minipage}[t]{14cm}
 						The GPS provides the exact location of the user
 					\end{minipage}
 				\\ \hline	
 				\textbf{D2} & 
-					\begin{minipage}[t]{13cm}
+					\begin{minipage}[t]{14cm}
 						The user is honest when he indicates:
 						\begin{itemize}	\renewcommand{\labelitemi}{$-$}
 						 	\item How many time he’s going to spend inside the store 
@@ -330,7 +343,7 @@ The CLup software system involves category of users:
 					\end{minipage}
 				\\ \hline	
 				\textbf{D3} & 
-					\begin{minipage}[t]{13cm}
+					\begin{minipage}[t]{14cm}
 						It is not possible for a costumer to enter or exit without scanning the QR code
 					\end{minipage}
 				\\ \hline	
@@ -376,6 +389,7 @@ The CLup software system involves category of users:
 		\subsection{Functional requirements}
 			
 			\subsubsection{List of Requirements}
+				
 				\begin{tabular}{|c|l|}
 				\hline
 				\textbf{R1} & 
@@ -461,18 +475,19 @@ The CLup software system involves category of users:
 					\begin{minipage}[t]{13cm}
 						The system detects the position of the logged user
 					\end{minipage}
-				\\ \hline				
-				\textbf{R16} & 
-					\begin{minipage}[t]{13cm}
-						The system allows to delete a scheduled visit and booking
-					\end{minipage}
-				\\ \hline		
+				\\ \hline					
 				
 			\end{tabular}
+
 			\newpage
 			
 			\begin{tabular}{|c|l|}
 				\hline
+				\textbf{R16} & 
+					\begin{minipage}[t]{13cm}
+						The system allows to delete a scheduled visit and booking
+					\end{minipage}
+				\\ \hline
 				\textbf{R17} & 
 					\begin{minipage}[t]{13cm}
 						The system shows to the logged user all the registered stores in a neighborhood of 5km range \\
@@ -482,9 +497,7 @@ The CLup software system involves category of users:
 					\begin{minipage}[t]{13cm}
 						The system integrates online bookings and physical disbursed tickets by totems to manage the queue of a store \\
 					\end{minipage}
-				\\ 	
-
-				\hline			
+				\\ \hline			
 				\textbf{R19} & 
 					\begin{minipage}[t]{13cm}
 						The Application shows to the user how many people are remaining to approach/enter the store \\
@@ -492,7 +505,7 @@ The CLup software system involves category of users:
 				\\ \hline				
 				\textbf{R20} & 
 					\begin{minipage}[t]{13cm}
-						The system collects/stores product preferences, visits duration of the users							\end{minipage}
+						The system collects/stores product preferences, visits duration of the users														\end{minipage}
 				\\ \hline				
 				\textbf{R21} & 
 					\begin{minipage}[t]{13cm}
@@ -508,7 +521,12 @@ The CLup software system involves category of users:
 				\begin{minipage}[t]{13cm}
 					The system lets the manager know the areas of the store where customers are mostly likely going to collect products, also based on their stored preferences \\
 				\end{minipage}
-				\\ \hline							
+				\\ \hline	
+				\textbf{R24} & 
+				\begin{minipage}[t]{13cm}
+					The system makes sure that if the customer wants to book a visit at the same time of another visit he has already booked it notifies the user about the overlapping dates\\
+				\end{minipage}
+				\\ \hline						
 				
 			\end{tabular}
 		
@@ -565,7 +583,7 @@ The CLup software system involves category of users:
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
-						R1, R2, R3.a, R3.b, R4, R5, R6, R7, R9, R10, R11, R13, R14, R15, R16, R17, R18, R20 \\
+						R1, R2, R3.a, R3.b, R4, R5, R6, R7, R9, R10, R11, R13, R14, R15, R16, R17, R18, R20, R24 \\
 					\end{minipage}
 				\\ \hline				
 				\textbf{G5} 
@@ -1279,7 +1297,7 @@ The CLup software system involves category of users:
 						\item User Enters / Exits the Store
 							\begin{figure}[H]
 								\centering
-								\includegraphics[scale=1.1]{enterexit.png}
+								\includegraphics[scale=0.9]{enterexit.png}
 								\caption{}
 								\label{fig:enterexit_sequencediagram}
 							\end{figure}
@@ -1288,7 +1306,7 @@ The CLup software system involves category of users:
 						\item Build Statistics / Preferences
 							\begin{figure}[H]
 								\centering
-								\includegraphics[width=\linewidth]{buildStats.png}
+								\includegraphics[scale=0.8]{buildStats.png}
 								\caption{}
 								\label{fig:buildstats_sequencediagram}
 							\end{figure}
@@ -1438,7 +1456,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\textbf{\large Antonio Ercolani:} \\ \newline
 	\begin{tabular}{|l|c|}
 		\hline
-		Discussion on the first section &  \textbf{2h} \\ \hline
+		Discussion on the first section &  \textbf{3,5h} \\ \hline
 		\rowcolor[HTML]{DCDCDC} 
 		Purpose and Document Structure & \textbf{1,5h} \\ \hline
 		Product Functions and User Characteristics & \textbf{3h} \\ \hline
@@ -1460,18 +1478,21 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\textbf{\large Vittorio Fabris:} \\ \newline
 		\begin{tabular}{|l|c|}
 			\hline
-			Discussion on the first section &  \textbf{2h} \\ \hline
+			Discussion on the first section &  \textbf{3,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
-			Scope & \textbf{3h} \\ \hline
-			State Diagrams & \textbf{3h} \\ \hline
+			Scope & \textbf{4h} \\ \hline
+			State Diagrams & \textbf{3,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			Discussion on Requirements and Use Cases & \textbf{3h} \\ \hline
-			Use cases & \textbf{3h} \\ \hline
+			Use cases & \textbf{3,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC}
-			Sequence diagrams & \textbf{4,5h} \\ \hline
-			Requirements and Domain Assumptions  & \textbf{1h} \\ \hline
+			Sequence diagrams & \textbf{5h} \\ \hline
+			Requirements and Domain Assumptions  & \textbf{2,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC}
-			Non Functional Requirements & \textbf{2,5h} \\ \hline
+			Mapping & \textbf{1h} \\ \hline
+			Non Functional Requirements & \textbf{3h} \\ \hline
+			\rowcolor[HTML]{DCDCDC}
+			Final Discussion & \textbf{3,5h} \\ \hline
 		\end{tabular}
 		
 
@@ -1479,7 +1500,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\textbf{\large \\ \\ Riccardo Nannini:} \\ \newline
 		\begin{tabular}{|l|c|}
 			\hline
-			Discussion on the first section &  \textbf{2h} \\ \hline
+			Discussion on the first section &  \textbf{3,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			World and Shared Phenomena \& Goals & \textbf{3h} \\ \hline
 			Product perspective \& class diagram & \textbf{3h} \\ \hline
