@@ -45,7 +45,7 @@
 	The \textit{Requirement Analysis and Specification Document} (RASD) is a standardized document used by software engineers to communicate the most important aspects of a system to be developed to the project stakeholders. The RASD represents the starting point of the so called “waterfall life-cycle” of a software system, therefore it’s easy to understand how delicate and strategical is the role it performs. Programmers, testers, designers and everyone involved in the development will refer to this paper and a mistake could potentially cost thousand hours of additional work. 
 	\smallskip
 	\\
-	What we said so far is the purpose of this document. This specific RASD is about an application that tries to face the crowding of supermarkets during the coronavirus emergency. In the following section we are going to explain the scope of that software system.
+	What is said so far is the purpose of this document. This specific RASD is about an application that tries to face the crowding of supermarkets during the coronavirus emergency. In the following section we are going to explain the scope of that software system.
 
 	\subsection{Scope}
 	
@@ -83,10 +83,15 @@
 			\begin{tabular}{|c|l|}
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
-				\textbf{WP1} & The customer arrives to the store \\ \hline
+				\textbf{WP1} & 
+				\begin{minipage}[t]{13cm}
+				The customer arrives to the store 
+				\end{minipage} 
+				\\ \hline
 				\textbf{WP2} & The customer shops in the store \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{WP3} & The customer waits outside the store \\ \hline
+				\textbf{WP4} & The customer waits at home \\ \hline
 			\end{tabular}
 			
 		\subsubsection{Shared phenomena}
@@ -95,21 +100,25 @@
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP1} & The customer is notified that his turn is coming \\ \hline
-						\textbf{SP2} & The store generates and sends a ticket to the user (?) \\ \hline
+						\textbf{SP1} & 
+						The customer is notified that his turn is coming \\ \hline
+						\textbf{SP2} & The system generates and sends a ticket to the user \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP3} & 
+						The ticket machine emits the requested ticket \\ \hline
 					\end{tabular} \newline\newline\newline
 			Controlled by the \textbf{world}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP3} & The customer enters the store scanning his QR code \\ \hline
-						\textbf{SP4} & The customer reserves a place in the queue of a given store using the application \\ \hline
+						\textbf{SP4} & The customer enters the store scanning his QR code \\ \hline
+						\textbf{SP5} & The customer reserves a place in the queue of a given store using the application \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP5} & \makecell[l]{The customer reserves a place in the queue of a given store using the ticket totem \\outside the store}\\ \hline
-						\textbf{SP6} & The customer books a visit to the store \\ \hline
+						\textbf{SP6} & \makecell[l]{The customer reserves a place in the queue of a given store using the ticket totem \\outside the store}\\ \hline
+						\textbf{SP7} & The customer books a visit to the store \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP7} & The customer leaves the store \\ \hline
-						\textbf{SP8} & The store receives a request to join its queue \\ \hline
+						\textbf{SP8} & The customer leaves the store scanning his QR code \\ \hline
+						\textbf{SP9} & The system receives a request to join a store's queue \\ \hline
 					\end{tabular}
 					
 		
@@ -124,10 +133,11 @@
 						\textbf{G3} & Allow users to "line up" for a store from home \\ \hline	 
 						\textbf{G4} & Allow users to book a visit to a store \\ \hline
 						\rowcolor[HTML]{DCDCDC}
-						\textbf{G5} & Balance the number of people between different store or timeframes with suggestions \\ \hline		
+						\textbf{G5} & Balance the number of people between different stores or timeframes with suggestions \\ \hline		
 						\textbf{G6} & Allow the store to monitor entries \\ \hline	
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{G7} & Collects information in order to build statistics and infer mean datas \\ \hline					
+						\textbf{G7} & Collects information in order to build statistics and infer mean data \\ \hline
+						\textbf{G8} & Allow the store manager to temporarily increase the store capacity \\ \hline					
 					\end{tabular}
 \newline\newline
 
@@ -148,6 +158,7 @@
 	
 	
 	
+	
 	\subsection{Revision history}	
 	\subsection{Reference Documents}
 	
@@ -157,7 +168,7 @@
 	
 	\paragraph{Chapter 1} starts with a brief description of the purpose of this document. Then the focus moves on the involved software system, for which is given an overall description of the goals, scope and related phenomena. The chapter ends with secondary sections about the description of technical terms and the history of this RASD document.
 	
-	\paragraph{Chapter 2} let the reader to better understand the "world" of the analyzed software system. It begins with a UML and then other kind of diagrams that explain how the application interact with the environment around it. The following sections are about the requirements the system must satisfy, also with a focus on the specific users needs. Finally, in the last section, we list the domain assumption we did.
+	\paragraph{Chapter 2} helps understanding the "world" of the analyzed software system. It begins with a UML and then other kind of diagrams that explain how the application interacts with the environment around it. The following sections are about the requirements the system must satisfy, also with a focus on the specific users needs. Finally, in the last section, we list the domain assumption we did.
 	
 	\paragraph{Chapter 3} goes deep into the topics described in the previous chapter.
 	Begins with the description of the user interface and continue with use cases and sequence diagrams to show how the system behaves in different situations, in respect to the application requirements. Then you will find sections on other system constraints on performance and design. The chapter ends with few words on non-functional requirements.
@@ -170,7 +181,7 @@
 	\section{Overall description}
 	
 		\subsection{Product perspective}
-		The CLup system is designed as a complitely new software application. The user side of the software is intended to be used as a mobile application while the store managers are going to interface with the software through a web interface. \newline
+		The CLup system is designed as a complitely new software application. The user side of the software is intended to be used as a mobile application while the store managers are going to interact with the system with a different interface. \newline
 		In order to estimate the time needed for the user to reach the store, the application needs to interface with the smartphone's localization system and needs the user to indicate the type of transportation that he is going to use. \newline
 		The system will handle client that are not using the application with tickets provided by a ticket totem located outside the store. This machine will act as an interface to the software application. \newline
 		Customers using CLup are going to be notified when their turn is coming in order to approach the store while those with a ticket outside the store will monitor a screen extern to the shop in order to know when it's their turn to enter. \newline
@@ -190,9 +201,12 @@
 		
 		\textbf{}\\ \newline
 		In this section we want to show the evolution over time of the states of the application and the behavior of the user interacting with the app and the environment. 
-The state diagrams below better explain the progress of the system.\\
-		
-		\textbf{}\\ \newline
+The state diagrams below better explain the progress of the system.
+		\newline
+		\newline
+		\newline
+		In the first state diagram (Figure \ref{fig:state_diagram1}) it’s shown how the user interacts with the environment and the system when he needs to do shopping. He interacts with the system lining up to a store in a virtual way using the mobile or web application, or queuing physically at the store he wants to visit.
+		What’s more, to enter the store, he needs to show the QR-code, and then he has to do the same when he exits, so that the queue can proceed. \\
 		
 		\begin{figure}[H]
 			\centering
@@ -202,10 +216,11 @@ The state diagrams below better explain the progress of the system.\\
 		\end{figure}
 		
 		
-		In the first state diagram (Figure \ref{fig:state_diagram1}) it’s shown how the user interacts with the environment and the system when he needs to do shopping. He interacts with the system lining up to a store in a virtual way using the mobile or web application, or queuing physically at the store he wants to visit.
-What’s more, to enter the store, he needs to show the QR-code, and then he has to do the same when he exits, so that the queue can proceed. \\
+		
 
 		\textbf{}\\ \newpage
+		
+		In this second state diagram (Figure \ref{fig:state_diagram2}) it’s better explained the physical line up of the user, that waits and directly gets a ticket from the totem nearby the store. The user then waits for his turn to enter and do the shopping.\\
 
 		\begin{figure}[H]
 			\centering
@@ -215,10 +230,12 @@ What’s more, to enter the store, he needs to show the QR-code, and then he has
 		\end{figure}
 		
 		
-		In this second state diagram (Figure \ref{fig:state_diagram2}) it’s better explained the physical line up of the user, that waits and directly gets a ticket from the totem nearby the store. The user then waits for his turn to enter and do the shopping.\\
+		
 		
 		\textbf{}\\ \newline
 		\textbf{}\\ \newline
+		
+		Here (Figure \ref{fig:state_diagram3})  are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before gaining the possibility to line up to the store. When the store has been selected, the user needs to indicate the transportation he will use to reach the store. Then, if he doesn't want to line up immediately but wants to book a visit, he will see the available products that he can buy and will have to choose which one of them he wants to buy, so that the system can collect his preferences. Then the user is asked to indicate his permanence into the store, in order to better manage the queue and the next available spots in the timeline. It will also be possible to see some suggestions when booking the time of the visit, otherwise the whole available spots are displayed to the user in order to let him choose the time he prefers.
 		
 		\begin{figure}[H]
 			\centering
@@ -227,7 +244,7 @@ What’s more, to enter the store, he needs to show the QR-code, and then he has
 			\label{fig:state_diagram3}
 		\end{figure}
 		
-		Here (Figure \ref{fig:state_diagram3})  are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before gaining the possibility to line up to the store. When the store has been selected, the user needs to indicate the transportation he will use to reach the store. Then, if he doesn't want to line up immediately but wants to book a visit, he will see the available products that he can buy and will have to choose which one of them he wants to buy, so that the system can collect his preferences. Then the user is asked to indicate his permanence into the store, in order to better manage the queue and the next available spots in the timeline. It will also be possible to see some suggestions when booking the time of the visit, otherwise the whole available spots are displayed to the user in order to let him choose the time he prefers.
+		
 		
 
 \newpage
@@ -242,7 +259,7 @@ In this section are analyzed the main functionalities that the CLup software sys
 \end{large}
 \smallskip
 \\
-The core function. As the name suggest, the system is able to manage the stores entering queue, that are becoming longer and "dangerous" in the time of coronavirus. This is done with a combination of two sub-functionalities: 
+The core function. As the name suggest, the system is able to manage the stores entering queue. This is done with a combination of two sub-functionalities: 
 
 \begin{itemize}
 	\renewcommand{\labelitemi}{$-$}
@@ -264,7 +281,7 @@ The core function. As the name suggest, the system is able to manage the stores 
 The second macro-functionality is the possibility of \textbf{booking a visit} to a registered store. On the costumers side, this functionality could be similar to the previous one but the main difference lies on the side of the stores. In fact the information that the costumers provide to the system during the booking is essential to the next presented feature.
 \begin{itemize}
 	\renewcommand{\labelitemi}{$-$}
-	\item \textbf{Increase the capacity of the stores} - the system should allow more people in the stores than the standard number. This is made possible by asking to the costumer who book a visit the categories of items he's intended to buy, therefore the system can infer which sectors of the store he's going to occupy. These information are exploited by the system to maximize the capacity of the stores, respecting the social distancing imposed by the coronavirus emergency rules.
+	\item \textbf{Increase the capacity of the stores} - the system should allow more people in the stores than the standard number. This is made possible by asking to the costumer who book a visit the categories of items he's intended to buy, therefore the system can infer which sectors of the store he's going to occupy. These information are exploited by the system to maximize the capacity of the stores, respecting the social distancing imposed by the emergency rules.
 \end{itemize}
 The second feature of the list is also directly linked to the "booking".
 \begin{itemize}
@@ -285,10 +302,10 @@ The last functionality allows store managers to visualize all the collected info
 The CLup software system involves category of users:
 \begin{itemize}
 	\renewcommand{\labelitemi}{$-$}
-	\item \textbf{Costumers} - are client of the registered stores that want to take advantage of the CLup features. They are interested in the possibility of "line up" from home and in "booking visits", that encourage them to continue go shopping, despite the problem caused by the emergency.
+	\item \textbf{Costumers} - are client of the registered stores that want to take advantage of the CLup features. They are interested in the possibility of "line up" from home and in "booking visits", that encourage them to continue go shopping, despite the problems caused by the emergency.
 	
-	\item \textbf{"Stores"} - these users are represented by the stores that want to take advantage of the CLup services. They have to follow a registration procedure to be added to the available stores of the system. 
-	\\Besides exploit the "remote lining up" function that mainly face social distancing, they are interested in other features such as "increase the capacity of the stores" and "balance out the number of people in the store". In fact exploiting them they could are able to keep profits high, despite the coronavirus emergency. 		
+	\item \textbf{Store manager} - these users are represented by the store managers that want to take advantage of the CLup services. They have to follow a registration procedure to be added to the available stores of the system. 
+	\\Besides exploit the "remote lining up" function that mainly face social distancing, they are interested in other features such as "increase the capacity of the stores" and "balance out the number of people in the store". In fact exploiting them they could are able to keep profits high, despite the emergency. 		
 \end{itemize}
 
 
@@ -296,18 +313,13 @@ The CLup software system involves category of users:
 	\subsubsection{Domain Assumptions}
 
 		\begin{tabular}{|c|l|}
-				\hline			
+				\hline													
 				\textbf{D1} & 
-					\begin{minipage}[t]{13cm}
-						Every store has a QRcode scanner at its entrance and exit
-					\end{minipage}				
-					\\ \hline												
-				\textbf{D2} & 
 					\begin{minipage}[t]{13cm}
 						The GPS provides the exact location of the user
 					\end{minipage}
 				\\ \hline	
-				\textbf{D3} & 
+				\textbf{D2} & 
 					\begin{minipage}[t]{13cm}
 						The user is honest when he indicates:
 						\begin{itemize}	\renewcommand{\labelitemi}{$-$}
@@ -317,9 +329,9 @@ The CLup software system involves category of users:
 						 \end{itemize}
 					\end{minipage}
 				\\ \hline	
-				\textbf{D4} & 
+				\textbf{D3} & 
 					\begin{minipage}[t]{13cm}
-						It is not possible for a costumer to enter or exit without scanning the QRcode
+						It is not possible for a costumer to enter or exit without scanning the QR code
 					\end{minipage}
 				\\ \hline	
 			\end{tabular}
@@ -333,14 +345,14 @@ The CLup software system involves category of users:
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.3]{BookingVisitsMockup.png}
+				\includegraphics[scale=0.3]{timeSlotSelection.png}
 				\caption{Booking visits screen}
 				\label{fig:BookingVisitsMockup}
 			\end{figure}
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.3]{ManagerHomeMockup.png}
+				\includegraphics[scale=0.3]{webAppHome.png}
 				\caption{Store manager home screen}
 				\label{fig:ManagerHomeMockup}
 			\end{figure}
@@ -355,7 +367,7 @@ The CLup software system involves category of users:
 			In addition to this, the  two type of actors require different hardware component in order to interact with the system. \newline
 			Users need a smartphone with a localization system (tipically GPS), while store managers can access and monitor the system via computer.
 			\subsubsection{Software Interfaces}
-			The system needs an external software component to handle QR code generation and recognition. \newline (Altro da mettere qui? Non mi viene in mente niente)
+			The system needs an external software component to handle QR code generation and recognition.
 			\subsubsection{Communications Interfaces}
 			The various actors connect to CLup using an internet connection. \newline
 			Hardware components such as automatic doors, ticket totem and QR code scanner interface with the system via IP based protocols.
@@ -475,7 +487,7 @@ The CLup software system involves category of users:
 				\hline			
 				\textbf{R19} & 
 					\begin{minipage}[t]{13cm}
-						The Application shows to the user how many people (TIME) is remaining to approach/enter the store \\
+						The Application shows to the user how many people are remaining to approach/enter the store \\
 					\end{minipage}
 				\\ \hline				
 				\textbf{R20} & 
@@ -484,19 +496,19 @@ The CLup software system involves category of users:
 				\\ \hline				
 				\textbf{R21} & 
 					\begin{minipage}[t]{13cm}
-						The store can’t distribute more than 20 physical tickets from its totems
+						The number of distributed tickets must not be higher tickets than the store specific threshold \\  
 					\end{minipage}
-				\\ \hline				
+				\\ \hline						
 				\textbf{R22} & 
 					\begin{minipage}[t]{13cm}
-						The system can let the manager allow to enter more people in the store
+						The system lets store managers to increase the store capacity accordingly to the store defined policy \\
 					\end{minipage}
-				\\ \hline				
+				\\ \hline
 				\textbf{R23} & 
-					\begin{minipage}[t]{13cm}
-						The system lets the manager know the areas of the store where customers are mostly likely going to collect products, also based on their stored preferences \\
-					\end{minipage}
-				\\ \hline				
+				\begin{minipage}[t]{13cm}
+					The system lets the manager know the areas of the store where customers are mostly likely going to collect products, also based on their stored preferences \\
+				\end{minipage}
+				\\ \hline							
 				
 			\end{tabular}
 		
@@ -518,7 +530,7 @@ The CLup software system involves category of users:
 				\textbf{G1} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D1, D4 \\
+						D3 \\
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
@@ -528,7 +540,7 @@ The CLup software system involves category of users:
 				\textbf{G2} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D3 \\
+						D2 \\
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
@@ -539,7 +551,7 @@ The CLup software system involves category of users:
 				\textbf{G3} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D1?, D2, D3					
+						D1, D2					
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
@@ -549,42 +561,52 @@ The CLup software system involves category of users:
 				\textbf{G4} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D1?, D2, D3
+						D1, D2
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
-						R1, R2, R3.a, R3.b, R3.c, R4, R5, R6, R7, R9, R10, R11, R13, R14, R15, R16, R17, R18, R20 \\
+						R1, R2, R3.a, R3.b, R4, R5, R6, R7, R9, R10, R11, R13, R14, R15, R16, R17, R18, R20 \\
 					\end{minipage}
 				\\ \hline				
 				\textbf{G5} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D3
+						D2
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
-						R4, R5, R6, R15, R17, R22 \\
+						R4, R5, R6, R15, R17 \\
 					\end{minipage}
 				\\ \hline				
 				\textbf{G6} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D1, D4\\
+						D3\\
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
-						R7, R12, R18, R21?, R23 \\
+						R7, R12, R18, R21, R23 \\
 					\end{minipage}
 				\\ \hline
 				\textbf{G7} 
 					& 
 					\begin{minipage}[t]{3cm}
-						D3 \\
+						D2 \\
 					\end{minipage} 
 					&
 					\begin{minipage}[t]{9cm}
 						R3.a, R3.b, R3.c, R10, R11, R20, R23  \\
 					\end{minipage}
+				\\ \hline
+				\textbf{G8} 
+				& 
+				\begin{minipage}[t]{3cm}
+					D2, D3 \\
+				\end{minipage} 
+				&
+				\begin{minipage}[t]{9cm}
+					R3.a, R3.b, R5, R7, R11, R12, R22, R23   \\
+				\end{minipage}
 				\\ \hline				
 				
 			\end{tabular}
@@ -601,7 +623,7 @@ The CLup software system involves category of users:
 								Antonio is a young engineering student. As known, engineering requires a lot of effort and dedication in order to keep the pace of the various courses. He does not want to waste time in the queues outside groceries shop that became common in the pandemic times. Luckly he knows the CLup service and decides to line up for his favorite store from home. \newline He inserts the type of transportation he is going to use in order to reach the store and joins the virtual queue while he can keep studying safely at home. Once his turn is about to come, he receives a notification from the application right on his smartphone and leaves the house \newline
 						
 					\item \textbf{Customer physically lines up}: \newline
-						Maria is an old lady living alone in his apartment in Milan. She does not own a smartphone nor has plan to buy one in the future: she is okay with her old style house phone. \newline Maria goes weekly to the grocery shop: she directs herself to the ticket machine, retrieves a ticket and safely waits outside the store that his turn is called on the monitor. Once it is arrived, she simply scans her ticket's QR code and access the store. \newline
+						Maria is an old lady living alone in her apartment in Milan. She does not own a smartphone nor has plan to buy one in the future: she is okay with her old style house phone. \newline Maria goes weekly to the grocery shop: she directs herself to the ticket machine, retrieves a ticket and safely waits outside the store that his turn is called on the monitor. Once it is arrived, she simply scans her ticket's QR code and access the store. \newline
 						
 						
 					\item \textbf{User books a visit}: \newline
@@ -654,8 +676,8 @@ The CLup software system involves category of users:
 				\begin{minipage}[t]{10cm}
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 					\begin{enumerate}
-						\item The costumer has already opened the application that sent him to the “sign in/up” screen
-						\item The customer has not a CLup own account \\
+						\item The costumer has already opened the application
+						\item The customer has not a CLup account \\
 					\end{enumerate}
 				\end{minipage}
 				\\ \hline
@@ -670,7 +692,7 @@ The CLup software system involves category of users:
 					\end{enumerate}
 				\end{minipage}
 				\\ \hline
-				\textbf{Exit Conditions} & \makecell[l]{The costumer account is successfully created.} \\ \hline
+				\textbf{Exit Conditions} & \makecell[l]{The costumer account is successfully created} \\ \hline
 				\textbf{Exceptions} & 
 				\begin{minipage}[t]{10cm}
 					The system can detect problems in the submitted registration form (fields filled a in wrong way or even left empty). If it happen, the system notifies it to the user and offer the possibly to re-fill it \\
@@ -693,7 +715,7 @@ The CLup software system involves category of users:
 				\begin{minipage}[t]{10cm}
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 					\begin{enumerate}
-						\item The store manager has already opened the application that sent him to the “sign in/up” screen
+						\item The store manager has already opened the application
 						\item The store is not registered yet \\
 					\end{enumerate}
 				\end{minipage}
@@ -722,7 +744,7 @@ The CLup software system involves category of users:
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 					\begin{enumerate}
 						\item The system can detect problems in the filled registration form (fields filled a in wrong way or even left empy) and offer the possibly to re-fill it
-						\item The system could discover that the information provided by the system manager are not valid. In this case the registration procedure must be restarted. 
+						\item The system could discover that the information provided by the system manager are not valid. In this case the registration procedure must be restarted
 						\item The store could not be able to satisfy the hardware requirements, therefore the system doesn’t allow that store to register in the CLup system
 						\\
 					\end{enumerate}
@@ -745,7 +767,7 @@ The CLup software system involves category of users:
 				\begin{minipage}[t]{10cm}
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 					\begin{enumerate}
-						\item The costumer has already opened the application that sent him to the “sign in/up” screen
+						\item The costumer has already opened the application
 						\item The customers has a CLup own account \\
 					\end{enumerate}
 				\end{minipage}
@@ -779,13 +801,13 @@ The CLup software system involves category of users:
 				\textbf{Name} & \makecell[l]{Costumer line-up} \\ \hline
 				\textbf{Goals} & \makecell[l]{G2 G3} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
-				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and he's in the “available stores”\\ screen} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in} \\ \hline
 				\textbf{Events Flow} & 
 				\begin{minipage}[t]{10cm}
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 					\begin{enumerate}
 						\item The costumer selects a store from the displayed ones
-						\item The system shows to the costumer the available actions of the store 
+						\item The system shows to the costumer the available actions (line-up or book a visit) of the store 
 						\item The costumer clicks on the “Line-up” button starting the line-up procedure
 						\item The costumer inserts the means by which he will go to the store
 						\item The system retrieves the costumer GPS position
@@ -814,7 +836,7 @@ The CLup software system involves category of users:
 				\textbf{Name} & \makecell[l]{Booking check} \\ \hline
 				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Costumer} \\ \hline
-				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in and is in the home page} \\ \hline
+				\textbf{Entry Conditions} & \makecell[l]{The user has already logged-in} \\ \hline
 				\textbf{Events Flow} & 
 				\begin{minipage}[t]{10cm}
 					\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
@@ -880,6 +902,7 @@ The CLup software system involves category of users:
 						\item The user says how much time he will spend shopping
 						\item The system stores the user’s preferences
 						\item The system computes the time-slots suggestions
+						\item The user clicks the "time-slot suggestions" button
 						\item The system displays the user a timetable with the suggested time-slots, even from different stores
 						\item The user selects one of the suggested time-slots
 						\item The system rearranges the queue inserting the user in it, reducing the available spots in the timetable
@@ -907,27 +930,23 @@ The CLup software system involves category of users:
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & 
 						\begin{minipage}[t]{10cm}
-						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
-						\begin{enumerate}
-						\item The user has booked a visit
-						\item The user is still queuing \\
-						\end{enumerate}
+						The user has booked a visit
 						\end{minipage}
 					\\ \hline
 				\textbf{Events Flow} & 
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
-						\item The user selects the delete visit option
+						\item The user clicks "check your bookings" button
 						\item The system displays the user the list of booked visits
-						\item The user selects the visits he wants to delete
+						\item The user selects the visit he wants to delete
 						\item The system deletes the scheduled visit and all the related data, updating the queue of the store \\
 						\end{enumerate}
 						\end{minipage}
 					\\ \hline
 				\textbf{Exit Conditions} & 
 					\begin{minipage}[t]{10cm}
-					The user has successfully deleted his scheduled visit and the system has correctly updated the line to let the queue of the store proceed. \\
+					The user has successfully deleted his scheduled visit and the system has correctly updated the line to let the queue of the store proceed \\
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & \makecell[l]{None} \\ \hline
 				\end{tabular}
@@ -943,15 +962,15 @@ The CLup software system involves category of users:
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Physical Queuing} \\ \hline
-				\textbf{Goals} & \makecell[l]{TODO NESSUN MAPPING} \\ \hline
-				\textbf{Actor} & \makecell[l]{User, Manager (for the Exception)} \\ \hline
+				\textbf{Goals} & \makecell[l]{G2, G6} \\ \hline
+				\textbf{Actor} & \makecell[l]{User} \\ \hline
 				\textbf{Entry Conditions} & \makecell[l]{The user is arrived at the store} \\ \hline
 				\textbf{Events Flow} & 
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
 						\item The user makes a ticket request at the totem outside the store
-						\item The system checks the availability of the physical spots to queue outside the store
+						\item The system checks if the physical queue length is lower than the threshold  
 						\item The system updates the queue, inserting another customer in the first available timetable slot
 						\item The user takes his ticket with the QR code \\
 						\end{enumerate}
@@ -963,7 +982,7 @@ The CLup software system involves category of users:
 					\end{minipage}  \\ \hline
 				\textbf{Exceptions} & 
 					\begin{minipage}[t]{10cm}
-					If there are no available spots in the physical queue, then the costumer will get a not valid ticket. He will need to try to join the queue later or try to line-up through the app. \\
+					If the threshold is reached the ticket is not emitted and an error message is displayed. He will need to try to join the queue later or try to line-up through the app \\
 					\end{minipage}  \\ \hline
 				\end{tabular}
 				\newline
@@ -1020,8 +1039,8 @@ The CLup software system involves category of users:
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
-						\item The user wants to know his product preferences or average permanence into a store
-						\item The system updates the user's statistics (the periodical update might have not taken into account the last bookings)
+						\item The user clicks on the "statistics" button
+						\item The system retrieves the user statistics
 						\item The results are shown to the user\\
 						\end{enumerate}
 						\end{minipage}
@@ -1086,7 +1105,7 @@ The CLup software system involves category of users:
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
-						\item The Store manager clicks on the “Queue status” button in the main page
+						\item The Store manager clicks on the “Real-time store statistics” button in the main page
 						\item The system retrieves the information and renders a dedicated page
 						\item The Store manager interface is redirected to the dedicated page \\
 					
@@ -1120,9 +1139,9 @@ The CLup software system involves category of users:
 					\begin{minipage}[t]{10cm}
 						\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
-						\item The Store manager clicks on the “Booked visit” button in the main page entering a dedicated page
-						\item The Store manager choses the time span he wants to visualize
-						\item The system retrieves the information relative to the desidered time span and updates the page with the informations \\
+						\item The Store manager clicks on the “Bookings” button in the main page entering a dedicated page
+						\item The Store manager chooses the time span he wants to visualize
+						\item The system retrieves the information relative to the desired time span and updates the page with the information \\
 					
 						\end{enumerate}
 						\end{minipage}
@@ -1287,20 +1306,19 @@ The CLup software system involves category of users:
 		
 		\subsection{Performance Requirements}
 		
-		The system will face a large amount of data. Considering a single store with 50 costumers every hour no problem, but the CLup software must support thousands of registered store and all of them have hundreds of clients every day. Handle this quantity of information brings a meaningful complexity that could cause slowdowns and other problems, therefore, performance should not be underestimated. The system must ensure quick response to every user request, despite the thousands of simultaneous interactions. 
+		The system will face a large amount of data. Considering a single store with 50 costumers every hour no problem, but the CLup software must support thousands of registered store and all of them have hundreds of clients every day. Handling this quantity of information brings a meaningful complexity that could cause slowdowns and other problems, therefore, performance should not be underestimated. The system must ensure responses in 1-10 milliseconds (not considering network latency) to every user request, despite the thousands of simultaneous interactions. 
 		Then, reliability must be another key feature of the system, therefore there must be less failures as possible.
 		
 		\subsection{Design Constraints}
-		
-		\subsubsection{Standard compliance}
-		//TODO
 		
 		\subsubsection{Hardware limitations}
 		Every costumer, in order to take full advantage of every system functionality, must be able to face the hardware requirement presented in the \textit{Hardware interfaces} subsection. In fact, the lack of any of them will disable some CLup feature for the user. \\
 		For example, if the costumer device isn't equipped with a GPS, the system won't be able to retrieve his position and compute the store reaching time. Therefore, the alert mechanism will be disabled for this user.
 		
 		\subsubsection{Other constraints}
-		//TODO SE CE NE SONO
+		Regarding the functionality \textit{Increase the capacity of the store}, if the store wants to exploit this feature, it must define a policy specifying the conditions to increase the store capacity (i.e. the maximum number of people allowed in the different sections of the store).
+		\newline
+		In addition the UI should be simple and accessible in order to be used by a range of users that includes all demographics.
 			
 
 		 
@@ -1313,7 +1331,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 
 			\subsubsection{Security}
 			
-			Passwords of the users and of the managers in the stores need to be protected, so before storing them they need to be correctly encrypted. A similar treatment has to be made also for the preferences pointed out by the users and stored by the system when they are lining up. What’s more,  for what concerns the managers, a periodical update of their password can guarantee a higher protection of the data collected and used by the store. Of course, the system should be protected against intrusion from agent that are not authorized to access it. \\
+			Passwords of the users and of the managers in the stores need to be protected, so before storing them they need to be correctly hashed. A similar treatment has to be made also for the preferences pointed out by the users and stored by the system when they are lining up. What’s more,  for what concerns the managers, a periodical update of their password can guarantee a higher protection of the data collected and used by the store. Of course, the system should be protected against intrusion from agent that are not authorized to access it. \\
 			
 			\subsubsection{Maintainability}
 			
