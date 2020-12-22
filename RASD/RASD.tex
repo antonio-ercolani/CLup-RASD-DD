@@ -67,8 +67,12 @@ The grocery store also saves the information about the preferences of customers 
 	
 		
 	
-		\subsubsection{World phenomena}
-
+		\subsubsection{Phenomena}
+		Here are shown the main phenomena involving the system and the application domain. They are divided in 3 categories.
+		\newline
+		
+		\paragraph{World phenomena}
+		\textbf{}\\\newline
 			\begin{tabular}{|c|l|}
 				\hline
 				\rowcolor[HTML]{DCDCDC} 
@@ -82,10 +86,11 @@ The grocery store also saves the information about the preferences of customers 
 				\textbf{WP3} & The customer waits outside the store \\ \hline
 				\textbf{WP4} & The customer waits at home \\ \hline
 			\end{tabular}
+		\bigskip
 			
-		\subsubsection{Shared phenomena}
-		
-			Controlled by the \textbf{machine}\newline\newline
+		\paragraph{Shared phenomena}
+			
+		-  controlled by the \textbf{machine}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
@@ -98,8 +103,11 @@ The grocery store also saves the information about the preferences of customers 
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP3} & 
 						The ticket machine emits the requested ticket \\ \hline
-					\end{tabular} \newline\newline\newline
-			Controlled by the \textbf{world}\newline\newline
+					\end{tabular} 
+				\bigskip
+		\paragraph{Shared phenomena}
+			
+		-  controlled by the \textbf{world}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
@@ -199,17 +207,16 @@ The grocery store also saves the information about the preferences of customers 
 		\end{minipage} 
 		\\ \hline
 	\end{tabular}
-	
-	
-	
-	\subsection{Revision history}	
-	
+		
+	\newpage
 	\subsection{Reference Documents}
 		\begin{itemize}
 			\item R\&DD Assignment A.Y. 2020-2021;
-			\item Software Engineering 2 course material - Politecnico di Milano 2021
+			\item Software Engineering 2 course material - Politecnico di Milano 2020-2021;
 			\item Design Document - CLup.
 		\end{itemize}
+	
+	\bigskip
 	
 	\subsection{Document Structure}
 	
@@ -248,10 +255,9 @@ The grocery store also saves the information about the preferences of customers 
 	\textbf{}\\
 		\subsubsection{State Diagrams}
 		
-		\textbf{}\\ \newline
+		\textbf{}\\
 		In this section we want to show the evolution over time of the states of the application and the behavior of the user interacting with the app and the environment. 
 The state diagrams below better explain the progress of the system.
-		\newline
 		\newline
 		\newline
 		In the first state diagram (Figure \ref{fig:state_diagram1}) it’s shown how the user interacts with the environment and the system when he needs to do shopping. He interacts with the system lining up to a store in a virtual way using the mobile or web application, or queuing physically at the store he wants to visit.
@@ -282,10 +288,9 @@ The state diagrams below better explain the progress of the system.
 		
 		
 		\textbf{}\\ \newline
-		\textbf{}\\ \newline
 		
 		Here (Figure \ref{fig:state_diagram3})  are shown the steps to go through the virtual line up of the user, that has to face some intermediate steps before gaining the possibility to line up to the store. When the store has been selected, the user needs to indicate the transportation he will use to reach the store. Then, if he doesn't want to line up immediately but wants to book a visit, he will see the available products that he can buy and will have to choose which one of them he wants to buy, so that the system can collect his preferences. Then the user is asked to indicate his permanence into the store, in order to better manage the queue and the next available spots in the timeline. It will also be possible to see some suggestions when booking the time of the visit, otherwise the whole available spots are displayed to the user in order to let him choose the time he prefers.
-		
+		\medskip
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\linewidth]{VirtualLineUp_statediagram.png}
@@ -357,8 +362,50 @@ The CLup software system involves category of users:
 	\\Besides exploit the "remote lining up" function that mainly face social distancing, they are interested in other features such as "increase the capacity of the stores" and "balance out the number of people in the store". In fact exploiting them they could are able to keep profits high, despite the emergency. 		
 \end{itemize}
 
+\bigskip
 
+	\subsubsection{Scenarios}
+
+\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
+\begin{enumerate}
+	
+	\item \textbf{User lines up from home}: \newline
+	Antonio is a young engineering student. As known, engineering requires a lot of effort and dedication in order to keep the pace of the various courses. He does not want to waste time in the queues outside groceries shop that became common in the pandemic times. Luckly he knows the CLup service and decides to line up for his favorite store from home. \newline He inserts the type of transportation he is going to use in order to reach the store and joins the virtual queue while he can keep studying safely at home. Once his turn is about to come, he receives a notification from the application right on his smartphone and leaves the house. \newline
+	\textit{Scenario 1 is generalized in Use cases 4 and 10} \newline
+	
+	\item \textbf{Customer physically lines up}: \newline
+	Maria is an old lady living alone in her apartment in Milan. She does not own a smartphone nor has plan to buy one in the future: she is okay with her old style house phone. \newline Maria goes weekly to the grocery shop: she directs herself to the ticket machine, retrieves a ticket and safely waits outside the store that his turn is called on the monitor. Once it is arrived, she simply scans her ticket's QR code and access the store. \newline
+	\textit{Scenario 2 is generalized in Use cases 9 and 10} \newline
+	
+	
+	\item \textbf{User books a visit}: \newline
+	Elena is a very busy mother of two. She has very limited time frames where she can shop in a grocery store and not miss other appointments in her schedule. \newline
+	Since Elena got to know CLup she loved the service of booking a future visit to a store. She just selects her store and favourite time slot, inserts a few data like estimated shopping time etc. and the magic is done. No more time spent outside the shop and appointment delayed.\newline
+	Once the selected day of the visit is arrived, she will receive a notification indicating that she should start to approach the store. \newline
+	\textit{Scenario 3 is generalized in Use cases } \newline
+	
+	\item \textbf{User books a visit with CLup suggestions}: \newline
+	Giorgio is a retired old man, with a lot of free time. He knew the CLup application thanks to his grandchildren and now he uses it frequently. When Giorgio books his store visits he usually take into account the CLup suggested slots being aware that these suggestions are made to avoid crowding inside and outside the stores. 
+	\newline In this way the CLup system gives to Giorgio the possibility to exploit his free time to play a role in the battle against coronavirus. \newline
+	\textit{Scenario 4 is generalized in Use cases 7} \newline
+	
+	\newpage
+	\item \textbf{User arrives late}: \newline
+	Riccardo, an enthusiastic user of CLup, received a notification from the system inviting him to reach the store where he previously lined up with the software. \newline
+	However, a car accident blocked the road and he finds himself complitely stuck in the traffic. He will eventually reach the store with a big delay and find out that his ticket is expired. \newline He then decides to take another ticket from the ticket machine and wait for his turn. \newline
+	\textit{Scenario 5 is generalized in Use cases 10 (Exception case)} \newline 
+	
+	\item \textbf{Store manager admints more people in the store}: \newline
+	Vittorio, the store manager of a grocery store that adopted CLup, is monitoring the situation of the store through the software interface. \newline
+	He receives a notification from the sytem indicating that, given the calculation of the software, there are the right conditions to admit more people and momentarily exceed the store limit. \newline
+	He consults his guide lines and decides to go on with the operation: he inserts the required data and confirms his choice. \newline
+	Shortly after the selected number of clients enter the store. \newline
+	\textit{Scenario 6 is generalized in Use cases 12}
+\end{enumerate}
+
+\bigskip
 \subsection{Assumptions, dependencies and constraints}
+Here are shown the main domain assumptions of the application domain.
 	\subsubsection{Domain Assumptions}
 
 		\begin{tabular}{|c|l|}
@@ -384,6 +431,12 @@ The CLup software system involves category of users:
 					\end{minipage}
 				\\ \hline	
 			\end{tabular}
+		\bigskip
+		\subsubsection{Constraints}
+		Regarding the functionality \textit{Increase the capacity of the store}, if the store wants to exploit this feature, it must define a policy specifying the conditions to increase the store capacity (i.e. the maximum number of people allowed in the different sections of the store).
+		\newline
+		In addition the UI should be simple and accessible in order to be used by a range of users that includes all demographics.
+		
 			\newpage
 	
 	\section{Specific requirements}
@@ -392,7 +445,7 @@ The CLup software system involves category of users:
 			\subsubsection{User Interfaces}
 			The User Interface will be treated deeply in the CLup Design Document, where the reader will find several detailed mockups, diagrams and explanations.
 			\\Here are presented two mockup samples, in order to give a general idea of the UI.  Despite these few examples the reader could notice that the Requirement R2 is the main focus of the User Interface.
-			
+			\medskip
 			
 			\begin{figure}[H]
 				\centering
@@ -423,10 +476,12 @@ The CLup software system involves category of users:
 			The various actors connect to CLup using an internet connection. \newline
 			Hardware components such as automatic doors, ticket totem and QR code scanner interface with the system via IP based protocols.
 		
-		
+		\newpage
 		\subsection{Functional requirements}
 			
 			\subsubsection{List of Requirements}
+			Here is shown the list of the requirements that CLup system must satisfy.
+			\bigskip
 				
 				\begin{tabular}{|c|l|}
 				\hline
@@ -509,18 +564,17 @@ The CLup software system involves category of users:
 						The system waits for 5  minutes more to see if the late user arrives to the store, then invalidates his ticket and lets the queue go on \\
 					\end{minipage}
 				\\ \hline				
-				\textbf{R15} & 
-					\begin{minipage}[t]{13cm}
-						The system detects the position of the logged user
-					\end{minipage}
-				\\ \hline					
+									
 				
 			\end{tabular}
-
 			\newpage
-			
 			\begin{tabular}{|c|l|}
 				\hline
+				\textbf{R15} & 
+				\begin{minipage}[t]{13cm}
+					The system detects the position of the logged user
+				\end{minipage}
+				\\ \hline
 				\textbf{R16} & 
 					\begin{minipage}[t]{13cm}
 						The system allows to delete a scheduled visit and booking
@@ -568,9 +622,12 @@ The CLup software system involves category of users:
 				
 			\end{tabular}
 		
+		\newpage
 			
 		\subsubsection{Mapping}
-			
+		Here the reader can find a mapping between the goals and the corresponding requirements and domain assumptions that combined together satisfy them.
+		\bigskip  
+		\newline
 			\begin{tabular}{|c|c|c|}
 				\hline
 				\textbf{GOALS}
@@ -670,55 +727,21 @@ The CLup software system involves category of users:
 			
 
 	
-		\subsubsection{Scenarios}
 	
-			\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
-					\begin{enumerate}
-						
-					\item \textbf{User lines up from home}: \newline
-								Antonio is a young engineering student. As known, engineering requires a lot of effort and dedication in order to keep the pace of the various courses. He does not want to waste time in the queues outside groceries shop that became common in the pandemic times. Luckly he knows the CLup service and decides to line up for his favorite store from home. \newline He inserts the type of transportation he is going to use in order to reach the store and joins the virtual queue while he can keep studying safely at home. Once his turn is about to come, he receives a notification from the application right on his smartphone and leaves the house. \newline
-\textit{Scenario 1 is generalized in Use cases 4 and 10} \newline
-						
-					\item \textbf{Customer physically lines up}: \newline
-						Maria is an old lady living alone in her apartment in Milan. She does not own a smartphone nor has plan to buy one in the future: she is okay with her old style house phone. \newline Maria goes weekly to the grocery shop: she directs herself to the ticket machine, retrieves a ticket and safely waits outside the store that his turn is called on the monitor. Once it is arrived, she simply scans her ticket's QR code and access the store. \newline
-\textit{Scenario 2 is generalized in Use cases 9 and 10} \newline
-		
-						
-					\item \textbf{User books a visit}: \newline
-						Elena is a very busy mother of two. She has very limited time frames where she can shop in a grocery store and not miss other appointments in her schedule. \newline
-		Since Elena got to know CLup she loved the service of booking a future visit to a store. She just selects her store and favourite time slot, inserts a few data like estimated shopping time etc. and the magic is done. No more time spent outside the shop and appointment delayed.\newline
-		Once the selected day of the visit is arrived, she will receive a notification indicating that she should start to approach the store. \newline
-\textit{Scenario 3 is generalized in Use cases } \newline
-		
-					\item \textbf{User books a visit with CLup suggestions}: \newline
-					Giorgio is a retired old man, with a lot of free time. He knew the CLup application thanks to his grandchildren and now he uses it frequently. When Giorgio books his store visits he usually take into account the CLup suggested slots being aware that these suggestions are made to avoid crowding inside and outside the stores. 
-					\newline In this way the CLup system gives to Giorgio the possibility to exploit his free time to play a role in the battle against coronavirus. \newline
-\textit{Scenario 4 is generalized in Use cases 7} \newline
-		
-		
-					\item \textbf{User arrives late}: \newline
-						Riccardo, an enthusiastic user of CLup, received a notification from the system inviting him to reach the store where he previously lined up with the software. \newline
-		However, a car accident blocked the road and he finds himself complitely stuck in the traffic. He will eventually reach the store with a big delay and find out that his ticket is expired. \newline He then decides to take another ticket from the ticket machine and wait for his turn. \newline
-\textit{Scenario 5 is generalized in Use cases 10 (Exception case)} \newline 
-		
-\item \textbf{Store manager admints more people in the store}: \newline
-Vittorio, the store manager of a grocery store that adopted CLup, is monitoring the situation of the store through the software interface. \newline
-		He receives a notification from the sytem indicating that, given the calculation of the software, there are the right conditions to admit more people and momentarily exceed the store limit. \newline
-		He consults his guide lines and decides to go on with the operation: he inserts the required data and confirms his choice. \newline
-		Shortly after the selected number of clients enter the store. \newline
-\textit{Scenario 6 is generalized in Use cases 12}
-						\end{enumerate}
 		
 
 
 
 
 		\subsection{Use Cases}
+		This section presents several use cases that show the typical patterns of the users interaction with the system.
 		
-			\subsubsection{Use case diagram}
+			\paragraph{Use case diagram}
+			\textbf{}\\ \medskip
+			In the following diagram - \textit{Use case diagram} - the link between the use cases is shown.  
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=1.1]{usecasediagram.png}
+				\includegraphics[scale=1]{usecasediagram.png}
 				\caption{}
 				\label{fig:usecasediagram}
 			\end{figure}
@@ -891,6 +914,8 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 			\bigskip
 			\newline
 			
+			\newpage
+			
 			\item{\textbf{Booking check}}
 			\medskip
 			\\ \\
@@ -987,7 +1012,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Delete Visit} \\ \hline
 				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
@@ -1023,7 +1047,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Physical Queuing} \\ \hline
 				\textbf{Goals} & \makecell[l]{G2, G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
@@ -1057,7 +1080,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Customer enters/exits the store} \\ \hline
 				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
@@ -1084,16 +1106,15 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 					If the customer arrives at the store and his ticket is not valid anymore to enter the store (the validity of his QR code has expired) he will have to reschedule from the beginning his visit to the store \\
 					\end{minipage}  \\ \hline
 				\end{tabular}
-				\newline
-				\newline
-				\newline
+				
+				
+			\newpage	
 				
 			\item{\textbf{Build Statistics / Preferences}}
 				\medskip
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Build Statistics / Preferences} \\ \hline
 				\textbf{Goals} & \makecell[l]{G5 G7} \\ \hline
 				\textbf{Actor} & \makecell[l]{User} \\ \hline
@@ -1123,7 +1144,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Allow more people in the store} \\ \hline
 				\textbf{Goals} & \makecell[l]{G1 G2 G5 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
@@ -1159,7 +1179,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Monitor the queue} \\ \hline
 				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
@@ -1193,7 +1212,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Check booked store visits} \\ \hline
 				\textbf{Goals} & \makecell[l]{G4} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
@@ -1228,7 +1246,6 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 				\\
 				\begin{tabular}{|c|l|}
 				\hline
-				\rowcolor[HTML]{DCDCDC} 
 				\textbf{Name} & \makecell[l]{Monitor store crowd} \\ \hline
 				\textbf{Goals} & \makecell[l]{G1 G6} \\ \hline
 				\textbf{Actor} & \makecell[l]{Store manager} \\ \hline
@@ -1264,7 +1281,9 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 		\newpage
 			
 			\subsubsection{Sequence Diagrams}
+			In this section are presented the sequence diagrams; most of them are built on a specific use case.
 			
+			\bigskip\bigskip\bigskip
 				\setlist[enumerate]{label={\arabic*.}, ref={\arabic*}}
 						\begin{enumerate}
 							
@@ -1278,6 +1297,7 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 						\newpage
 						
 						\item Costumer sign up
+						\bigskip\bigskip\bigskip
 						\begin{figure}[H]
 							\centering
 							\includegraphics[scale=1.1]{signup.png}
@@ -1287,6 +1307,7 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 						\newpage
 						
 						\item Store registration
+						\bigskip\bigskip\bigskip
 						\begin{figure}[H]
 							\centering
 							\includegraphics[scale=1.1]{signUpstore.png}
@@ -1296,9 +1317,10 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 						\newpage
 						
 						\item Line up
+						\bigskip\bigskip\bigskip
 						\begin{figure}[H]
 							\centering
-							\includegraphics[scale=1.1]{lineup.png}
+							\includegraphics[scale=1.3]{lineup.png}
 							\caption{}
 							\label{fig:lineup_sequencediagramm}
 						\end{figure}
@@ -1323,14 +1345,17 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 							\newpage
 						
 						\item Delete Visit
+						\bigskip\bigskip\bigskip
 							\begin{figure}[H]
 								\centering
-								\includegraphics[scale=0.6]{DeleteVisit.png}
+								\includegraphics[scale=0.9]{DeleteVisit.png}
 								\caption{}
 								\label{fig:deletevisit_sequencediagram}
 							\end{figure}
 							
+						\newpage	
 						\item Physical Lining Up
+						\bigskip\bigskip\bigskip
 							\begin{figure}[H]
 								\centering
 								\includegraphics[width=\linewidth]{PhysicalTicket.png}
@@ -1340,6 +1365,7 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 						
 						\newpage
 						\item User Enters / Exits the Store
+						\bigskip\bigskip
 							\begin{figure}[H]
 								\centering
 								\includegraphics[scale=0.9]{enterexit.png}
@@ -1372,17 +1398,16 @@ Vittorio, the store manager of a grocery store that adopted CLup, is monitoring 
 		The system will face a large amount of data. Considering a single store with 50 costumers every hour no problem, but the CLup software must support thousands of registered store and all of them have hundreds of clients every day. Handling this quantity of information brings a meaningful complexity that could cause slowdowns and other problems, therefore, performance should not be underestimated. The system must ensure responses in 600ms to every user request, despite the thousands of simultaneous interactions. 
 		Then, reliability must be another key feature of the system, therefore there must be less failures as possible.
 		
+		\bigskip\bigskip
+		
 		\subsection{Design Constraints}
 		
 		\subsubsection{Hardware limitations}
 		Every costumer, in order to take full advantage of every system functionality, must be able to face the hardware requirement presented in the \textit{Hardware interfaces} subsection. In fact, the lack of any of them will disable some CLup feature for the user. \\
 		For example, if the costumer device isn't equipped with a GPS, the system won't be able to retrieve his position and compute the store reaching time. Therefore, the alert mechanism will be disabled for this user.
 		
-		\subsubsection{Other constraints}
-		Regarding the functionality \textit{Increase the capacity of the store}, if the store wants to exploit this feature, it must define a policy specifying the conditions to increase the store capacity (i.e. the maximum number of people allowed in the different sections of the store).
-		\newline
-		In addition the UI should be simple and accessible in order to be used by a range of users that includes all demographics.
-			
+	
+		\bigskip\bigskip
 
 		 
 		\subsection{Software System Attributes - Non-Functional Requirements}
@@ -1411,7 +1436,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 
 
 
-		
+	\newpage
 	\section{Formal analysis using Alloy}
 	\subsection{Alloy code}
 	
@@ -1447,6 +1472,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 	
 	\lstinputlisting[language=alloy]{./alloy.als}
 	
+	\newpage
 	\subsection{Meta model}
 
 	Follows below a world generated by the OneStore run:
@@ -1460,7 +1486,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 	//forse potrei mettere un altro modello fatto con un altra run? \\ \\
 	The generated world underlines the entities and constraints expressed in the alloy code. \newline
 	As expected, the store has one and only one queue containg both CLup users and normal customers (with their respective tickets) while the store is at his full capacity.
-	
+	\newpage
 	\subsection{Result of Assertions and Predicates}
 	
 		\begin{figure}[H]
@@ -1495,13 +1521,16 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\end{figure}
 
 	
+	\newpage
 	\section{Effort spent}
 	
 	\medskip
 	\textbf{\large Antonio Ercolani:} \\ \newline
 	\begin{tabular}{|l|c|}
 		\hline
-		Discussion on the first section &  \textbf{3,5h} \\ \hline
+		\begin{minipage}[t]{8cm}
+			Discussion on the first section
+		\end{minipage} &  \textbf{3,5h} \\ \hline
 		\rowcolor[HTML]{DCDCDC} 
 		Purpose and Document Structure & \textbf{1,5h} \\ \hline
 		Product Functions and User Characteristics & \textbf{3h} \\ \hline
@@ -1526,7 +1555,9 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\textbf{\large Vittorio Fabris:} \\ \newline
 		\begin{tabular}{|l|c|}
 			\hline
-			Discussion on the first section &  \textbf{3,5h} \\ \hline
+			\begin{minipage}[t]{8cm}
+				Discussion on the first section
+			\end{minipage} &  \textbf{3,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			Scope & \textbf{4h} \\ \hline
 			State Diagrams & \textbf{3,5h} \\ \hline
@@ -1540,15 +1571,19 @@ Because we want to ensure this high grade of availability, a system of redundant
 			Mapping & \textbf{1h} \\ \hline
 			Non Functional Requirements & \textbf{3h} \\ \hline
 			\rowcolor[HTML]{DCDCDC}
-			Final Discussion & \textbf{3,5h} \\ \hline
+			Final Discussion & \textbf{4h} \\ \hline
 		\end{tabular}
 		
 
-	
 	\textbf{\large \\ \\ Riccardo Nannini:} \\ \newline
 		\begin{tabular}{|l|c|}
 			\hline
-			Discussion on the first section &  \textbf{3,5h} \\ \hline
+			\begin{minipage}[t]{8cm}
+			Discussion on the first section
+			\end{minipage}
+			 & 
+			\textbf{3,5h} 
+			\\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			World and Shared Phenomena \& Goals & \textbf{3h} \\ \hline
 			Product perspective \& class diagram & \textbf{3h} \\ \hline
@@ -1558,8 +1593,16 @@ Because we want to ensure this high grade of availability, a system of redundant
 			\rowcolor[HTML]{DCDCDC} 
 			Scenarios and sequence diagram & \textbf{2,5h} \\ \hline
 			Alloy section & \textbf{15h} \\ \hline
+			\rowcolor[HTML]{DCDCDC}
+			Final Discussion & \textbf{4h} \\ \hline
 		\end{tabular}
 	
+	\bigskip\bigskip
 	\section{References}	
+	\begin{itemize}
+		\item The alloy section was made using \textit{https://alloytools.org/}
+		\item The diagrams were made using \textit{https://www.draw.io/}
+		\item Software Engineering 2 course material - Politecnico di Milano 2020-2021
+	\end{itemize}
 				
 \end{document}
