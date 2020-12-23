@@ -58,9 +58,9 @@ If there are already too many people queuing outside the shop, the software does
 The software can integrate the information derived from the two sources, virtual and physical bookings, so that overcrowding is avoided in the neighborhood of the store and thanks to the QR ticket validations store managers can monitor entrances and exits. When the user leaves the store, he must show his ticket to the QR-reader again, so that the system can know it and let the queue proceed: another customer will then enter the shop.\\
 			\newline
 On the other hand, users that line up from home concede the system to see where they are, using the GPS position of their device to identify their zone. In this way only nearby grocery stores are shown to the user.\\
-What’s more, these categories of users can book a visit at a specific time, if there is a free spot in the schedule organized by the system, otherwise other arrival times or grocery stores are proposed to the user. The customer to be can also chose to let the application show him some suggestions, providing some hints about the choice of the time and the possible alternative stores that have a higher availability of “free safe space” to do shopping.\\
-The system, knowing the position of the user, his distance from the store and the vehicle that he has chosen to use to reach it, will provide him a notification that in a certain moment he should leave to arrive on time at the grocery store. If the user arrives late, the system can reschedule a booking for him, always considering avoiding overcrowding and the time preferences of the customer, inserting him into the line again.\\
-What’s more, because the system needs to balance in the best way possible the number of people inside the store, the user that books online his visit is also asked which kind of products he’s going to buy. In this way, the system can manage people along the store’s aisles, reducing the possible interaction and proximity of customers, distributing their access into the shop in different times if it is necessary. Store managers can increase the amount of people shopping inside the grocery store according to the fact that people are sufficiently distant one with respect to the other and the store is approved to do so by the law, without exceeding the customer’s threshold declared when the store has enrolled in the system.\\
+What’s more, these categories of users can book a visit at a specific time, if there is a free spot in the schedule organized by the system, otherwise other arrival times or grocery stores are proposed to the user. The customer can also chose to let the application show him some suggestions, providing some hints about the choice of the time and the possible alternative stores that have a higher availability of “free safe space” to do shopping.\\
+The system, knowing the position of the user, his distance from the store and the vehicle that he has chosen to use to reach it, will provide him a notification that in a certain moment he should leave to arrive on time at the grocery store.\\
+What’s more, because the system needs to balance in the best way possible the number of people inside the store, the user that books online his visit is also asked which kind of products he’s going to buy. In this way, the system can manage people along the store’s aisles, reducing the possible interaction and proximity of customers, distributing their access into the shop in different times if it is necessary. \\Store managers can increase the amount of people shopping inside the grocery store according to the fact that people are sufficiently distant one with respect to the other and the store is approved to do so by the law.\\
 The grocery store also saves the information about the preferences of customers about the products they buy and their habits. In fact, the user lets the system know what he intends to buy and how he reaches the store. The user of the application can see his preferences and statistics too. For example, the store could use these preferences in order to manage a plan for the refill of its shelves and always be ready to satisfy the needs of its customers, avoiding the risk of not having some products to sell, but ordering them from their providers in advance.\\
 
 			
@@ -69,7 +69,7 @@ The grocery store also saves the information about the preferences of customers 
 	
 		\subsubsection{Phenomena}
 		Here are shown the main phenomena involving the system and the application domain. They are divided in 3 categories.
-		\newline
+
 		
 		\paragraph{World phenomena}
 		\textbf{}\\\newline
@@ -85,8 +85,11 @@ The grocery store also saves the information about the preferences of customers 
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{WP3} & The customer waits outside the store \\ \hline
 				\textbf{WP4} & The customer waits at home \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{WP5} & The customer leaves his home to reach the store \\ \hline
+				
 			\end{tabular}
-		\bigskip
+
 			
 		\paragraph{Shared phenomena}
 			
@@ -103,26 +106,38 @@ The grocery store also saves the information about the preferences of customers 
 						\rowcolor[HTML]{DCDCDC} 
 						\textbf{SP3} & 
 						The ticket machine emits the requested ticket \\ \hline
+						\textbf{SP4} & The system shows time-slot/store suggestion \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+						\textbf{SP5} & 
+						The system shows store statistics to the store manager \\ \hline
 					\end{tabular} 
-				\bigskip
+
 		\paragraph{Shared phenomena}
 			
 		-  controlled by the \textbf{world}\newline\newline
 					\begin{tabular}{|c|l|}
 						\hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP4} &
-						\begin{minipage}[t]{13.2cm}
+						\textbf{SP6} &
+						\begin{minipage}[t]{13cm}
 							The customer enters the store scanning his QR code\\  
 						\end{minipage} 
-						\\ \hline 
-						\textbf{SP5} & The customer reserves a place in the queue of a given store using the application \\ \hline
+						\\ \hline
+						\textbf{SP7} & The customer reserves a place in the queue of a given store using the application \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP6} & \makecell[l]{The customer reserves a place in the queue of a given store using the ticket totem \\outside the store}\\ \hline
-						\textbf{SP7} & The customer books a visit to the store \\ \hline
+						\textbf{SP8} & 
+						\begin{minipage}[t]{13cm}
+The customer reserves a place in the queue of a given store using the ticket totem outside the store\\  
+						\end{minipage} \\ \hline
+						\textbf{SP9} & The customer books a visit to the store \\ \hline
 						\rowcolor[HTML]{DCDCDC} 
-						\textbf{SP8} & The customer leaves the store scanning his QR code \\ \hline
-						\textbf{SP9} & The system receives a request to join a store's queue \\ \hline
+						\textbf{SP10} & The customer leaves the store scanning his QR code \\ \hline
+						\textbf{SP11} & The system receives a request to join a store's queue \\ \hline
+						\rowcolor[HTML]{DCDCDC} 
+				\textbf{SP12} & The store is full \\ \hline
+				\textbf{SP13} & The user arrives late to the store \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{SP14} & The store manager temporarily admits more people in the store \\ \hline
 					\end{tabular}
 					
 		
@@ -239,15 +254,18 @@ The grocery store also saves the information about the preferences of customers 
 		\subsection{Product perspective}
 		The CLup system is designed as a complitely new software application. The user side of the software is intended to be used as a mobile application while the store managers are going to interact with the system with a different interface. \newline
 		In order to estimate the time needed for the user to reach the store, the application needs to interface with the smartphone's localization system and needs the user to indicate the type of transportation that he is going to use. \newline
-		The system will handle client that are not using the application with tickets provided by a ticket totem located outside the store. This machine will act as an interface to the software application. \newline
-		Customers using CLup are going to be notified when their turn is coming in order to approach the store while those with a ticket outside the store will monitor a screen extern to the shop in order to know when it's their turn to enter. \newline
-		In order to access the store, every customer is required to scan their QR code (either from the application or from the physical ticket) when entering and exiting the store: in both cases the system will activate an automatic door. \newline
+		The system will also handle client that are not using the application with tickets provided by a ticket machine located outside the store. This machine will act as an interface to the software application. \newline
+		Customers using CLup are going to be notified when their turn is coming in order to approach the store while those with a physical ticket outside the store will monitor a screen extern to the shop in order to know when it's their turn to enter. \newline
+		In order to access the store, every customer is \textbf{required} to scan their QR code (either from the application or from the physical ticket) when entering and exiting the store: in both cases the system will activate an automatic door. \newline
+		In addition to the possibility to line-up remotely, the system allows users to book a visit to a store (according to the shop opening time and availability); in this way a customer reserves a place in the store in a certain date and time.\newline
+		The system can also provide suggestion of free timeslots for a given shop or hints on nearby not-crowded store. \newline
 		On the other side of the system, store managers are going to be able to monitor and manage the queue of their store as well as programmed visits. \newline
+		In addition, the store manager can temporarly admit more people on the store if customers are expected to be in different parts of the store. \newline
 		The below class diagram models the application domain in order to give an overlook on the enviroment where the application is going to work. \newline
 		
 		\begin{figure}[htp]
 			\centering
-			\includegraphics[scale=0.95]{UML_class_diagram.png}
+			\includegraphics[scale=0.89]{UML_class_diagram.png}
 			\caption{Class diagram}
 			\label{fig:class_diagram}
 		\end{figure}
@@ -1483,7 +1501,7 @@ Because we want to ensure this high grade of availability, a system of redundant
 								\caption{World generated by OneStore predicate}
 	\end{figure}
 	
-	//forse potrei mettere un altro modello fatto con un altra run? \\ \\
+
 	The generated world underlines the entities and constraints expressed in the alloy code. \newline
 	As expected, the store has one and only one queue containg both CLup users and normal customers (with their respective tickets) while the store is at his full capacity.
 	\newpage
