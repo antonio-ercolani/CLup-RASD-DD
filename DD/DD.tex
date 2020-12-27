@@ -135,7 +135,46 @@ The system has to deal with store managers too, and so the server will periodica
 				
 <<<<<<< HEAD
 	\subsection{Component view}
-	//TODO general component view with explanation \newline
+	\textbf{} \newline
+	\textbf{Component Diagram} \newline
+	In the current section will be explained the interactions of the various components that the system contains. The component view diagram allows to better understand the flow in the \textbf{Application Server}, which is organized in multiple subsystems so that the different competence areas are properly divided with respect to the functionality they’re built for.\\
+The various components can communicate with each other through different interfaces. 
+There are three components in the client side are the \textbf{customer} and the \textbf{store manager apps} and the \textbf{totem} where people take their physical ticket, which is connected to the application server too. The \textbf{Router} takes care to redirect to the proper subsystem or component the requests and responses that are generated during the lifetime of the system.\\
+In the Application Server the \textbf{StoreHandler} and the \textbf{CustomerHandler} components are made so that they can handle the basic functions of the communication between the system and the store on one hand and between the system and the customer on the other one. General apps notifications and features that are not included in the ones that populates the queuing and book a visit subsystems rely here. In this way, if the system will handle and implement in the future some other small possible functions, these two components could be the ones that could handle the communications to guarantee to the store managers and the customers the best experience possible in the application.\newline\newline
+What’s more, the application server is connected to:\\
+	\begin{itemize}
+		\item 	\textbf{QRcodeManager}: it cares about the generation of the tickets.
+		
+		\item 	\textbf{StoreSlidingDoors}: it allows to open the doors of the shop if the scanned ticket is valid.
+		
+		\item 	\textbf{GoogleMapsService}: it is necessary to retrieve data about the position of the store and of the customer.	
+	
+	\end{itemize}
+	
+	\textbf{} \newline
+For the sake of completeness it has been shown also the \textbf{DBMS service}, but the main focus is made towards the Application Server, which is the core of the application’s logic. \newline\newline
+In the following paragraphs the various subsystems will be briefly explained.\\
+
+	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{ComponentView/ComponentViewDiagram.png}
+			\caption{General Component Diagram}
+			\label{fig:ComponentDiagram}
+		\end{figure}
+		\bigskip\bigskip
+
+
+	\textbf{Access Manager subsystem} \newline
+	The access manager cares about the sign up and the login of the users, both the customers and the store managers. The access is handled differently for the two entities, that have to provide different kind of information (the signing up and the authentication is different if the user is a store, because the system needs to accurately verify through some given documents the validity and the existence of the shop, while the sign up of a customer is more immediate because an existent valid email and a password would be sufficient), and the access to the data manager can be made with different purposes: with the sign up data are stored in the database, so that users are registered to the system, while with the login the validity of the inserted data (username and password) are checked with the ones that are already stored in the DB. 
+
+	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{ComponentView/AccessManagerComponent.png}
+			\caption{AccessManager subsystem component diagram}
+			\label{fig:AccessManagerDiagram}
+		\end{figure}
+		\bigskip\bigskip
+	
 	
 	\textbf{Queue subsystem} \newline
 	The Queue subsystem is the part of the system devoted to handling the people queueing to the store.
@@ -156,7 +195,7 @@ The system has to deal with store managers too, and so the server will periodica
 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.9]{ComponentView/queueComponent.png}
-			\caption{Queue subsytem component diagram}
+			\caption{Queue subsystem component diagram}
 			\label{fig:Queuediagram}
 		\end{figure}
 		\bigskip\bigskip
