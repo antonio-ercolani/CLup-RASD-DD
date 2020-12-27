@@ -133,6 +133,7 @@ The system has to deal with store managers too, and so the server will periodica
 				
 				\end {paragraph}
 				
+<<<<<<< HEAD
 	\subsection{Component view}
 	//TODO general component view with explanation \newline
 	
@@ -158,6 +159,28 @@ The system has to deal with store managers too, and so the server will periodica
 			\caption{Queue subsytem component diagram}
 			\label{fig:Queuediagram}
 		\end{figure}
+		\bigskip\bigskip
+		
+			\textbf{} \\
+	\textbf{Visit subsystem}
+	\medskip \newline
+	The visit subsystem aims to handle everything that is related to booking visits. It is composed by 4 components as the reader can see in the picture below. 
+	
+		\begin{itemize}
+		\item \textbf{VisitHandler} works as an "orchestrator". It handles the requests that comes from outside the subsystem and exploits the functionalities offered by the other components;
+		\item \textbf{StatisticHandler} collects user statistics;
+		\item \textbf{SuggestionsHandler} computes suggestions based on user preferences and timetable availability;
+		\item \textbf{TimetableHandler} handles time-slots and computes their availability.
+	\end{itemize}
+	
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.73]{ComponentView/VisitComponent}
+		\caption{Visit subsystem}
+		\label{fig:visitSubsystem}
+	\end{figure}
+
 		\bigskip\bigskip
 		
 		\textbf{Data Manager subsystem} \newline
@@ -189,6 +212,12 @@ The system has to deal with store managers too, and so the server will periodica
 	\subsection{Component interfaces}
 	\subsection{Selected architectural styles and patterns}
 	
+
+				
+	
+
+
+
 	
 				
 	\newpage			
