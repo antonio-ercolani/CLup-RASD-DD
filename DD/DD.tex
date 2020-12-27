@@ -126,10 +126,70 @@ When the user concludes his procedure to being inserted in the queue of a store,
 					\newline
 What’s more, for what concerns the users, every time they select and submit their preferences (mean of transport, favorite products, …) they will send data to the server, which makes them stored in the databases and allows the user to proceed through the next steps of the lining up procedure. Stored data will be useful when the user requests to see his statistics: they will be elaborated and sent back to the user, that would see them displayed on the screen of his device.\\
 					\newline
-The system has to deal with store managers too, and so the server will periodically update the available data of the manager, that would monitor the situation of the store in real time: this will allow the manager to send the request to allow more people enter the store, handled by the application logic and whose results are displayed back to the manager.
+The system has to deal with store managers too, and so the server will periodically update the available data of the manager, that would monitor the situation of the store in real time: this will allow the manager to send the request to allow more people enter the store, handled by the application logic and whose results are displayed back to the manager. \newline
 
+\large //TODO HIGH LEVEL DIAGRAM with EXPLANATION
+\newpage
 				
 				\end {paragraph}
+				
+	\subsection{Component view}
+	//TODO general component view with explanation \newline
+	
+	\textbf{Queue subsystem} \newline
+	The Queue subsystem is the part of the system devoted to handling the people queueing to the store.
+	Its responsabilities concern updating and managing the queue of people to a certain store, provide notification to users when they need to start approaching the store and handle the creation/recognition of Qr code tickets interfacing with an external module.
+	The Queue subsystem is composed of three main components:
+	
+	\begin{itemize}
+		\item 	\textbf{QueueHandler} is devoted to handling the queue logic beside of the application. It is responsible for putting users in the queue as well as removing them when their turn has come. It interacts with the Data Manager to store data about the queue and with the Sliding door interface to lock/unlock the door accordingly to Qr code scannings.
+		
+		\item 	\textbf{NotificationService} takes care of notifing CLup users when they need to reach the store. It interfaces with GoogleMapsAPI in order to estimate the time a user needs to reach the store given his position and transport mean.
+		
+		\item 	\textbf{Ticket Manager} is responsible for interfacing with the external software component \textit{QrcodeManager} in order to create, assign and recognize Qr codes.
+		
+	
+	\end{itemize}
+
+	
+	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.9]{ComponentView/queueComponent.png}
+			\caption{Queue subsytem component diagram}
+			\label{fig:Queuediagram}
+		\end{figure}
+		\bigskip\bigskip
+		
+		\textbf{Data Manager subsystem} \newline
+		
+		The purpose of the Data Manager subsystem is creating a common interface, shared with ther whole system, to access data stored in the database. \newline
+		Instead of using directly the DBMS API, each component that needs to manipulate data that are stored in the DB is forced to use one of the two components that make the subsystem. \newline
+		The reason behind this decision is to \textbf{decouple} our system from the DBMS: a change in the DBMS API or switching DBMS vendor will affect only our Data Manager subsystem instead of the whole application. \newline
+		In particular:
+		
+		\begin{itemize}
+		
+			\item \textbf{DataRetriever} is devoted to data fetching
+			\item \textbf{DataStorer} is responsible for storing data in the DB
+		\end{itemize}
+		
+			\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.9]{ComponentView/DataManagerComponent.png}
+			\caption{Data Manager subsystem component diagram}
+			\label{fig:DataManagerDiagram}
+		\end{figure}
+	
+		
+	
+	
+	
+	\subsection{Deployment view}
+	\subsection{Runtime view}
+	\subsection{Component interfaces}
+	\subsection{Selected architectural styles and patterns}
+	
+	
 				
 	\newpage			
 				
