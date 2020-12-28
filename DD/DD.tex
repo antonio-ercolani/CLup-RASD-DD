@@ -357,6 +357,53 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\end{figure}
 			
 		\newpage
+		
+		\section{Implementation, Integration and Test Plan}
+			 \bigskip
+			 
+			 \subsection{Overview}
+			 \medskip
+			 Testing is an important practice to make sure that the system behaves as we expect and is able to fulfill the requirements and reach the goals that it is supposed to do. For this reason, the system should be divided in more than a unique block when it is implemented: testing the whole system only when its design has been finished is definitely not a good practice and will lead with every probability to high costs of repair. \\The various components of the system need to be checked independently and then gradually integrated one with the other, with other tests that are subsequent to their integration to make sure that the behavior is exactly what it is expected to be. Of course, it is impossible to find all the bugs in our system through testing, as we know that program testing can be used to show their presence, but not their absence. \\This is the reason why this part of verification and validation is very important: release an application that is as much bug-free as possible. It is important that the verification and validation phases start as soon as the development of the system begins in order to find errors as quickly as possible.\newline\newline
+			
+			\subsection{Implementation Plan}
+			\medskip
+			As a consequence of what has been said above and also taking into account that the CLup system is a relatively small one, then it needs to be implemented, tested and integrated following a bottom-up approach. As in unit testing, drivers must be constructed for each leaf module and then, as the system is built up, they will be replaced by higher level components that could use the lower level subsystems’ functionalities. Following this approach, it will be possible to parallelize implementation and the testing procedures.\newline
+
+The external components can be assumed to be already reliable, as they are implemented and used without any specific improvements. So, this assumption can be valid for the GoogleMapsService, the StoreSlidingDoors and QRcodeManager components. The integration with the subsystems that interface with them has to be accurately tested and validated.\newline
+
+The other components and subsystems that should be considered are the same ones that have been described and shown in the Component View section, that are listed below for the sake of reading them more confortably (the last three ones belong to the client side of the system):
+				\begin{itemize}
+					\item DBMS Services
+					\item Data Manager subsystem
+					\item Access Manager subsystem
+					\item Store Handler
+					\item Customer Handler
+					\item Visit subsystem
+					\item Queue subsystem
+					\item Router
+					\item CustomerMobileApp
+					\item StoreManagerApp
+					\item Ticket Totem
+				\end{itemize}
+
+The first components that have to be implemented and tested are the DBMSServices, because they are the ones that allow to keep system’s data updated to the last version and they allow to write on the Database, always recalling to make it persistent.\\ \newline
+Then we can proceed with the Data Manager subsystem, that directly interfaces from the application server towards the DBMS Services and allows to ask and retrieve data through appropriate queries, or to send new data of new info collected during the users’ registrations or their submitted preferences.
+Once the Data Manager has been completed, then the other subsystems can be built: Access Manager is independent from the other components, so it can be developed in parallel with other tasks. Because of its purpose, the only role that he has is to guarantee that accesses to the system are authenticated, and this function is perfectly isolated from the others.\\ \newline
+In fact, when a customer wants to line up, he has only to face and interact with the Visit and Queue subsystems. Data that are necessary for the bookings and for queuing are retrieved from the Data Manager that takes them from the DB, and then inside the components are elaborated and proposed to the users. As already said, the two subsystems – Visit and Queue – do not interact with each other because as the more independent they are, the easier would be in the future to repair and modify them without having to handle other components as a cascade unwanted effect. \\ \newline
+Then comes the turn of the Customer Handler and Store Handler components. As the functionalities to store data of a visit have been already implemented and they should properly work, now all the other type of queries of the customers and the store managers can be managed and processed (e.g. booked visits, real time statistics, temporarily increasing the store capacity, …), as their information can be already be stored in the DB.\\ \newline
+The Router is the last component that is implemented and tested: its only role is to dispatch messages coming from different parts of the system and assures that they arrive to the right subsystem or component. It has only one main function, but it is very important for the correct behavior of the whole application.
+From the point of view of the client components, they can be implemented in parallel to the application server and once the AS has been completely tested, then the two parts can be merged to see if the whole system complies with the requirements and the overall goals.\\ \newline
+Finally, we can list what is the strict sequence of constraint of component implementation that must be fulfilled (the client side components and the Access Manager are not included in the following list because their implementation, as previously said, can be done in parallel with the others): 
+				\begin{itemize}
+					\item DBMS Service
+					\item DataManager
+					\item Queue subsystem
+					\item Visit subsystem
+					\item CustomerHandler and StoreHandler
+					\item Router
+				\end{itemize} 
+
+			 
 		\section{Effort spent}
 			
 			\medskip
@@ -375,10 +422,12 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\textbf{\large Vittorio Fabris:} \\ \newline
 			\begin{tabular}{|l|c|}
 				\hline
-				Scope and organization of chapter 1&  \textbf{1h} \\ \hline
+				Scope and organization of chapter 1&  \textbf{1,5h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
-				 & \textbf{} \\ \hline
-				
+				 Architectural Design Overview & \textbf{3h} \\ \hline
+				 Component View & \textbf{7h} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				Validation and Testing & \textbf{5h} \\ \hline
 			\end{tabular}
 	
 			
