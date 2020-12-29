@@ -200,25 +200,30 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\end{figure}
 		\bigskip\bigskip
 		
-			\textbf{} \\
+	\newpage
+	\noindent
 	\textbf{Visit subsystem}
 	\medskip \newline
 	The visit subsystem aims to handle everything that is related to booking visits. It is composed by 4 components as the reader can see in the picture below. 
+	\bigskip
 	
-		\begin{itemize}
-		\item \textbf{VisitHandler} works as an "orchestrator". It handles the requests that comes from outside the subsystem and exploits the functionalities offered by the other components;
-		\item \textbf{StatisticHandler} collects user statistics;
-		\item \textbf{SuggestionsHandler} computes suggestions based on user preferences and timetable availability;
-		\item \textbf{TimetableHandler} handles time-slots and computes their availability.
-	\end{itemize}
-	
-
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.73]{ComponentView/VisitComponent}
 		\caption{Visit subsystem}
 		\label{fig:visitSubsystem}
 	\end{figure}
+	
+	\begin{itemize}
+		\item \textbf{VisitHandler} fulfill the main booking visits tasks and works as an "orchestrator" of this subsystem.
+		Firstly it handles the requests that comes from outside this subsystem. To performs its tasks VisitHandler combines its "general" capabilities with the more specialized functionalities offered by the other components;
+		\item \textbf{StatisticHandler} collects user statistics and provide them to VisitHandler. There's a strong connection with the DataManager component which is a link to the database, where the statistic are stored;
+		\item \textbf{SuggestionsHandler} computes the suggestions showed to the user during the booking visit phase;
+		\item \textbf{TimetableHandler} take care of the visits timetable. For example it is able to return the available visits time-slot.
+	\end{itemize}
+	
+
+	
 
 		\bigskip\bigskip
 		
@@ -246,7 +251,36 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	
 	
+	\newpage
 	\subsection{Deployment view}
+	The figure below shows the distribution of the CLup components among the hardware ones. Some details are omitted, like the external interfaces, to maintain the focus on the main components of each architecture tier. 
+	\newline
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.38]{deployment}
+		\caption{CLup deployment view}
+		\label{fig:deployment}
+	\end{figure}
+
+
+	\bigskip
+	\noindent	
+	The presentation tier contains the devices by which costumers and store managers can interact with the system. Costumer can use their own smartphones where they have to install the CLup mobile application. There are no restrictions about the operating system of the device, the app must be developed both for Android and IOS, for being compatible with the almost totality of the smartphone. 
+	\\On the other side, store managers can interact with CLup with any personal computer by means of the CLup web application, therefore they don't have to install anything but a web browser.
+	The reader should notice the communication protocol between the personal devices and the Application Server: HTTP.
+	\newline\newline
+	The intermediate tier contains the core of the CLup software system. Firstly, as the reader can see in the component diagram, the Application Server performs all the tasks related to the business logic. 
+	Secondly, this tier has the task of manage all the requests that come from the users devices. 
+	In this case the technology involving the server device and its operating system are left to the developers.
+	\newline\newline
+	Finally, in the third tier, Database Server, is located the data management. Whenever the Application Server has to store or retrieve data it has to exploit the components of this tier. As in the second tier, the choice of the device of this server and its operating system is left to the developers. The only recommendation is about the nature of the database. A relational one must be preferred for a better general organization of the CLup data. 
+	
+	\newpage
+	
+	
+	
+	
+	
 	\subsection{Runtime view}
 	\subsection{Component interfaces}
 	\subsection{Selected architectural styles and patterns}
@@ -412,7 +446,11 @@ Finally, we can list what is the strict sequence of constraint of component impl
 				\hline
 				Purpose and Document Structure &  \textbf{1h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
-				User Interface Design & \textbf{8h} \\ \hline
+				User Interface Design & \textbf{10h} \\ \hline
+				Component view discussion & \textbf{3h} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				Component view & \textbf{3h} \\ \hline
+				Deployment view & \textbf{4h} \\ \hline
 				
 			\end{tabular}
 			\newline
