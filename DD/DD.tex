@@ -133,7 +133,7 @@ The system has to deal with store managers too, and so the server will periodica
 				
 				\end {paragraph}
 				
-<<<<<<< HEAD
+
 	\subsection{Component view}
 	\textbf{} \newline
 	\textbf{Component Diagram} \newline
@@ -246,6 +246,17 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\caption{Data Manager subsystem component diagram}
 			\label{fig:DataManagerDiagram}
 		\end{figure}
+		
+	\bigskip
+	Moreover, the following diagram shows a general UML representation of the system's Model. \newline
+	Each component that interacts with the Model is supposed to interface with the DataManager component and invoke the methods for retrieving/storing data. \newline
+	
+	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.73]{ComponentView/umlDD.png}
+			\caption{Model UML diagram}
+			\label{fig:ModelUML}
+		\end{figure}
 	
 		
 	
@@ -283,6 +294,19 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\subsection{Runtime view}
 	\subsection{Component interfaces}
+	
+	The following diagram describes the main componet interfaces of the system. \newline
+	They are not necessarly supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
+	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easly derived. \newline
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.7]{ComponentView/componentInterfaces.png}
+			\caption{Component interfaces}
+			\label{fig:componentInterfaces}
+		\end{figure}
+	
+	
 	\subsection{Selected architectural styles and patterns}
 	
 
