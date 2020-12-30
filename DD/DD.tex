@@ -447,7 +447,7 @@ The other components and subsystems that should be considered are the same ones 
 The first components that have to be implemented and tested are the DBMSServices, because they are the ones that allow to keep system’s data updated to the last version and they allow to write on the Database, always recalling to make it persistent.\\ \newline
 Then we can proceed with the Data Manager subsystem, that directly interfaces from the application server towards the DBMS Services and allows to ask and retrieve data through appropriate queries, or to send new data of new info collected during the users’ registrations or their submitted preferences.
 Once the Data Manager has been completed, then the other subsystems can be built: Access Manager is independent from the other components, so it can be developed in parallel with other tasks. Because of its purpose, the only role that he has is to guarantee that accesses to the system are authenticated, and this function is perfectly isolated from the others.\\ \newline
-In fact, when a customer wants to line up, he has only to face and interact with the Visit and Queue subsystems. Data that are necessary for the bookings and for queuing are retrieved from the Data Manager that takes them from the DB, and then inside the components are elaborated and proposed to the users. As already said, the two subsystems – Visit and Queue – do not interact with each other because as the more independent they are, the easier would be in the future to repair and modify them without having to handle other components as a cascade unwanted effect. \\ \newline
+In fact, when a customer wants to line up, he has only to face and interact with the Visit and Queue subsystems. Data that are necessary for the bookings and for queuing are retrieved from the Data Manager that takes them from the DB, and then inside the components are elaborated and proposed to the users. The two subsystems – Visit and Queue – do not interact with each other because as the more independent they are, the easier would be in the future to repair and modify them without having to handle other components as a cascade unwanted effect. The only exception is made when the Visit subsystem directly interfaces with the Queue subsystem to update the store’s queue with the addition of a new customer.\\ \newline
 Then comes the turn of the Customer Handler and Store Handler components. As the functionalities to store data of a visit have been already implemented and they should properly work, now all the other type of queries of the customers and the store managers can be managed and processed (e.g. booked visits, real time statistics, temporarily increasing the store capacity, …), as their information can be already be stored in the DB.\\ \newline
 The Router is the last component that is implemented and tested: its only role is to dispatch messages coming from different parts of the system and assures that they arrive to the right subsystem or component. It has only one main function, but it is very important for the correct behavior of the whole application.
 From the point of view of the client components, they can be implemented in parallel to the application server and once the AS has been completely tested, then the two parts can be merged to see if the whole system complies with the requirements and the overall goals.\\ \newline
@@ -460,6 +460,79 @@ Finally, we can list what is the strict sequence of constraint of component impl
 					\item CustomerHandler and StoreHandler
 					\item Router
 				\end{itemize} 
+				\textbf{} \newpage	
+				
+				
+				\subsection{Integration Strategy}
+				\medskip
+As previously said in the chapter above, it’s needed to be implemented the system with a \textbf{bottom-up approach}. In the following lines there will be a better explanation of how to deal with this procedure, with the different components that will be progressively integrated once they’ve been tested. Drivers are added on the top of the tree-components building because in this way different requests to apply some functions can be done.
+
+The first components that have to be unit tested after the validation of the DBMSServices are the ones of the Data Manager subsystem. They are the first one that have to be implemented because storing and retrieving data from the DBMS is fundamental for every functionality of the system, that always deals with the most updated state of the system. 
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{Testing/Testing1.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+It is then the turn of the other components. The Access Manager subsystem can be tested linking it to the Data Manager and testing its functionalities in parallel with the other components that will be explained below. This can happen because it has no direct interaction with the other components.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{Testing/Testing2.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+The external components to which the application server interfaces are supposed to be already tested and validated by their production companies, so the Queue subsystem and its components are the next candidates to be taken into consideration for the unit testing. The testers have to make sure that they can correctly interface to the external components too.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.55]{Testing/Testing3.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+When the Queue subsystem has been determined successfully working, the Visit subsystem is the next one to be treated, as it is directly connected with the previously mentioned one. These tests need to be accurately checked as the lining up of a user and his booking procedure have to be as bug-free as possible to guarantee a proper navigation experience.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{Testing/Testing4.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+Once that these integrations are made, both the Customer Handler and Store Handler components can be unit tested and integrated. Notice that also here the integration with the GoogleMaps Service needs to be made, as the external component is assumed to be perfectly working as we were doing in the previous step. Drivers are properly added to make sure that the step by step integration can be made without any problem, fulfilling all the possible functionalities that a component needs to be ready to deal with.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{Testing/Testing5.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+To complete the Application Manager the last component that has to be implemented, unit-tested and then added is the Router, that substitutes all the drivers that were drawn in the previous diagram. It allows to make possible the flow of the called methods from the client to the server and dispatch them to the right component.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{Testing/Testing6.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+In conclusion, Client side components, which can be implemented in parallel to the application server ones, are unit tested and integrated to the whole application system. 
+In this way, a final testing session can be performed to validate the overall system.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{Testing/Testing7.png}
+					\caption{}
+					\label{fig:Testing}
+				\end{figure}
+
+
+				\subsection{System Testing}
+				\medskip
+As the integration of the various components of the system has been managed, the whole system testing concerns the check of functional and non-functional requirements, where the testing environment should be as close as possible to the production environment.\\
+\textbf{Functional testing}, as the name suggests, verifies the satisfaction of the functional requirements of the system. It’s a good indicator for the correct implementation of the system.\\
+Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a main role in this system: memory leaks, mismanagement of memory and the identification of the upper limits of the components can be made by increasing the load of the system for a long period; what’s more, identifying bottlenecks affecting response time, utilization and throughput makes possible to find inefficient algorithms, optimize queries and if there are any hardware/network issues.\\
+\textbf{Stress testing} allows to assure that the system recovers correctly after failure.\\ \newpage
+
+
 
 			 
 		\section{Effort spent}
@@ -487,8 +560,9 @@ Finally, we can list what is the strict sequence of constraint of component impl
 				Scope and organization of chapter 1&  \textbf{1,5h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				 Architectural Design Overview & \textbf{3h} \\ \hline
-				 Component View & \textbf{7h} \\ \hline
+				 Component view discussion & \textbf{3h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
+				Component View & \textbf{7h} \\ \hline
 				Validation and Testing & \textbf{5h} \\ \hline
 			\end{tabular}
 	
