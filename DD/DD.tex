@@ -292,7 +292,52 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	
 	
-	\subsection{Runtime view}
+	\subsection{Runtime View}
+	The sequence diagrams presented below show the behavior of the system, in terms of components interaction. The diagrams are focused on the back-end computations, the interaction between the mobile application and the application server is not considered.
+	\newline
+	\newline
+	\noindent
+	\textbf{Line-up}
+	\newline \newline
+	The first sequence diagram takes into account the remote line-up of a costumer.
+	After the costumer chooses the store and communicates the intention of line-up, the system starts the line-up procedure. QueueHandler, according to the data stored in the database, computes the feasibility of the line-up. In the case it is possible, TicketHandler and QRcodeManager generate the QRcodeTicket that is sent to the costumer.
+	\bigskip
+	\bigskip
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{lineupSequence}
+		\caption{Line-up sequence diagram}
+	\end{figure}
+	
+	\newpage
+	\noindent
+	\textbf{Physical Line-up}
+	\newline \newline
+	Everything starts with the costumer that requires a ticket at the totem outside the store. From this point the flow of events is the same as the previous diagram. The unique difference is that the ticket is not sent to the costumer mobile phone but is returned by the totem, if the costumer is allowed to line-up.
+	\bigskip
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{lineupphysicalSequence}
+		\caption{Physical Line-up sequence diagram}
+	\end{figure}
+	
+	\noindent
+	\textbf{Increase store capacity}
+	\newline \newline
+	The increase of the capacity starts when the store manager clicks on the correspondent button (this interaction is omitted as said in the section opening). The critical component involved in this scenario is StoreHandler that according to the store data, retrieved from the database, decides if the capacity can be increased or not.
+	\bigskip
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.7]{increaseSequence}
+		\caption{Increase store capacity sequence diagram}
+	\end{figure}
+	
+	
+	\newpage
+	
+	
 	\subsection{Component interfaces}
 	
 	The following diagram describes the main componet interfaces of the system. \newline
@@ -414,6 +459,108 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\label{fig:MobileAppUXdiagram}
 		\end{figure}
 			
+		\newpage
+		
+			\section{Requirements Traceability}
+		
+		In this section is presented a mapping between the CLup requirements (the reader can find them in the RASD - section 3.2.1) and the software components - section 2.2. The mapping is made looking for the components that perform the main operations in the satisfaction of a specific requirements. For example, when a costumer line-up in a store a lot of components are involved but the fundamental one, that manages the line-up, is the QueueHandler.
+		\bigskip  
+		\newline
+		\begin{tabular}{|c|l|}
+			\hline
+			\textbf{REQUIREMENT} & \textbf{MAPPED COMPONENTS} \\ \hline
+			R1 & AccessCostumer \\ \hline
+			R2 & CostumerMobileApp \\ \hline
+			R3 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				CostumerHandler\\ 
+			\end{minipage} \\ \hline
+			R4 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				SuggestionsHandler\\\\
+				TimetableHandler\\ 
+			\end{minipage} \\ \hline
+			R5 & QueueHandler \\ \hline
+			R6 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				SuggestionsHandler\\ 
+			\end{minipage} \\ \hline
+			R7 & 
+			\begin{minipage}[t]{10cm}
+				TicketManager\\\\
+				QRcodeManager\\ 
+			\end{minipage} \\ \hline
+			R8 & 
+			\begin{minipage}[t]{10cm}
+				NotificationsService\\\\
+				QueueHandler\\ 
+			\end{minipage} \\ \hline
+			R9 & NotificationService \\ \hline
+			R10 & 
+			\begin{minipage}[t]{10cm}
+				StatisticsHandler\\\\
+				SuggestionsHandler\\ 
+			\end{minipage} \\ \hline
+			R11 & StatisticsHandler\\ \hline
+			R12 & 
+			\begin{minipage}[t]{10cm}
+				QueueHandler\\\\
+				TicketManager\\\\
+				QRcodeManager\\ 
+			\end{minipage} \\ \hline
+		\end{tabular}
+		
+		\newpage
+		\noindent
+		\begin{tabular}{|c|l|}
+			\hline
+			\textbf{REQUIREMENT} & \textbf{MAPPED COMPONENTS} \\ \hline
+			R13 & 
+			\begin{minipage}[t]{10cm}
+				QueueHandler\\\\
+				TicketManager\\ 
+			\end{minipage} \\ \hline
+			R14 & 
+			\begin{minipage}[t]{10cm}
+				QueueHandler\\\\
+				TicketManager\\ 
+			\end{minipage} \\ \hline
+			R15 & 
+			\begin{minipage}[t]{10cm}
+				CostumerMobileApp\\\\
+				CostumerHandler\\ 
+			\end{minipage} \\ \hline
+			R16 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				StatisticsHandler\\\\
+				TimetableHandler\\ 
+			\end{minipage} \\ \hline
+			R17 & CostumerHandler \\ \hline
+			R18 & QueueHandler \\ \hline
+			R19 & CostumerHandler \\ \hline
+			R20 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				StatisticsHandler\\ 
+			\end{minipage} \\ \hline
+			R21 & 
+			\begin{minipage}[t]{10cm}
+				QueueHandler\\\\
+				TicketManager\\ 
+			\end{minipage} \\ \hline
+			R22 & StoreHandler \\ \hline						R23 & StoreHandler \\ \hline
+			R24 & 
+			\begin{minipage}[t]{10cm}
+				VisitHandler\\\\
+				TimetableHandler\\ 
+			\end{minipage} \\ \hline
+		\end{tabular}
+		
+		
 		\newpage
 		
 		\section{Implementation, Integration and Test Plan}
@@ -548,6 +695,9 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 				\rowcolor[HTML]{DCDCDC} 
 				Component view & \textbf{3h} \\ \hline
 				Deployment view & \textbf{4h} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				Sequence diagrams & \textbf{6h} \\ \hline
+				Requirement traceability discussion & \textbf{1h} \\ \hline
 				
 			\end{tabular}
 			\newline
