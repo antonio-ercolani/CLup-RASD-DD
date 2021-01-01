@@ -1,5 +1,8 @@
 \documentclass[]{article}
 
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2cm]{geometry}
@@ -8,10 +11,27 @@
 \usepackage{makecell}
 \usepackage{tabularx}
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
 
 \setlength{\tabcolsep}{13pt}
 \renewcommand{\arraystretch}{2.3}
 
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize,        % size of fonts used for the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve},     % string literal style
+}
 
 \begin{document}
 	\pagenumbering{gobble}
@@ -322,15 +342,43 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\includegraphics[scale=0.6]{lineupphysicalSequence}
 		\caption{Physical Line-up sequence diagram}
 	\end{figure}
+
+	\noindent
+	\textbf{User enters into the store}
+	\newline \newline
+	When the user scans his QRcode (either via his mobile app or physical ticket), the request is handled by TicketManager that retrieves the virtual ticket associated with the code. \newline
+	Afterwards, QueueHandler checks whether the scanned ticket is actually the next user in the line. 
+	If so, the automatic doors are unlocked and the queue is update, otherwise an error message is reported to the user.
+	\medskip
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.58]{ComponentView/userEnters.png}
+		\caption{User enters into the store sequence diagram}
+	\end{figure}
+	
+		\noindent
+	\textbf{User books a visit}
+	\newline \newline
+	The user starts by indicating the item that he is going to buy among the available ones and the preferred time slot. \newline
+	The system checks if the visit is feasible (visit overlapping, store opening time etc.) and creates a visit object in the database along with some statistics. An error is reported to the user if some checks went wrong.
+	\medskip
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.57]{ComponentView/bookAVisitRuntimeView.png}
+		\caption{User enters into the store sequence diagram}
+	\end{figure}
+	
 	
 	\noindent
 	\textbf{Increase store capacity}
 	\newline \newline
 	The increase of the capacity starts when the store manager clicks on the correspondent button (this interaction is omitted as said in the section opening). The critical component involved in this scenario is StoreHandler that according to the store data, retrieved from the database, decides if the capacity can be increased or not.
-	\bigskip
+	\medskip
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.7]{increaseSequence}
+		\includegraphics[scale=0.65]{increaseSequence}
 		\caption{Increase store capacity sequence diagram}
 	\end{figure}
 	
@@ -340,9 +388,9 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\subsection{Component interfaces}
 	
-	The following diagram describes the main componet interfaces of the system. \newline
-	They are not necessarly supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
-	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easly derived. \newline
+	The following diagram describes the main component interfaces of the system. \newline
+	They are not necessarily supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
+	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easily derived. \newline
 	
 		\begin{figure}[H]
 			\centering
@@ -354,16 +402,76 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\subsection{Selected architectural styles and patterns}
 	
-
-				
+	\subsection{Algorithms and data structures}
+	\subsubsection{Queue}
+	One of the challenges faced when designing the system is how to properly integrate, in the same virtual queue, in person customers, CLup users that lined up with the mobile app and CLup users that booked a visit. \newline
+	In order to manage the line as smoothly as possible, booked visits are being treated similarly to a normal line up. \newline
+	\textbf{Visit Handler} needs a routine that, once the time of the booked visit is reached, inserts our booked user in the queue. \newline
+	This insertion however is not like other insertions because the user is virtually inserted as the first of our queue.\newline \newline
+	In order to achieve this behavior and ease the integration between different type of users, the data structure of the queue should be a  \textit{priority-driven FIFO queue}. \newline
+	The ordering policy of the queue is the following: entities are ordered firstly based on their priority (i.e. no entities can be preceded by an entity of lower priority) and secondly in a \textit{first come first served} manner (i.e. FIFO ordering between entities of the same priority). \newline \newline
+	This design is exploited as follows: given two priority values \textbf{H} and \textbf{L} (with priority(H) $>$ priority(L)), requests to line up (either physically or through the CLup app) are served by inserting the user in the queue with the L priority (this creates a plain FIFO queue if only this types of requests are present). \newline
+	Instead, booked visits are inserted in the queue with the H priority, placing them before other L entities. \newline \newline
+	The following example shows the queue logic explained above.\newline 
+	The queue is intended to be read from left to right (i.e. the leftmost item is the first of the queue). \newline
 	
-
-
-
+		\begin{figure}[h!] 
+		\centering
+		\subfloat[Initial state of the queue]
+		{\includegraphics[width=.42\textwidth]{ComponentView/queue1}}
+		\qquad\qquad
+		\subfloat[H1 enters the queue]
+		{\includegraphics[width=.42\textwidth]{ComponentView/queue2}}
+		\qquad\qquad
+		\end{figure}
 	
-				
-	\newpage			
-				
+		\begin{figure}[h!] 
+		\centering
+		\subfloat[L4 enters the queue]
+		{\includegraphics[width=.42\textwidth]{ComponentView/queue3}}
+		\qquad\qquad
+		\subfloat[H2 enters the queue]
+		{\includegraphics[width=.42\textwidth]{ComponentView/queue4}}
+		\qquad\qquad
+		\end{figure}
+	 \noindent
+	 With this policy, once a visit time has come, the related user is inserted in the queue with the H priority making him the first (or among the first if many booked users are in queue) to enter as soon as a customer exits the store. \newline
+	 This queue can be implemented in several ways, two of them are:
+	 \begin{itemize}
+	 	\item Two different FIFO queues, one for the H priority and one for the L. The next() method of the queue could be as follows:
+	 	\begin{lstlisting}[language=java]
+	 	/*Java example: consider H and L declared as follows
+	 	import java.util.LinkedList<E>
+	 	LinkedList<Ticket> H = new LinkedList();
+	 	LinkedList<Ticket> L = new LinkedList(); */
+	 	
+	 	public Ticket next() {
+	 		if (H.peekFirst() != null) return H.pollFirst();
+	 		return L.poolFirst();
+	 	}
+	 	\end{lstlisting}
+	 	\item A unique list/array where every item has a flag that specifies his priority. Insert operation will put items in the structure as described by the logic explained above while the next() function will simply retrieve the first element.
+	 \end{itemize}
+	
+	\subsubsection{Timetable}
+	When the system is handling the generation of a visit it has to check whether or not the user has other visits that would overlap with the new one. \newline
+	This can be done by retrieving all user future booked visits and using the following function checkOverlapping(). \newline
+	Note that the function's inputs are Time objects previously defined in the UML class diagram. \newline
+	
+	 \begin{lstlisting}[language=java]
+	//Java example
+	import java.util.Date;
+	
+	//true if t1 and t2 are overlapping, false otherwise	
+	public boolean checkOverlapping(Time t1, Time t2) {
+		if (t1.getDate().equals(t2.getDate())) {
+			return (t1.getStartingHour() <= t2.getEndingHour() &&
+				t2.getStartinHour() <= t1.getEndingHour());
+		} 
+		return false;
+	}
+	\end{lstlisting}
+
 	\section{User Interface Design}
 	This chapter aims to give a general idea of the user interface, both of the costumer mobile application and the store manager webapp. 
 	This is done by means of mockups and UX diagrams.
@@ -715,6 +823,22 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 				Component View & \textbf{7h} \\ \hline
 				Validation and Testing & \textbf{5h} \\ \hline
 			\end{tabular}
+		\newline \newline
+		
+		\medskip
+		\textbf{\large Riccardo Nannini:} \\ \newline
+		\begin{tabular}{|l|c|}
+			\hline
+			Component view discussion &  \textbf{3h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			Component view & \textbf{3h} \\ \hline
+			Component interfaces & \textbf{3,5h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			UML model & \textbf{2h} \\ \hline
+			Runtime view & \textbf{4,5h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			Algorithms and data structures & \textbf{4,5h} \\ \hline
+		\end{tabular}
 	
 			
 			\section{References}	
