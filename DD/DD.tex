@@ -429,8 +429,37 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\label{fig:componentInterfaces}
 		\end{figure}
 	
-	
+	\newpage
 	\subsection{Selected architectural styles and patterns}
+	\medskip
+	
+	\subsubsection{High level architecture}
+	The CLup system adopts a 3 tier architecture. 
+	How it works and how it is mapped on the system components is explained in section 2.1, where the reader is invited for further explanations.
+	
+	\subsubsection{Client-Server}
+	The client-server paradigm is the one that better fits the CLup system.
+	\\The client is represented by users devices, smartphones for costumers and Personal Computers for store managers. In particular we are speaking about thin clients, in fact, all the computations are done server side, the client has only to display something to the user and to catch interactions.
+	\\On the other side, the server is represented by the Business Logic tier and the Data tier. As just said, the server does all the computations and handles all the requests that come from the client. 
+	
+	\subsubsection{MVC - Model View Controller}
+	Another important pattern implemented in the CLup software system is the Model-View-Controller.
+	The pattern is mapped along the client and the server. 
+	The View is located in the client. Users devices have the unique task of display information and allow interactions with the system, as said in the previous paragraph.
+	\\The Controller and the Model are located server-side.
+	The Controller is composed by all the components of the Application Server except the DataManger subsystem. These components handle clients (View) requests and update the Model data. 
+	\\The Model is represented by the DataManger subsystem and by the Data tier. The first is the link between the controller and the Database where all the data are stored, as explained in section 2.2.
+	\newline
+	\newline
+	\newline
+	In the following diagram is shown how the three architectural patterns just explained are integrated with each other.
+	\bigskip
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.8]{MVC}
+		\caption{}
+	\end{figure}
+	
 	
 	\subsection{Algorithms and data structures}
 	\subsubsection{Queue}
@@ -501,7 +530,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		return false;
 	}
 	\end{lstlisting}
-
+	\newpage
 	\section{User Interface Design}
 	This chapter aims to give a general idea of the user interface, both of the costumer mobile application and the store manager webapp. 
 	This is done by means of mockups and UX diagrams.
@@ -838,7 +867,9 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 				Deployment view & \textbf{4h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				Sequence diagrams & \textbf{6h} \\ \hline
-				Requirement traceability discussion & \textbf{1h} \\ \hline
+				Requirement traceability table \& discussion & \textbf{2h} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				Selected architectural styles and patterns  & \textbf{3h} \\ \hline
 				
 			\end{tabular}
 			\newline
