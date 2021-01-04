@@ -489,7 +489,12 @@ Here are shown the main domain assumptions of the application domain.
 			In addition to this, the  two type of actors require different hardware component in order to interact with the system. \newline
 			Users need a smartphone with a localization system (tipically GPS), while store managers can access and monitor the system via computer.
 			\subsubsection{Software Interfaces}
-			The system needs an external software component to handle QR code generation and recognition.
+			The system needs an external software component to handle \textbf{QR code} generation and recognition. \newline
+			In addition, an API that provide services regarding \textbf{position} and \textbf{routes} is necessary for: 
+			\begin{itemize}
+				\item Finding the stores near the user
+				\item Estimate the time needed by the user to reach the store given the positions and the mean of transport
+			\end{itemize}
 			\subsubsection{Communications Interfaces}
 			The various actors connect to CLup using an internet connection. \newline
 			Hardware components such as automatic doors, ticket totem and QR code scanner interface with the system via IP based protocols.
@@ -1618,8 +1623,10 @@ Because we want to ensure this high grade of availability, a system of redundant
 	\bigskip\bigskip
 	\section{References}	
 	\begin{itemize}
-		\item The alloy section was made using \textit{https://alloytools.org/}
-		\item The diagrams were made using \textit{https://www.draw.io/}
+		\item Mockups were made using \textit{www.justinmind.com}
+		\item VCS Git + Hosting with GitHub \textit{github.com}		
+		\item The alloy section was made using \textit{alloytools.org}
+		\item The diagrams were made using \textit{www.draw.io}
 		\item Software Engineering 2 course material - Politecnico di Milano 2020-2021
 	\end{itemize}
 				
