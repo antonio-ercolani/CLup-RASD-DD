@@ -84,14 +84,14 @@
 					\begin{minipage}[t]{12cm}
 						A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information\\
 					\end{minipage} \\ \hline
-				\textbf{prova} & 
+				\textbf{UX DIAGRAM} & 
 					\begin{minipage}[t]{12cm}
-						prova\\
+						A \textit{UX diagram} helps to visualize the steps that a user takes to complete a task or achieve a goal on a site or app\\
 					\end{minipage} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
-				\textbf{prova2} & 
+				\textbf{CLup} & 
 					\begin{minipage}[t]{12cm}
-						prova\\
+						\textit{Customer line-up} the name of the system under development\\
 					\end{minipage} \\ \hline
 			\end{tabular}
 		
@@ -105,21 +105,68 @@
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{RASD} &
 					\begin{minipage}[t]{12.8cm}
-						A \textit{Quick Response code} is a kind of bar-code, readable by machines to retrieve information\\
+						Requirement Analysis and Specification Document\\
 					\end{minipage} \\ \hline
 				\textbf{DD} & 
 					\begin{minipage}[t]{12.8cm}
-					Design Document\\
+						Design Document\\
 					\end{minipage} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{GPS}& 
 					\begin{minipage}[t]{12.8cm}
-					Global Positioning System\\
+						Global Positioning System\\
+					\end{minipage} \\ \hline
+				\textbf{AS}& 
+					\begin{minipage}[t]{12.8cm}
+						Application Server\\
+					\end{minipage} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{DB}& 
+					\begin{minipage}[t]{12.8cm}
+						Database\\
+					\end{minipage} \\ \hline
+				\textbf{API}& 
+					\begin{minipage}[t]{12.8cm}
+						Application Programming Interface\\
+					\end{minipage} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{DBMS}& 
+					\begin{minipage}[t]{12.8cm}
+						Database Management System\\
+					\end{minipage} \\ \hline
+				\textbf{UML}& 
+					\begin{minipage}[t]{12.8cm}
+						Unified Modeling Language\\
+					\end{minipage} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{MVC}& 
+					\begin{minipage}[t]{12.8cm}
+						Model-View-Controller\\
+					\end{minipage} \\ \hline
+				\textbf{HTTP}& 
+					\begin{minipage}[t]{12.8cm}
+						HyperText Transfer Protocol\\
+					\end{minipage} \\ \hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{FIFO}& 
+					\begin{minipage}[t]{12.8cm}
+						First-In First-Out\\
 					\end{minipage} \\ \hline
 			\end{tabular}
 		
 		
 		\subsubsection{Abbreviations}
+		
+			\medskip
+			
+			\begin{tabular}{|c|l|}
+				\hline
+				\rowcolor[HTML]{DCDCDC} 
+				\textbf{Rn} & 
+					\begin{minipage}[t]{13.45cm}
+						n-th Requirement\\
+					\end{minipage} \\ \hline
+			\end{tabular}
 						
 			
 		\subsubsection{Revision History}
@@ -160,7 +207,7 @@
 					
 					
 					Ideally, the sequence of the process begins with the request of the user to do a specific action when he wants to apply for a displayed available functionality, and to do this he will set the activation of a specific method that will trigger the application logic to manage it.
-When the user concludes his procedure to being inserted in the queue of a store, sends a request to the server that handles the received data: if the lining-up has been made from home then the virtual ticket (its data) will be sent to the user, otherwise If the request of the ticket has been made from the totem at the store, the data sent back from the server will contain a valid or not valid ticket (the logic takes care of how many physical tickets have already been released and stops  sending valid tickets if the threshold has been reached yet).\\
+When the user concludes his procedure of being inserted in the queue of a store, sends a request to the server that handles the received data: if the lining-up has been made from home then the virtual ticket (its data) will be sent to the user, otherwise If the request of the ticket has been made from the totem at the store, the data sent back from the server will contain a valid or not valid ticket (the logic takes care of how many physical tickets have already been released and stops  sending valid tickets if the threshold has been reached yet).\\
 					\newline
 What’s more, for what concerns the users, every time they select and submit their preferences (mean of transport, favorite products, …) they will send data to the server, which makes them stored in the databases and allows the user to proceed through the next steps of the lining up procedure. Stored data will be useful when the user requests to see his statistics: they will be elaborated and sent back to the user, that would see them displayed on the screen of his device.\\
 					\newline
@@ -227,7 +274,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	
 	\textbf{Queue subsystem} \newline
-	The Queue subsystem is the part of the system devoted to handling the people queueing to the store.
+	The Queue subsystem is the part of the system devoted to handle the people queueing to the store.
 	Its responsabilities concern updating and managing the queue of people to a certain store, provide notification to users when they need to start approaching the store and handle the creation/recognition of Qr code tickets interfacing with an external module.
 	The Queue subsystem is composed of three main components:
 	
