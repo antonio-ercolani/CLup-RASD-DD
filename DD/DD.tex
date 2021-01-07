@@ -53,21 +53,22 @@
 	
 	\section{Introduction}
 	
+	\bigskip
 	\subsection{Purpose}
 	The purpose of this document is defining the main design principles of the CLup software system, taking as input the concepts defined in the RASD. This document treats many topics regarding the software design. It starts from the high-level architecture choices and continues with the description of the main components, also describing how they interact with each other. The last section is about the system implementation, integration and the testing phases, useful to the developer to put together the various design aspects during the system development. 
 	\\The reader can find a more detailed list of the treated topics in section 1.3.6.
 	
+	\bigskip
+	\bigskip
 	
 	\subsection{Scope}
 	
-	\begin{paragraph}
-		\newline
+		\noindent
 		CLup is an application that aims to provide the users with the possibility to queue to enter in a store, preserving as much as possible their safety and health. The lining up procedure can be done in two different ways: nearby the store with a physical ticket or from the application, where a virtual ticket is generated. In this way the crowd in the neighborhood of the stores is reduced, and so as a consequence the risks to get in touch with other people is decreased too. People lining up from home will start approach the store only when the system provides them a notification. Customers will then enter the store only when their turn has come, by the recognition of the QRcode on their ticket.\\
 		This application is built in order to be as easy as possible so that it can be used by customers of all the ages. Customers can simply line-up to the store they prefer, but they can also take advance of other services that are implemented inside the book a visit feature. Store managers have a different interface to deal with the system, as they have different things to check and for sure different goals, such as monitor entrances/exits and then allow more people in the store if it is possible. \\
 		However, more specific and deep descriptions of the available features can be found in the RASD document.\\
 		
-	\end{paragraph}
-
+	\newpage
 	\subsection{Definitions, Acronyms, Abbreviations}
 	
 		In this section we explain the meaning of some technical terms used in the document.
@@ -93,6 +94,10 @@
 					\begin{minipage}[t]{12cm}
 						\textit{Customer line-up} the name of the system under development\\
 					\end{minipage} \\ \hline
+				\textbf{TOTEM} & 
+				\begin{minipage}[t]{12cm}
+					\textit{Totem} is a synonym of ticket machine\\
+				\end{minipage} \\ \hline
 			\end{tabular}
 		
 		
@@ -143,15 +148,19 @@
 					\begin{minipage}[t]{12.8cm}
 						Model-View-Controller\\
 					\end{minipage} \\ \hline
-				\textbf{HTTP}& 
+				\textbf{HTTPS}& 
 					\begin{minipage}[t]{12.8cm}
-						HyperText Transfer Protocol\\
+						HyperText Transfer Protocol Secure\\
 					\end{minipage} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				\textbf{FIFO}& 
 					\begin{minipage}[t]{12.8cm}
 						First-In First-Out\\
 					\end{minipage} \\ \hline
+				\textbf{TCP/IP}& 
+				\begin{minipage}[t]{12.8cm}
+					Transmission Control Protocol / Internet Protocol\\
+				\end{minipage} \\ \hline
 			\end{tabular}
 		
 		
@@ -196,8 +205,7 @@
 		\section{Architectural Design}
 			
 			\subsection{Overview}
-				\begin{paragraph}
-					\newline
+					\noindent
 					Three logic layers define the architecture of the application. This division has been made so that eventual needed updates that are related to only one of the parts does not affect the other two, leaving them independent from this point of view. The application has to be made in the Client-Server behavior, where the clients can join from different devices and work on the system through some hardware and software components that will be better explained into details in the next sections of the document. The three discussed layers are:\\
 					\begin{itemize}
 						\item Presentation Level (P) : it’s the higher level of the application and deals directly with the users. It shows to the users the actions they can do in a specific moment and so it has to display them the info in a well-ordered and understandable way. All the features and functions need to be made properly available when needed\\
@@ -205,11 +213,11 @@
 						\item Data Access Layer (D) : It’s the level that assures to keep data independent to the logic of the application. It handles the info with respect to the databases of the system, managing them when requested by the layer on its top.\\ \newline
 					\end{itemize}
 					
-					
+					\noindent
 					Ideally, the sequence of the process begins with the request of the user to do a specific action when he wants to apply for a displayed available functionality, and to do this he will set the activation of a specific method that will trigger the application logic to manage it.
-When the user concludes his procedure of being inserted in the queue of a store, sends a request to the server that handles the received data: if the lining-up has been made from home then the virtual ticket (its data) will be sent to the user, otherwise If the request of the ticket has been made from the totem at the store, the data sent back from the server will contain a valid or not valid ticket (the logic takes care of how many physical tickets have already been released and stops  sending valid tickets if the threshold has been reached yet).\\
+When the user concludes his procedure of being inserted in the queue of a store, he sends a request to the server that handles the received data: if the lining-up has been made from home then the virtual ticket (its data) will be sent to the user, otherwise If the request of the ticket has been made from the totem at the store, the data sent back from the server will contain a valid or not valid ticket (the logic takes care of how many physical tickets have already been released and stops  sending valid tickets if the threshold has been reached yet).\\
 					\newline
-What’s more, for what concerns the users, every time they select and submit their preferences (mean of transport, favorite products, …) they will send data to the server, which makes them stored in the databases and allows the user to proceed through the next steps of the lining up procedure. Stored data will be useful when the user requests to see his statistics: they will be elaborated and sent back to the user, that would see them displayed on the screen of his device.\\
+What’s more, for what concerns the users, every time they select and submit their preferences (mean of transport, favorite products, …) they will send data to the server, which stores them in the databases and allows the user to proceed through the next steps of the lining up procedure. Stored data will be useful when the user requests to see his statistics: they will be elaborated and sent back to the user, that would see them displayed on the screen of his device.\\
 					\newline
 The system has to deal with store managers too, and so the server will periodically update the available data of the manager, that would monitor the situation of the store in real time: this will allow the manager to send the request to allow more people enter the store, handled by the application logic and whose results are displayed back to the manager. \newline
 
@@ -228,7 +236,7 @@ The system has to deal with store managers too, and so the server will periodica
 
 \newpage
 				
-				\end {paragraph}
+
 				
 
 	\subsection{Component view}
@@ -236,15 +244,15 @@ The system has to deal with store managers too, and so the server will periodica
 	\textbf{Component Diagram} \newline
 	In the current section will be explained the interactions of the various components that the system contains. The component view diagram allows to better understand the flow in the \textbf{Application Server}, which is organized in multiple subsystems so that the different competence areas are properly divided with respect to the functionality they’re built for.\\
 The various components can communicate with each other through different interfaces. 
-There are three components in the client side are the \textbf{customer} and the \textbf{store manager apps} and the \textbf{totem} where people take their physical ticket, which is connected to the application server too. The \textbf{Router} takes care to redirect to the proper subsystem or component the requests and responses that are generated during the lifetime of the system.\\
+There are three components in the client side : the \textbf{customer} and the \textbf{store manager apps} and the \textbf{totem} where people take their physical ticket, which is connected to the application server too. The \textbf{Router} takes care to redirect to the proper subsystem or component the requests and responses that are generated during the lifetime of the system.\\
 In the Application Server the \textbf{StoreHandler} and the \textbf{CustomerHandler} components are made so that they can handle the basic functions of the communication between the system and the store on one hand and between the system and the customer on the other one. General apps notifications and features that are not included in the ones that populates the queuing and book a visit subsystems rely here. In this way, if the system will handle and implement in the future some other small possible functions, these two components could be the ones that could handle the communications to guarantee to the store managers and the customers the best experience possible in the application.\newline\newline
 What’s more, the application server is connected to:\\
 	\begin{itemize}
-		\item 	\textbf{QRcodeManager}: it cares about the generation of the tickets.
+		\item 	\textbf{QRcodeManager}: it cares about the generation/recognition of the tickets.
 		
-		\item 	\textbf{StoreSlidingDoors}: it allows to open the doors of the shop if the scanned ticket is valid.
+		\item 	\textbf{StoreSlidingDoors}: it allows to open the doors of the shop.
 		
-		\item 	\textbf{GoogleMapsService}: it is necessary to retrieve data about the position of the store and of the customer.	
+		\item 	\textbf{GoogleMapsService}: computes the time and the distance between the costumer and the store.	
 	
 	\end{itemize}
 	
@@ -259,11 +267,11 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\label{fig:ComponentDiagram}
 		\end{figure}
 		\bigskip\bigskip
-
-
+	\newpage
+	\noindent
 	\textbf{Access Manager subsystem} \newline
 	The access manager cares about the sign up and the login of the users, both the customers and the store managers. The access is handled differently for the two entities, that have to provide different kind of information (the signing up and the authentication is different if the user is a store, because the system needs to accurately verify through some given documents the validity and the existence of the shop, while the sign up of a customer is more immediate because an existent valid email and a password would be sufficient), and the access to the data manager can be made with different purposes: with the sign up data are stored in the database, so that users are registered to the system, while with the login the validity of the inserted data (username and password) are checked with the ones that are already stored in the DB. 
-
+	\bigskip
 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.6]{ComponentView/AccessManagerComponent.png}
@@ -271,8 +279,8 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\label{fig:AccessManagerDiagram}
 		\end{figure}
 		\bigskip\bigskip
-	
-	
+	\newpage
+	\noindent
 	\textbf{Queue subsystem} \newline
 	The Queue subsystem is the part of the system devoted to handle the people queueing to the store.
 	Its responsabilities concern updating and managing the queue of people to a certain store, provide notification to users when they need to start approaching the store and handle the creation/recognition of Qr code tickets interfacing with an external module.
@@ -288,7 +296,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\end{itemize}
 
-	
+	\bigskip
 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.9]{ComponentView/queueComponent.png}
@@ -310,7 +318,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\caption{Visit subsystem}
 		\label{fig:visitSubsystem}
 	\end{figure}
-	
+	\bigskip
 	\begin{itemize}
 		\item \textbf{VisitHandler} fulfill the main booking visits tasks and works as an "orchestrator" of this subsystem.
 		Firstly it handles the requests that comes from outside this subsystem. To performs its tasks VisitHandler combines its "general" capabilities with the more specialized functionalities offered by the other components;
@@ -321,11 +329,10 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 
 	
-
-		\bigskip\bigskip
-		
+		\newpage
+		\noindent		
 		\textbf{Data Manager subsystem} \newline
-		
+		\noindent
 		The purpose of the Data Manager subsystem is creating a common interface, shared with ther whole system, to access data stored in the database. \newline
 		Instead of using directly the DBMS API, each component that needs to manipulate data that are stored in the DB is forced to use one of the two components that make the subsystem. \newline
 		The reason behind this decision is to \textbf{decouple} our system from the DBMS: a change in the DBMS API or switching DBMS vendor will affect only our Data Manager subsystem instead of the whole application. \newline
@@ -345,12 +352,15 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\end{figure}
 		
 	\bigskip
+	\newpage
+	\noindent
+	\subsubsection{UML - Model Class Diagram}
 	Moreover, the following diagram shows a general UML representation of the system's Model. \newline
 	Each component that interacts with the Model is supposed to interface with the DataManager component and invoke the methods for retrieving/storing data. \newline
-	
+	\bigskip
 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.73]{ComponentView/umlDD.png}
+			\includegraphics[scale=0.93]{ComponentView/umlDD.png}
 			\caption{Model UML diagram}
 			\label{fig:ModelUML}
 		\end{figure}
@@ -375,7 +385,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	\noindent	
 	The presentation tier contains the devices by which costumers and store managers can interact with the system. Costumer can use their own smartphones where they have to install the CLup mobile application. There are no restrictions about the operating system of the device, the app must be developed both for Android and IOS, for being compatible with the almost totality of the smartphone. 
 	\\On the other side, store managers can interact with CLup with any personal computer by means of the CLup web application, therefore they don't have to install anything but a web browser.
-	The reader should notice the communication protocol between the personal devices and the Application Server: HTTP.
+	The reader should notice the communication protocol between the personal devices and the Application Server: HTTPS.
 	\newline\newline
 	The intermediate tier contains the core of the CLup software system. Firstly, as the reader can see in the component diagram, the Application Server performs all the tasks related to the business logic. 
 	Secondly, this tier has the task of manage all the requests that come from the users devices. 
@@ -385,8 +395,22 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\newpage
 	
+	\subsection{Component interfaces}
+	
+	The following diagram describes the main interfaces of the system. \newline
+	They are not necessarily supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
+	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easily derived. \newline
+	The interfaces below represent the API of subsystems of components as shown in Figure \ref{fig:ComponentDiagram}. Each method will then be provided by one specific component that belongs to such subsystem.\newline
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.7]{ComponentView/componentInterfaces.png}
+		\caption{Component interfaces}
+		\label{fig:componentInterfaces}
+	\end{figure}
 	
 	
+	\newpage
 	
 	
 	\subsection{Runtime View}
@@ -447,11 +471,11 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\caption{User enters into the store sequence diagram}
 	\end{figure}
 	
-	
+	\newpage
 	\noindent
 	\textbf{Increase store capacity}
 	\newline \newline
-	The increase of the capacity starts when the store manager clicks on the correspondent button (this interaction is omitted as said in the section opening). The critical component involved in this scenario is StoreHandler that according to the store data, retrieved from the database, decides if the capacity can be increased or not.
+	The increase of the capacity starts when the store manager clicks on the correspondent button (this interaction is omitted as said in the section opening). The critical component involved in this scenario is StoreHandler that according to the store data and to the store defined policy (see section 2.4.2 \textit{RASD}), retrieved from the database, decides if the capacity can be increased or not.
 	\medskip
 	\begin{figure}[H]
 		\centering
@@ -463,19 +487,6 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	\newpage
 	
 	
-	\subsection{Component interfaces}
-	
-	The following diagram describes the main interfaces of the system. \newline
-	They are not necessarily supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
-	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easily derived. \newline
-	The interfaces below represent the API of subsystems of components as shown in Figure \ref{fig:ComponentDiagram}. Each method will then be provided by one specific component that belongs to such subsystem.\newline
-	
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.7]{ComponentView/componentInterfaces.png}
-			\caption{Component interfaces}
-			\label{fig:componentInterfaces}
-		\end{figure}
 	
 	\newpage
 	\subsection{Selected architectural styles and patterns}
@@ -487,7 +498,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	
 	\subsubsection{Client-Server}
 	The client-server paradigm is the one that better fits the CLup system.
-	\\The client is represented by users devices, smartphones for costumers and Personal Computers for store managers. In particular we are speaking about thin clients, in fact, all the computations are done server side, the client has only to display something to the user and to catch interactions.
+	\\The client is represented by users devices, smartphones for costumers and Personal Computers for store managers. In particular the chosen style is thin client, in fact, all the computations are done server side, the client has only to display something to the user and to catch interactions.
 	\\On the other side, the server is represented by the Business Logic tier and the Data tier. As just said, the server does all the computations and handles all the requests that come from the client. 
 	
 	\subsubsection{MVC - Model View Controller}
@@ -639,7 +650,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.3]{Mockups/storeStatistics}
+				\includegraphics[scale=0.489]{Mockups/storeStatistics}
 				\caption{Store statistics screen}
 				\label{fig:Storestatisticsscreen}
 			\end{figure}
@@ -788,9 +799,9 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\subsection{Implementation Plan}
 			\medskip
 			As a consequence of what has been said above and also taking into account that the CLup system is a relatively small one, then it needs to be implemented, tested and integrated following a bottom-up approach. As in unit testing, drivers must be constructed for each leaf module and then, as the system is built up, they will be replaced by higher level components that could use the lower level subsystems’ functionalities. Following this approach, it will be possible to parallelize implementation and the testing procedures.\newline
-
+\noindent
 The external components can be assumed to be already reliable, as they are implemented and used without any specific improvements. So, this assumption can be valid for the GoogleMapsService, the StoreSlidingDoors and QRcodeManager components. The integration with the subsystems that interface with them has to be accurately tested and validated.\newline
-
+\noindent
 The other components and subsystems that should be considered are the same ones that have been described and shown in the Component View section, that are listed below for the sake of reading them more confortably (the last three ones belong to the client side of the system):
 				\begin{itemize}
 					\item DBMS Services
@@ -828,7 +839,7 @@ Finally, we can list what is the strict sequence of constraint of component impl
 				\subsection{Integration Strategy}
 				\medskip
 As previously said in the chapter above, it’s needed to be implemented the system with a \textbf{bottom-up approach}. In the following lines there will be a better explanation of how to deal with this procedure, with the different components that will be progressively integrated once they’ve been tested. Drivers are added on the top of the tree-components building because in this way different requests to apply some functions can be done.
-
+\noindent
 The first components that have to be unit tested after the validation of the DBMSServices are the ones of the Data Manager subsystem. They are the first one that have to be implemented because storing and retrieving data from the DBMS is fundamental for every functionality of the system, that always deals with the most updated state of the system. 
 				\begin{figure}[H]
 					\centering
@@ -836,7 +847,7 @@ The first components that have to be unit tested after the validation of the DBM
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 It is then the turn of the other components. The Access Manager subsystem can be tested linking it to the Data Manager and testing its functionalities in parallel with the other components that will be explained below. This can happen because it has no direct interaction with the other components.
 				\begin{figure}[H]
 					\centering
@@ -844,7 +855,7 @@ It is then the turn of the other components. The Access Manager subsystem can be
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 The external components to which the application server interfaces are supposed to be already tested and validated by their production companies, so the Queue subsystem and its components are the next candidates to be taken into consideration for the unit testing. The testers have to make sure that they can correctly interface to the external components too.
 				\begin{figure}[H]
 					\centering
@@ -852,7 +863,7 @@ The external components to which the application server interfaces are supposed 
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 When the Queue subsystem has been determined successfully working, the Visit subsystem is the next one to be treated, as it is directly connected with the previously mentioned one. These tests need to be accurately checked as the lining up of a user and his booking procedure have to be as bug-free as possible to guarantee a proper navigation experience.
 				\begin{figure}[H]
 					\centering
@@ -860,23 +871,23 @@ When the Queue subsystem has been determined successfully working, the Visit sub
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 Once that these integrations are made, both the Customer Handler and Store Handler components can be unit tested and integrated. Notice that also here the integration with the GoogleMaps Service needs to be made, as the external component is assumed to be perfectly working as we were doing in the previous step. Drivers are properly added to make sure that the step by step integration can be made without any problem, fulfilling all the possible functionalities that a component needs to be ready to deal with.
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{Testing/Testing5.png}
+					\includegraphics[scale=0.48]{Testing/Testing5.png}
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 To complete the Application Manager the last component that has to be implemented, unit-tested and then added is the Router, that substitutes all the drivers that were drawn in the previous diagram. It allows to make possible the flow of the called methods from the client to the server and dispatch them to the right component.
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{Testing/Testing6.png}
+					\includegraphics[scale=0.48]{Testing/Testing6.png}
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
-
+\noindent
 In conclusion, Client side components, which can be implemented in parallel to the application server ones, are unit tested and integrated to the whole application system. 
 In this way, a final testing session can be performed to validate the overall system.
 				\begin{figure}[H]
