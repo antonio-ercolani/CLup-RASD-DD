@@ -38,7 +38,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.29]{FrontPage.png}
+		\includegraphics[scale=0.28]{FrontPage.png}
 	\end{figure}
 	
 
@@ -181,7 +181,7 @@
 		%\subsubsection{Revision History}
 		
 		
-		\subsubsection{Reference Documents}
+		\subsection{Reference Documents}
 		\begin{itemize}
 			\item R\&DD Assignment A.Y. 2020-2021;
 			\item Software Engineering 2 course material - Politecnico di Milano 2020-2021;
@@ -189,7 +189,7 @@
 		\end{itemize}
 		
 		
-		\subsubsection{Document Structure}
+		\subsection{Document Structure}
 		
 			Here a list of the topics treated in each chapter of this Design Document.
 			
@@ -265,6 +265,9 @@ What’s more, the application server is connected to:\\
 For the sake of completeness it has been shown also the \textbf{DBMS service}, but the main focus is made towards the Application Server, which is the core of the application’s logic. \newline\newline
 In the following paragraphs the various subsystems will be briefly explained.\\
 
+
+	\newpage \textbf{}\\\\
+\bigskip \bigskip \bigskip
 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{ComponentView/ComponentViewDiagram.png}
@@ -362,7 +365,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	\subsubsection{UML - Model Class Diagram}
 	Moreover, the following diagram shows a general UML representation of the system's Model. \newline
 	Each component that interacts with the Model is supposed to interface with the DataManager component and invoke the methods for retrieving/storing data. \newline
-	\bigskip
+	\bigskip \bigskip
 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.93]{ComponentView/umlDD.png}
@@ -406,7 +409,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	They are not necessarily supposed to be developed as they are but their goal is to give an overview of what type of methods the interfaces are going to need. \newline
 	Some minor interfaces were omitted while the \textit{RouterInterface} and \textit{DataManagerInterface} are not described as they are directly correlated to the other interfaces and can be easily derived. \newline
 	The interfaces below represent the API of subsystems of components as shown in Figure \ref{fig:ComponentDiagram}. Each method will then be provided by one specific component that belongs to such subsystem.\newline
-	
+	\bigskip 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.7]{ComponentView/componentInterfaces.png}
@@ -468,7 +471,7 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	\newline \newline
 	The user starts by indicating the item that he is going to buy among the available ones and the preferred time slot. \newline
 	The system checks if the visit is feasible (visit overlapping, store opening time etc.) and creates a visit object in the database along with some statistics. An error is reported to the user if some checks went wrong.
-	\medskip
+	\bigskip \bigskip
 	
 	\begin{figure}[H]
 		\centering
@@ -481,10 +484,10 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 	\textbf{Increase store capacity}
 	\newline \newline
 	The increase of the capacity starts when the store manager clicks on the correspondent button (this interaction is omitted as said in the section opening). The critical component involved in this scenario is StoreHandler that according to the store data and to the store defined policy (see section 2.4.2 \textit{RASD}), retrieved from the database, decides if the capacity can be increased or not.
-	\medskip
+	\bigskip \bigskip
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.65]{increaseSequence}
+		\includegraphics[scale=0.75]{increaseSequence}
 		\caption{Increase store capacity sequence diagram}
 	\end{figure}
 	
@@ -602,9 +605,9 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 		\subsection{Mockups}
 		In the design process of the user interface the main guideline was the Requirement R2 (\textit{The user and manager applications are clear, intuitive and simple to use} - RASD). Therefore, the screen contains only the necessary components and the interaction with them is limited to a few of intuitive form and buttons.
 		\\The presented mockups cover almost the totality of the screens you will find on the completed user interface. They show only the components needed to address the CLup goals, buttons such as "return to the previous screens" are not usually taken into account.
-		
+		\\\\\\
 			\subsubsection{Mobile Application Mockups}
-			\bigskip \bigskip \bigskip \bigskip
+			\bigskip \bigskip
 			\begin{figure}[h!] 
 				\centering
 				\subfloat[Sign-in screen]
@@ -618,6 +621,8 @@ In the following paragraphs the various subsystems will be briefly explained.\\
 			\end{figure}
 		
 			\newpage
+			\textbf{}\\
+			\bigskip \bigskip \bigskip
 			\begin{figure}[h!]\ContinuedFloat
 				\centering
 				\subfloat[Booking check screen]
@@ -821,7 +826,7 @@ The other components and subsystems that should be considered are the same ones 
 					\item StoreManagerApp
 					\item Ticket Totem
 				\end{itemize}
-
+\noindent
 The first components that have to be considered are the DBMSServices, because they are the ones that allow to keep system’s data updated to the last version and they allow to write on the Database, always recalling to make it persistent.\\ \newline
 The procedure then deals with the Data Manager subsystem, that directly interfaces from the application server towards the DBMS Services and allows to ask and retrieve data through appropriate queries, or to send new data of new info collected during the users’ registrations or their submitted preferences.
 Once the Data Manager has been completed, then the other subsystems can be built: Access Manager is independent from the other components, so it can be developed in parallel with other tasks. Because of its purpose, the only role that he has is to guarantee that accesses to the system are authenticated, and this function is perfectly isolated from the others.\\ \newline
@@ -843,7 +848,7 @@ Finally, we can list what is the strict sequence of constraint of component impl
 				
 				\subsection{Integration Strategy}
 				\medskip
-As previously said in the chapter above, it’s needed to be implemented the system with a \textbf{bottom-up approach}. In the following lines there will be a better explanation of how to deal with this procedure, with the different components that will be progressively integrated once they’ve been tested. Drivers are added on the top of the tree-components building because in this way different requests to apply some functions can be done.
+As previously said in the chapter above, the system needs to be implemented with a \textbf{bottom-up approach}. In the following lines there will be a better explanation of how to deal with this procedure, with the different components that will be progressively integrated once they’ve been tested. Drivers are added on the top of the tree-components building because in this way different requests to apply some functions can be done.
 \noindent
 The first components that have to be unit tested with the DBMSServices are the ones of the Data Manager subsystem. They are the first one that have to be implemented because storing and retrieving data from the DBMS is fundamental for every functionality of the system, that always deals with the most updated state of the system. 
 				\begin{figure}[H]
@@ -852,6 +857,7 @@ The first components that have to be unit tested with the DBMSServices are the o
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
+			\newpage
 \noindent
 It is then the turn of the other components. The Access Manager subsystem can be tested linking it to the Data Manager and testing its functionalities in parallel with the other components that will be explained below. This can happen because it has no direct interaction with the other components.
 				\begin{figure}[H]
@@ -860,6 +866,8 @@ It is then the turn of the other components. The Access Manager subsystem can be
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
+			
+		\newpage
 \noindent
 The external components to which the application server interfaces are supposed to be already tested and validated by their production companies, so the Queue subsystem and its components are the next candidates to be taken into consideration for the unit testing. The testers have to make sure that they can correctly interface to the external components too.
 				\begin{figure}[H]
@@ -892,6 +900,7 @@ To complete the Application Manager the last component that has to be implemente
 					\caption{}
 					\label{fig:Testing}
 				\end{figure}
+			\newpage
 \noindent
 In conclusion, Client side components, which can be implemented in parallel to the application server ones, are unit tested and integrated to the whole application system. 
 In this way, a final testing session can be performed to validate the overall system.
@@ -934,7 +943,7 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 				Requirement traceability table \& discussion & \textbf{2h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				Selected architectural styles and patterns  & \textbf{3h} \\ \hline
-				Review discussion  & \textbf{2h} \\ \hline
+				Review meetings  & \textbf{7h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
 				Various fixes  & \textbf{3h} \\ \hline
 				
@@ -957,10 +966,11 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 				Component View & \textbf{8h} \\ \hline
 				Validation and Testing & \textbf{12h} \\ \hline
 				\rowcolor[HTML]{DCDCDC} 
-				Review Meetings & \textbf{5h} \\ \hline
+				Review meetings & \textbf{7h} \\ \hline
+				Various fixes & \textbf{2h} \\ \hline
 			\end{tabular}
 		\newline \newline
-		
+		\newpage
 		\medskip
 		\textbf{\large Riccardo Nannini:} \\ \newline
 		\begin{tabular}{|l|c|}
@@ -977,8 +987,11 @@ Moreover, the \textbf{Load testing}  and \textbf{Performance testing} have a mai
 			Runtime view & \textbf{4,5h} \\ \hline
 			\rowcolor[HTML]{DCDCDC} 
 			Algorithms and data structures & \textbf{4,5h} \\ \hline
+			Review meetings & \textbf{7h} \\ \hline
+			\rowcolor[HTML]{DCDCDC} 
+			Various fixes & \textbf{2,5h} \\ \hline
 		\end{tabular}
-	
+		\bigskip
 			
 			\section{References}	
 				\begin{itemize}
